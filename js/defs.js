@@ -1537,7 +1537,7 @@ class GAME{
                     console.log("In loop")
                     if (BoardRF[this.VMGSourceIndex-i]!=='x')
                     {
-                        if(BoardSquares[this.VMGSourceIndex+i]>=0)
+                        if(BoardSquares[this.VMGSourceIndex-i]>=0)
                         {
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
                             if(this.LastPieceMovedSource === BoardRF[this.VMGSourceIndex] && this.LastPieceMovedLineOfSight===LINEOFSIGHT.LEFT)
@@ -2287,7 +2287,7 @@ class GAME{
                     console.log("In loop")
                     if (BoardRF[this.VMGSourceIndex-i]!=='x')
                     {
-                        if(BoardSquares[this.VMGSourceIndex+i]>=0)
+                        if(BoardSquares[this.VMGSourceIndex-i]>=0)
                         {
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
                             if(this.LastPieceMovedSource === BoardRF[this.VMGSourceIndex] && this.LastPieceMovedLineOfSight===LINEOFSIGHT.LEFT)
