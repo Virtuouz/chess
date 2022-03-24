@@ -1,8 +1,36 @@
 # Learning Through Chess
-This project is to help me learn many things such as javascript (what the chess logic is built on), databases and sql (Storing moves and games), network "stuff" (online two player)
+This project is to help me learn many things such as javascript (what the chess logic is built on), databases and sql (Storing moves and games), network "stuff" (online two player), as well learning good programming practices.
 
 # Roadmap
-I'll get to this.
+Finish the main chessboard logic (v1.0.0)
+    En passant 
+    Castling 
+    Promotion
+
+Create an AI to play against(v1.5.0)
+    Random moves
+    Basic preference to taking over pieces when possible (If option to take a piece exists, do it)
+    Over take pieces depending on value
+
+
+Refactor code to use FEN strings (possible complete code rewrite with better practices) and start storing them into a database, learn sql (v2.0.0)
+
+Send FEN string list of played games to a database on checkmate*
+
+Create a more complicated AI(v2.5.0)
+    Takes into strong areas to keep pieces in (knight somewhere in the center)
+    Start Looking moves into the future, min max and alpha beta pruning
+    consider piece sacrificing
+    Machine learning using FEN strings of completed games (I know nothing about machine learning)*
+
+
+
+Create online two player (v3.0.0)
+
+*Unsure whether to follow through implenting it and or when to incorporate it
+
+**This roadmap is subject to change**
+
 
 # What I Did Before Using Github
 
