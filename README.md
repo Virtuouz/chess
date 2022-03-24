@@ -3,14 +3,14 @@ This project is to help me learn many things such as javascript (what the chess 
 
 # Roadmap
 Finish the main chessboard logic (v1.0.0)
-    En passant 
-    Castling 
-    Promotion
+    * En passant 
+    * Castling 
+    * Promotion
 
 Create an AI to play against(v1.5.0)
-    Random moves
-    Basic preference to taking over pieces when possible (If option to take a piece exists, do it)
-    Over take pieces depending on value
+    * Random moves
+    * Basic preference to taking over pieces when possible (If option to take a piece exists, do it)
+    * Over take pieces depending on value
 
 
 Refactor code to use FEN strings (possible complete code rewrite with better practices) and start storing them into a database, learn sql (v2.0.0)
@@ -18,10 +18,10 @@ Refactor code to use FEN strings (possible complete code rewrite with better pra
 Send FEN string list of played games to a database on checkmate*
 
 Create a more complicated AI(v2.5.0)
-    Takes into strong areas to keep pieces in (knight somewhere in the center)
-    Start Looking moves into the future, min max and alpha beta pruning
-    consider piece sacrificing
-    Machine learning using FEN strings of completed games (I know nothing about machine learning)*
+    * Takes into strong areas to keep pieces in (knight somewhere in the center)
+    * Start Looking moves into the future, min max and alpha beta pruning
+    * consider piece sacrificing
+    * Machine learning using FEN strings of completed games (I know nothing about machine learning)*
 
 
 
