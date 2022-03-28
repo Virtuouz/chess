@@ -142,7 +142,23 @@ class GAME{
         
     }
 
+    CastlingCheck(source,target,piece){
+        if(piece[1]==='R'){
 
+        }
+    }
+    Castling(source,target,piece){
+        switch(this.MoveMaker){
+            case COLORS.WHITE: 
+                if(piece[1]==='R' && BoardSquares[this.TargetIndex]===PIECES.wK)
+                    {
+                        
+                    }
+        }
+
+
+        
+    }
 
     SetLastPieceMoved(piece, target)
     {
