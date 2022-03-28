@@ -46,6 +46,12 @@ class GAME{
         this.LastPieceMovedLineOfSightMoves=[];
         this.BoardSquaresCopy=BoardSquares;
         this.PieceOverTaken=PIECES.EMPTY
+        this.CCLeftbRook=true;//can castle, left black rook
+        this.CCRightbRook=true;// can castle, right black rook
+        this.CCleftwRook=true;//can castle, left white rook
+        this.CCRightwRook=true;//can castle, right white rook
+        this.CCbKing=true;//can castle, black king
+        this.CCwKing=true;//can castle, white king
 
 
         
