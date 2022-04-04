@@ -3224,7 +3224,7 @@ class GAME{
                        
                     }
                 } 
-                if(this.CKSValidMove.length!==0 && this.AvailableCounterMoves.length!==0)
+                if(this.CKSValidMove.length!==0 || this.AvailableCounterMoves.length!==0)
                 {
                     this.check=this.MoveMaker
                     //AvaileableTargetList
@@ -3303,7 +3303,7 @@ class GAME{
                         
                     }
                 }
-                if(this.CKSValidMove.length!==0 && this.AvailableCounterMoves.length!==0)
+                if(this.CKSValidMove.length!==0 || this.AvailableCounterMoves.length!==0)
                 {
                     this.check=this.MoveMaker
                     //AvaileableTargetList
