@@ -75,7 +75,32 @@ $(function(){
             return "snapback"
         }
         else{
-            game.SetLastPieceMoved(piece,target);
+
+            if(game.Castled===true){
+                switch(target){
+                    case 'c1':
+                        board1.move('a1-d1')
+                        game.SetLastPieceMoved('wR','d1')
+                        break;
+                    case 'g1':
+                        board1.move('h1-f1')
+                        game.SetLastPieceMoved('wR','f1')
+                        break;
+                    case 'c8':
+                        board1.move('a8-d8')
+                        game.SetLastPieceMoved('bR','d8')
+                        break;
+                    case 'g8':
+                        board1.move('h8-f8')
+                        game.SetLastPieceMoved('bR','f8')
+                        break;
+                }
+                game.Castled=false;
+            }
+            else{
+                game.SetLastPieceMoved(piece,target);
+            }
+            
             
             game.CheckCheckMate()
             for(let i=0;i<BoardSquares.length;i++)
