@@ -104,15 +104,15 @@ class GAME{
                 break;
             case COLORS.BLACK:
                 //This does the piece "swap" involved with a long castle
-                if(target=='c1'){
-                    this.BoardSquares[23]=PIECES.wK
-                    this.BoardSquares[24]=PIECES.wR
+                if(target=='c8'){
+                    this.BoardSquares[23]=PIECES.bK
+                    this.BoardSquares[24]=PIECES.bR
                     this.BoardSquares[25]=PIECES.EMPTY
                     this.BoardSquares[21]=PIECES.EMPTY
                 }
-                if(target=='g1'){
-                    this.BoardSquares[27]=PIECES.wK
-                    this.BoardSquares[26]=PIECES.wR
+                if(target=='g8'){
+                    this.BoardSquares[27]=PIECES.bK
+                    this.BoardSquares[26]=PIECES.bR
                     this.BoardSquares[25]=PIECES.EMPTY
                     this.BoardSquares[28]=PIECES.EMPTY
                 }
@@ -275,8 +275,8 @@ class GAME{
                 break;
             
             case 'bK' :
-                if((target==='c8' && 
-                this.CCleftbRook===true && 
+                if((target==='g8' && 
+                this.CCRightbRook===true && 
                 this.CCbKing===true && 
                 this.check!==COLORS.BLACK
                 )){
@@ -297,13 +297,13 @@ class GAME{
                         return true;
                     }
                 }
-                else if((target==='g8' && 
-                this.CCleftbRook===true && 
+                else if((target==='c8' && 
+                this.CCLeftbRook===true && 
                 this.CCbKing===true && 
                 this.check!==COLORS.BLACK
                 )){
                     //Check to see if there are no pieces in the way (b1,c1,d1)
-                    if(BoardSquares[92]===0 && BoardSquares[93]===0 && BoardSquares[94]===0){
+                    if(BoardSquares[22]===0 && BoardSquares[23]===0 && BoardSquares[24]===0){
 
                         this.AllValidMoves=[];
                         for(let i =0;i<BoardSquares.length;i++)
@@ -3550,7 +3550,6 @@ class GAME{
     {
         
         this.BoardSquaresCopy=this.BoardSquares
-        this.IBKSwap(SIndex,TIndex)
         let s=0
         for(let i=0;i<this.BoardSquaresCopy.length;i++)
         {
@@ -3561,16 +3560,9 @@ class GAME{
             s=""
         }
         }
+        this.IBKSwap(SIndex,TIndex)
+        
         console.log("lelll")
-        for(let i=0;i<BoardSquares.length;i++)
-    {
-        s+= BoardSquares[i]+" ";
-        if (i%10===9 )
-        {
-            console.log(s);
-            s=""
-        }
-    }
         return this.ISBKCheckCheckMate(SIndex,TIndex)
         
 
