@@ -53,6 +53,7 @@ class GAME{
         this.CCbKing=true;//can castle, black king
         this.CCwKing=true;//can castle, white king
         this.ExecuteCastle=false;
+        this.Castled=false;
 
         
         /*
@@ -174,6 +175,7 @@ class GAME{
                     if(this.Castling(target,piece)){
                         this.RemoveCastleAbility(source,piece);
                         this.NextTurn();
+                        this.Castled=true;
                         return true;
                     }
                     else{
