@@ -164,24 +164,29 @@ class GAME{
                 return false;
             }
         }
-        else if(this.ValidMoveCheck(source,target,piece) && this.check!==this.MoveMaker && this.ExecuteCastle===true){
-
-            if(this.Castling(target,piece)){
-                this.RemoveCastleAbility(source,piece);
-                this.NextTurn();
-                return true;
-            }
-            return false;
-
-        }
-        else if(this.ValidMoveCheck(source,target,piece) && this.check!==this.MoveMaker && this.IsBlockingking(this.SourceIndex,this.TargetIndex))
+        else if(this.ValidMoveCheck(source,target,piece) && this.check!==this.MoveMaker)
         {
             //if (this.IsBlockingking()) return false
             //this.BoardSquares=this.BoardSquaresCopy
             //this.swap(this.BoardSquares,this.SourceIndex,this.TargetIndex);
-            this.RemoveCastleAbility(source,piece);
-            this.NextTurn();
-            return true;
+
+            if(this.ExecuteCastle===true){
+                    if(this.Castling(target,piece)){
+                        this.RemoveCastleAbility(source,piece);
+                        this.NextTurn();
+                        return true;
+                    }
+                    else{
+                        this.ExecuteCastle=false;
+                        return false;
+                    }
+            }
+            else if(this.IsBlockingking(this.SourceIndex,this.TargetIndex)){
+                this.RemoveCastleAbility(source,piece);
+                this.NextTurn();
+                return true;
+            }
+            else return false;
         }
         else{
             return false;
@@ -219,17 +224,17 @@ class GAME{
         {
             case 'wK':
                 
-                if((target==='c1' && 
-                this.CCLeftwRook===true && 
+                if((target==='g1' && 
+                this.CCRightwRook===true && 
                 this.CCwKing===true && 
                 this.check!==COLORS.WHITE
                 )){
                     //Check to see if there are no pieces in the way (f1,g1)
-                    if(BoardSquares[96]===0 && BoardSquares[97]===0){
+                    if(BoardSquares[96]===PIECES.EMPTY && BoardSquares[97]===PIECES.EMPTY){
                         this.AllValidMoves=[];
                         for(let i =0;i<BoardSquares.length;i++)
                         {
-                            if(BoardSquares[i]>0){
+                            if(BoardSquares[i]<0){
                                 this.ValidMoveGeneration(BoardRF[i],BoardSquares[i])
                             }
                         }
@@ -241,7 +246,7 @@ class GAME{
                         return true;
                     }
                 }
-                else if((target==='g1' && 
+                else if((target==='c1' && 
                 this.CCLeftwRook===true && 
                 this.CCwKing===true && 
                 this.check!==COLORS.WHITE
@@ -252,7 +257,7 @@ class GAME{
                         this.AllValidMoves=[];
                         for(let i =0;i<BoardSquares.length;i++)
                         {
-                            if(BoardSquares[i]>0){
+                            if(BoardSquares[i]<0){
                                 this.ValidMoveGeneration(BoardRF[i],BoardSquares[i])
                             }
                         }
@@ -280,7 +285,7 @@ class GAME{
                         this.AllValidMoves=[];
                         for(let i =0;i<BoardSquares.length;i++)
                         {
-                            if(BoardSquares[i]<0){
+                            if(BoardSquares[i]>0){
                                 this.ValidMoveGeneration(BoardRF[i],BoardSquares[i])
                             }
                         }
@@ -303,7 +308,7 @@ class GAME{
                         this.AllValidMoves=[];
                         for(let i =0;i<BoardSquares.length;i++)
                         {
-                            if(BoardSquares[i]<0){
+                            if(BoardSquares[i]>0){
                                 this.ValidMoveGeneration(BoardRF[i],BoardSquares[i])
                             }
                         }
@@ -1267,11 +1272,11 @@ class GAME{
                     this.ValidMove.push(BoardRF[this.SourceIndex+11])
                 }
 
-                if(this.CCwKing && this.CCLeftwRook){
+                if(this.CCwKing && this.CCLeftwRook && target==='c1'){
                     this.ExecuteCastle=true;
                     this.ValidMove.push(BoardRF[93])
                 }
-                if(this.CCwKing && this.CCRightwRook){
+                if(this.CCwKing && this.CCRightwRook && target==='g1'){
                     this.ExecuteCastle=true;
                     this.ValidMove.push(BoardRF[97])
                 }
