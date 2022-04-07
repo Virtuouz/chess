@@ -3550,22 +3550,24 @@ class GAME{
 
     IsBlockingking(SIndex,TIndex)
     {
-        
-        this.BoardSquaresCopy=this.BoardSquares
-        let s=0
-        for(let i=0;i<this.BoardSquaresCopy.length;i++)
-        {
-        s+= this.BoardSquaresCopy[i]+" ";
-        if (i%10===9 )
-        {
-            console.log(s);
-            s=""
+        if(this.check!==this.MoveMaker){
+            this.BoardSquaresCopy=this.BoardSquares
+            let s=0
+            for(let i=0;i<this.BoardSquaresCopy.length;i++)
+            {
+            s+= this.BoardSquaresCopy[i]+" ";
+            if (i%10===9 )
+            {
+                console.log(s);
+                s=""
+            }
+            }
+            this.IBKSwap(SIndex,TIndex)
+            
+            console.log("lelll")
+            return this.ISBKCheckCheckMate(SIndex,TIndex)
         }
-        }
-        this.IBKSwap(SIndex,TIndex)
-        
-        console.log("lelll")
-        return this.ISBKCheckCheckMate(SIndex,TIndex)
+        else return false;
         
 
     }
