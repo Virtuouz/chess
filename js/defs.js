@@ -46,7 +46,14 @@ class GAME{
         this.LastPieceMovedLineOfSightMoves=[];
         this.BoardSquaresCopy=BoardSquares;
         this.PieceOverTaken=PIECES.EMPTY
-
+        this.CCLeftbRook=true;//can castle, left black rook
+        this.CCRightbRook=true;// can castle, right black rook
+        this.CCLeftwRook=true;//can castle, left white rook
+        this.CCRightwRook=true;//can castle, right white rook
+        this.CCbKing=true;//can castle, black king
+        this.CCwKing=true;//can castle, white king
+        this.ExecuteCastle=false;
+        this.Castled=false;
 
         
         /*
@@ -77,6 +84,41 @@ class GAME{
         this.temp=this.BoardSquaresCopy[SIndex];
         this.BoardSquaresCopy[SIndex]=this.BoardSquaresCopy[TIndex];
         this.BoardSquaresCopy[TIndex]=this.temp;
+    }
+
+    CastleSwap(target){
+        switch(this.MoveMaker){
+            case COLORS.WHITE:
+                //This does the piece "swap" involved with a long castle
+                if(target=='c1'){
+                    this.BoardSquares[93]=PIECES.wK
+                    this.BoardSquares[94]=PIECES.wR
+                    this.BoardSquares[95]=PIECES.EMPTY
+                    this.BoardSquares[91]=PIECES.EMPTY
+                }
+                if(target=='g1'){
+                    this.BoardSquares[97]=PIECES.wK
+                    this.BoardSquares[96]=PIECES.wR
+                    this.BoardSquares[95]=PIECES.EMPTY
+                    this.BoardSquares[98]=PIECES.EMPTY
+                }
+                break;
+            case COLORS.BLACK:
+                //This does the piece "swap" involved with a long castle
+                if(target=='c8'){
+                    this.BoardSquares[23]=PIECES.bK
+                    this.BoardSquares[24]=PIECES.bR
+                    this.BoardSquares[25]=PIECES.EMPTY
+                    this.BoardSquares[21]=PIECES.EMPTY
+                }
+                if(target=='g8'){
+                    this.BoardSquares[27]=PIECES.bK
+                    this.BoardSquares[26]=PIECES.bR
+                    this.BoardSquares[25]=PIECES.EMPTY
+                    this.BoardSquares[28]=PIECES.EMPTY
+                }
+                break;
+        }
     }
     IBKSwapUndo(SIndex,TIndex)
     {
@@ -115,6 +157,7 @@ class GAME{
             if(this.ValidMoveCheck(source,target,piece) && (game.LastPieceMovedLineOfSightMoves.indexOf(target)!==-1 || piece[1]==='K'))
             {
                 this.swap(this.BoardSquares,this.SourceIndex,this.TargetIndex);
+                this.RemoveCastleAbility(source,piece);
                 this.NextTurn();
                 this.check=0
             }
@@ -122,18 +165,183 @@ class GAME{
                 return false;
             }
         }
-        else if(this.ValidMoveCheck(source,target,piece) && this.check!==this.MoveMaker && this.IsBlockingking(this.SourceIndex,this.TargetIndex))
+        else if(this.ValidMoveCheck(source,target,piece) && this.check!==this.MoveMaker)
         {
             //if (this.IsBlockingking()) return false
             //this.BoardSquares=this.BoardSquaresCopy
             //this.swap(this.BoardSquares,this.SourceIndex,this.TargetIndex);
-            this.NextTurn();
-            return true;
+
+            if(this.ExecuteCastle===true){
+                    if(this.Castling(target,piece)){
+                        this.RemoveCastleAbility(source,piece);
+                        this.NextTurn();
+                        this.Castled=true;
+                        return true;
+                    }
+                    else{
+                        this.ExecuteCastle=false;
+                        return false;
+                    }
+            }
+            else if(this.IsBlockingking(this.SourceIndex,this.TargetIndex)){
+                this.RemoveCastleAbility(source,piece);
+                this.NextTurn();
+                return true;
+            }
+            else return false;
         }
         else{
             return false;
         }
         
+    }
+
+    RemoveCastleAbility(source, piece){
+        switch(piece){
+            case 'wR': 
+                if(source==='a1'){
+                    this.CCLeftwRook=false;
+                }
+                if(source==='h1'){
+                    this.CCRightwRook=false;
+                }
+                break;
+            case 'bR':
+                if(source==='a8'){
+                    this.CCLeftbRook=false;
+                }
+                if(source==='h8'){
+                    this.CCRightbRook=false;
+                }
+                break;
+            case 'wK': this.CCwKing=false; 
+                break;
+            case 'bK': this.CCbKing= false; 
+                break;
+
+        }
+    }
+    CastlingCheck(target,piece){
+        switch(piece)
+        {
+            case 'wK':
+                
+                if((target==='g1' && 
+                this.CCRightwRook===true && 
+                this.CCwKing===true && 
+                this.check!==COLORS.WHITE
+                )){
+                    //Check to see if there are no pieces in the way (f1,g1)
+                    if(BoardSquares[96]===PIECES.EMPTY && BoardSquares[97]===PIECES.EMPTY){
+                        this.AllValidMoves=[];
+                        for(let i =0;i<BoardSquares.length;i++)
+                        {
+                            if(BoardSquares[i]<0){
+                                this.ValidMoveGeneration(BoardRF[i],BoardSquares[i])
+                            }
+                        }
+                        for(let i=0;i<this.AllValidMoves.length;i++){
+                            if(this.AllValidMoves[i]===BoardRF[96] || this.AllValidMoves[i]===BoardRF[97]){
+                                return false;
+                            }
+                        }
+                        return true;
+                    }
+                }
+                else if((target==='c1' && 
+                this.CCLeftwRook===true && 
+                this.CCwKing===true && 
+                this.check!==COLORS.WHITE
+                )){
+                    //Check to see if there are no pieces in the way (b1,c1,d1)
+                    if(BoardSquares[92]===0 && BoardSquares[93]===0 && BoardSquares[94]===0){
+
+                        this.AllValidMoves=[];
+                        for(let i =0;i<BoardSquares.length;i++)
+                        {
+                            if(BoardSquares[i]<0){
+                                this.ValidMoveGeneration(BoardRF[i],BoardSquares[i])
+                            }
+                        }
+                        for(let i=0;i<this.AllValidMoves.length;i++){
+                            if(this.AllValidMoves[i]===BoardRF[92] || this.AllValidMoves[i]===BoardRF[93] || this.AllValidMoves[i]===BoardRF[94]){
+                                return false;
+                            }
+                        }
+                        return true;
+                    }
+                }
+                else{
+                    return false
+                }
+                break;
+            
+            case 'bK' :
+                if((target==='g8' && 
+                this.CCRightbRook===true && 
+                this.CCbKing===true && 
+                this.check!==COLORS.BLACK
+                )){
+                    //Check to see if there are no pieces in the way (f1,g1)
+                    if(BoardSquares[26]===0 && BoardSquares[27]===0){
+                        this.AllValidMoves=[];
+                        for(let i =0;i<BoardSquares.length;i++)
+                        {
+                            if(BoardSquares[i]>0){
+                                this.ValidMoveGeneration(BoardRF[i],BoardSquares[i])
+                            }
+                        }
+                        for(let i=0;i<this.AllValidMoves.length;i++){
+                            if(this.AllValidMoves[i]===BoardRF[26] || this.AllValidMoves[i]===BoardRF[27]){
+                                return false;
+                            }
+                        }
+                        return true;
+                    }
+                }
+                else if((target==='c8' && 
+                this.CCLeftbRook===true && 
+                this.CCbKing===true && 
+                this.check!==COLORS.BLACK
+                )){
+                    //Check to see if there are no pieces in the way (b1,c1,d1)
+                    if(BoardSquares[22]===0 && BoardSquares[23]===0 && BoardSquares[24]===0){
+
+                        this.AllValidMoves=[];
+                        for(let i =0;i<BoardSquares.length;i++)
+                        {
+                            if(BoardSquares[i]>0){
+                                this.ValidMoveGeneration(BoardRF[i],BoardSquares[i])
+                            }
+                        }
+                        for(let i=0;i<this.AllValidMoves.length;i++){
+                            if(this.AllValidMoves[i]===BoardRF[22] || this.AllValidMoves[i]===BoardRF[23] || this.AllValidMoves[i]===BoardRF[24]){
+                                return false;
+                            }
+                        }
+                        return true;
+                    }
+                }
+                else{
+                    return false
+                }
+                break;
+            default: return false; 
+        }
+    }
+
+    Castling(target,piece){ 
+
+        if(this.CastlingCheck(target,piece)){
+            this.CastleSwap(target,piece);
+            this.ExecuteCastle=false;
+            return true;
+        }
+        else{
+            this.ExecuteCastle=false;
+            return false;
+        }
+
     }
 
 
@@ -1065,6 +1273,15 @@ class GAME{
                 {    
                     this.ValidMove.push(BoardRF[this.SourceIndex+11])
                 }
+
+                if(this.CCwKing && this.CCLeftwRook && target==='c1'){
+                    this.ExecuteCastle=true;
+                    this.ValidMove.push(BoardRF[93])
+                }
+                if(this.CCwKing && this.CCRightwRook && target==='g1'){
+                    this.ExecuteCastle=true;
+                    this.ValidMove.push(BoardRF[97])
+                }
                 if(this.CheckValidMove(target))
                 {
                     return this.CheckValidKingMove(target)
@@ -1112,6 +1329,14 @@ class GAME{
                 if(BoardRF[this.SourceIndex+11]!=='x' && BoardSquares[this.SourceIndex+11]>=0)
                 {    
                     this.ValidMove.push(BoardRF[this.SourceIndex+11])
+                }
+                if(this.CCbKing && this.CCLeftbRook){
+                    this.ExecuteCastle=true;
+                    this.ValidMove.push(BoardRF[23])
+                }
+                if(this.CCbKing && this.CCRightbRook){
+                    this.ExecuteCastle=true;
+                    this.ValidMove.push(BoardRF[27])
                 }
                 if(this.CheckValidMove(target))
                 {
@@ -3325,30 +3550,24 @@ class GAME{
 
     IsBlockingking(SIndex,TIndex)
     {
-        
-        this.BoardSquaresCopy=this.BoardSquares
-        this.IBKSwap(SIndex,TIndex)
-        let s=0
-        for(let i=0;i<this.BoardSquaresCopy.length;i++)
-        {
-        s+= this.BoardSquaresCopy[i]+" ";
-        if (i%10===9 )
-        {
-            console.log(s);
-            s=""
+        if(this.check!==this.MoveMaker){
+            this.BoardSquaresCopy=this.BoardSquares
+            let s=0
+            for(let i=0;i<this.BoardSquaresCopy.length;i++)
+            {
+            s+= this.BoardSquaresCopy[i]+" ";
+            if (i%10===9 )
+            {
+                console.log(s);
+                s=""
+            }
+            }
+            this.IBKSwap(SIndex,TIndex)
+            
+            console.log("lelll")
+            return this.ISBKCheckCheckMate(SIndex,TIndex)
         }
-        }
-        console.log("lelll")
-        for(let i=0;i<BoardSquares.length;i++)
-    {
-        s+= BoardSquares[i]+" ";
-        if (i%10===9 )
-        {
-            console.log(s);
-            s=""
-        }
-    }
-        return this.ISBKCheckCheckMate(SIndex,TIndex)
+        else return false;
         
 
     }
