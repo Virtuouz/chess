@@ -21,8 +21,7 @@ $(function(){
         
         if (piece[0] === game.MoveMaker && game.checkmate===0)
         {
-            /*if(game.check===game.MoveMaker && piece[1]!=='K')
-            return false*/
+            
         }
         else{
             return false
