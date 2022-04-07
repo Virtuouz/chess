@@ -142,6 +142,7 @@ $(function(){
         position: 'start',
         onDragStart: onDragStart,
         onDrop: onDrop,
+        sparePieces: true
         //onSnapbackEnd: onSnapbackEnd
       }
     board1 = ChessBoard('board1', config);
