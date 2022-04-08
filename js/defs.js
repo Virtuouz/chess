@@ -250,7 +250,7 @@ class GAME{
         {
             switch(this.MoveMaker){
                 case COLORS.WHITE: 
-                    for(let i=22; i<=29;i++ )
+                    for(let i=21; i<=28;i++ )
                     {
                         if(TIndex===i){
                             this.Promote=true
@@ -260,7 +260,7 @@ class GAME{
                     }
                     break;
                 case COLORS.BLACK: 
-                    for(let i=92; i<=99;i++ )
+                    for(let i=91; i<=98;i++ )
                     {
                         if(TIndex===i){
                             this.Promote=true
