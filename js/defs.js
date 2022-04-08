@@ -54,8 +54,8 @@ class GAME{
         this.CCwKing=true;//can castle, white king
         this.ExecuteCastle=false;
         this.Castled=false;
-
-        
+        this.Promote=false;
+        this.PawnLocation=null
         /*
         var FILES ={FILE_A:0, FILE_B:1, FILE_C:2, FILE_D:3, FILE_E:4, FILE_F:5,FILE_G:6,FILE_H:7,FILE_NONE:8};
 
@@ -151,8 +151,53 @@ class GAME{
         this.FileRank=target;
         this.TargetIndex=this.FindFileRank(this.FileRank);
         console.log(this.BoardSquares[this.SourceIndex]);
+        if(this.Promote===true)
+        {
+            if(this.Promote===true)
+            {
+                if(source!=='spare' || target!==this.PawnLocation ){
+                    return false;
+                }
+                else{
 
-        if(this.check===this.MoveMaker)
+                    if(piece[1]==='K')
+                        return false;
+
+                    this.PawnLocationIndex= this.FindFileRank(this.PawnLocation)
+                    switch(piece){
+                        case 'wP':this.BoardSquares[this.PawnLocationIndex]=PIECES.wP
+                        break;
+                        case 'bP':this.BoardSquares[this.PawnLocationIndex]=PIECES.bP
+                        break;
+                        case 'wR':this.BoardSquares[this.PawnLocationIndex]=PIECES.wR
+                        break;
+                        case 'bR':this.BoardSquares[this.PawnLocationIndex]=PIECES.bR
+                        break;
+                        case 'wB':this.BoardSquares[this.PawnLocationIndex]=PIECES.wB
+                        break;
+                        case 'bB':this.BoardSquares[this.PawnLocationIndex]=PIECES.bB
+                        break;
+                        case 'wN':this.BoardSquares[this.PawnLocationIndex]=PIECES.wN
+                        break;
+                        case 'bN':this.BoardSquares[this.PawnLocationIndex]=PIECES.bN
+                        break;
+                        case 'wQ':this.BoardSquares[this.PawnLocationIndex]=PIECES.wQ
+                        break;
+                        case 'bQ':this.BoardSquares[this.PawnLocationIndex]=PIECES.bQ
+                        break;
+                        case 'wK':this.BoardSquares[this.PawnLocationIndex]=PIECES.wK
+                        break;
+                        case 'bK':this.BoardSquares[this.PawnLocationIndex]=PIECES.bK
+                        break;
+                    }
+                    this.Promote=false;
+                    this.NextTurn()
+                    return true;
+                }
+                
+            }
+        }
+        else if(source!=='spare' && this.check===this.MoveMaker )
         {
             if(this.ValidMoveCheck(source,target,piece) && (game.LastPieceMovedLineOfSightMoves.indexOf(target)!==-1 || piece[1]==='K'))
             {
@@ -165,11 +210,13 @@ class GAME{
                 return false;
             }
         }
-        else if(this.ValidMoveCheck(source,target,piece) && this.check!==this.MoveMaker)
+        else if(source!=='spare' && this.ValidMoveCheck(source,target,piece) && this.check!==this.MoveMaker )
         {
             //if (this.IsBlockingking()) return false
             //this.BoardSquares=this.BoardSquaresCopy
             //this.swap(this.BoardSquares,this.SourceIndex,this.TargetIndex);
+
+            
 
             if(this.ExecuteCastle===true){
                     if(this.Castling(target,piece)){
@@ -185,6 +232,7 @@ class GAME{
             }
             else if(this.IsBlockingking(this.SourceIndex,this.TargetIndex)){
                 this.RemoveCastleAbility(source,piece);
+                this.Promotion(this.TargetIndex,target,piece)
                 this.NextTurn();
                 return true;
             }
@@ -196,6 +244,34 @@ class GAME{
         
     }
 
+    Promotion(TIndex,target,piece){
+        //last piece moved is promoted piece
+        if(piece[1]==='P')
+        {
+            switch(this.MoveMaker){
+                case COLORS.WHITE: 
+                    for(let i=22; i<=29;i++ )
+                    {
+                        if(TIndex===i){
+                            this.Promote=true
+                            this.PawnLocation=target
+                            this.NextTurn()
+                        }
+                    }
+                    break;
+                case COLORS.BLACK: 
+                    for(let i=92; i<=99;i++ )
+                    {
+                        if(TIndex===i){
+                            this.Promote=true
+                            this.PawnLocation=target
+                            this.NextTurn()
+                        }
+                    }
+                    break;
+            }
+        }
+    }
     RemoveCastleAbility(source, piece){
         switch(piece){
             case 'wR': 

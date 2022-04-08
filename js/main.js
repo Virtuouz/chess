@@ -21,8 +21,7 @@ $(function(){
         
         if (piece[0] === game.MoveMaker && game.checkmate===0)
         {
-            /*if(game.check===game.MoveMaker && piece[1]!=='K')
-            return false*/
+            
         }
         else{
             return false
@@ -142,6 +141,7 @@ $(function(){
         position: 'start',
         onDragStart: onDragStart,
         onDrop: onDrop,
+        sparePieces: true
         //onSnapbackEnd: onSnapbackEnd
       }
     board1 = ChessBoard('board1', config);
