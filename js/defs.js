@@ -155,46 +155,49 @@ class GAME{
         {
             if(this.Promote===true)
             {
-                if(source!=='spare' && target!==this.PawnLocation){
+                if(source!=='spare' || target!==this.PawnLocation ){
                     return false;
                 }
                 else{
 
+                    if(piece[1]==='K')
+                        return false;
+
                     this.PawnLocationIndex= this.FindFileRank(this.PawnLocation)
                     switch(piece){
-                        case 'wP':this.BoardSquares[PawnLocationIndex]=PIECES.wP
+                        case 'wP':this.BoardSquares[this.PawnLocationIndex]=PIECES.wP
                         break;
-                        case 'bP':this.BoardSquares[PawnLocationIndex]=PIECES.bP
+                        case 'bP':this.BoardSquares[this.PawnLocationIndex]=PIECES.bP
                         break;
-                        case 'wR':this.BoardSquares[PawnLocationIndex]=PIECES.wR
+                        case 'wR':this.BoardSquares[this.PawnLocationIndex]=PIECES.wR
                         break;
-                        case 'bR':this.BoardSquares[PawnLocationIndex]=PIECES.bR
+                        case 'bR':this.BoardSquares[this.PawnLocationIndex]=PIECES.bR
                         break;
-                        case 'wB':this.BoardSquares[PawnLocationIndex]=PIECES.wB
+                        case 'wB':this.BoardSquares[this.PawnLocationIndex]=PIECES.wB
                         break;
-                        case 'bB':this.BoardSquares[PawnLocationIndex]=PIECES.bB
+                        case 'bB':this.BoardSquares[this.PawnLocationIndex]=PIECES.bB
                         break;
-                        case 'wN':this.BoardSquares[PawnLocationIndex]=PIECES.wN
+                        case 'wN':this.BoardSquares[this.PawnLocationIndex]=PIECES.wN
                         break;
-                        case 'bN':this.BoardSquares[PawnLocationIndex]=PIECES.bN
+                        case 'bN':this.BoardSquares[this.PawnLocationIndex]=PIECES.bN
                         break;
-                        case 'wQ':this.BoardSquares[PawnLocationIndex]=PIECES.wQ
+                        case 'wQ':this.BoardSquares[this.PawnLocationIndex]=PIECES.wQ
                         break;
-                        case 'bQ':this.BoardSquares[PawnLocationIndex]=PIECES.bQ
+                        case 'bQ':this.BoardSquares[this.PawnLocationIndex]=PIECES.bQ
                         break;
-                        case 'wK':this.BoardSquares[PawnLocationIndex]=PIECES.wK
+                        case 'wK':this.BoardSquares[this.PawnLocationIndex]=PIECES.wK
                         break;
-                        case 'bK':this.BoardSquares[PawnLocationIndex]=PIECES.bK
+                        case 'bK':this.BoardSquares[this.PawnLocationIndex]=PIECES.bK
                         break;
                     }
                     this.Promote=false;
-                    this.NextTurn
+                    this.NextTurn()
                     return true;
                 }
                 
             }
         }
-        else if(this.check===this.MoveMaker && source!=='spare')
+        else if(source!=='spare' && this.check===this.MoveMaker )
         {
             if(this.ValidMoveCheck(source,target,piece) && (game.LastPieceMovedLineOfSightMoves.indexOf(target)!==-1 || piece[1]==='K'))
             {
@@ -207,7 +210,7 @@ class GAME{
                 return false;
             }
         }
-        else if(this.ValidMoveCheck(source,target,piece) && this.check!==this.MoveMaker && source!=='spare')
+        else if(source!=='spare' && this.ValidMoveCheck(source,target,piece) && this.check!==this.MoveMaker )
         {
             //if (this.IsBlockingking()) return false
             //this.BoardSquares=this.BoardSquaresCopy
@@ -229,7 +232,7 @@ class GAME{
             }
             else if(this.IsBlockingking(this.SourceIndex,this.TargetIndex)){
                 this.RemoveCastleAbility(source,piece);
-                Promotion(this.TargetIndex,target,piece)
+                this.Promotion(this.TargetIndex,target,piece)
                 this.NextTurn();
                 return true;
             }
@@ -243,11 +246,11 @@ class GAME{
 
     Promotion(TIndex,target,piece){
         //last piece moved is promoted piece
-        if(piece[1]='P')
+        if(piece[1]==='P')
         {
             switch(this.MoveMaker){
                 case COLORS.WHITE: 
-                    for(let i=92; i<=99;i++ )
+                    for(let i=22; i<=29;i++ )
                     {
                         if(TIndex===i){
                             this.Promote=true
@@ -257,7 +260,7 @@ class GAME{
                     }
                     break;
                 case COLORS.BLACK: 
-                    for(let i=22; i<=29;i++ )
+                    for(let i=92; i<=99;i++ )
                     {
                         if(TIndex===i){
                             this.Promote=true
