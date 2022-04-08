@@ -96,6 +96,10 @@ $(function(){
                 }
                 game.Castled=false;
             }
+            else if(game.enpassanted===true){
+                board1.move(`${game.PawnLocation}-offboard`)
+                game.enpassanted=false;
+            }
             else{
                 game.SetLastPieceMoved(piece,target);
             }

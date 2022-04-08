@@ -239,17 +239,14 @@ class GAME{
             }
             else if(this.IsBlockingking(this.SourceIndex,this.TargetIndex)){
                 if (this.ExecuteEnpassant === true) {
-                    if (this.Enpassant(target, piece)) {
-                        this.RemoveCastleAbility(source, piece);
-                        this.RemoveEnpassant
-                        this.NextTurn();
-                        this.enpassanted = true;
-                        return true;
-                    }
-                    else {
-                        this.ExecuteEnpassant = false;
-                        return false;
-                    }
+                    this.IBKSwapUndo(this.SourceIndex,this.TargetIndex)
+                    this.Enpassant(this.SourceIndex,this.TargetIndex, piece)
+                    this.RemoveCastleAbility(source, piece);
+                    this.RemoveEnpassant()
+                    this.NextTurn();
+                    this.enpassanted = true;
+                    return true;
+                    
                 }
                 if(this.enpassantMoveCounter===0){
                 this.RemoveEnpassant()
@@ -277,7 +274,24 @@ class GAME{
         this.enpassantMoveCounter = 2;
     }
     
-    Enpassant(target,piece){
+    Enpassant(SIndex,TIndex,piece){
+        this.enpassantaTileIndex = this.FindFileRank(this.enpassantaTile);
+
+        switch(this.MoveMaker){
+            case COLORS.WHITE:
+                this.BoardSquares[this.enpassantaTileIndex]=PIECES.wP;
+                this.BoardSquares[SIndex]=PIECES.EMPTY
+                this.BoardSquares[this.enpassantaTileIndex+10]=PIECES.EMPTY
+                this.ExecuteEnpassant=false;
+                break;
+            case COLORS.BLACK:
+                this.BoardSquares[this.enpassantaTileIndex]=PIECES.bP;
+                this.BoardSquares[SIndex]=PIECES.EMPTY
+                this.BoardSquares[this.enpassantaTileIndex-10]=PIECES.EMPTY
+                this.ExecuteEnpassant=false;
+                break;
+
+        }
         
     }
 
@@ -537,20 +551,22 @@ class GAME{
                     }
                     this.enpassantaTile = BoardRF[this.SourceIndex - 10];
                     this.wPenpassantable=true;
+                    this.PawnLocation=BoardRF[this.SourceIndex-20];
                 }
             }
 
             for(let i=0;i<8;i++)
             {
                 
-                if(source===FILES[i]+RANKS[4] && this.bPenpassantable===true && (source===this.enpassantableFrom[0] || source===this.enpassantableFrom[1]))
+                if(source===FILES[i]+RANKS[4] && this.bPenpassantable===true && (source===this.enpassantableFrom[0] || source===this.enpassantableFrom[1]) && target===this.enpassantaTile)
                 {
                     this.ValidMove.push (this.enpassantaTile);
-                    
+                    this.ExecuteEnpassant=true;
 
                 }
             }
 
+            
             console.log("valid move "+this.ValidMove)
             console.log("target move "+target)
             return this.CheckValidMove(target)
@@ -584,17 +600,19 @@ class GAME{
                         }
                         this.enpassantaTile = BoardRF[this.SourceIndex + 10];
                         this.bPenpassantable = true;
+                        this.PawnLocation=BoardRF[this.SourceIndex-20];
                     }
                 }
 
                 for (let i = 0; i < 8; i++) {
 
-                    if (source === FILES[i] + RANKS[3] && this.wPenpassantable === true && (source === this.enpassantableFrom[0] || source === this.enpassantableFrom[1])) {
+                    if (source === FILES[i] + RANKS[3] && this.wPenpassantable === true && (source === this.enpassantableFrom[0] || source === this.enpassantableFrom[1]) && target===this.enpassantaTile) {
                         this.ValidMove.push(this.enpassantaTile);
 
 
                     }
                 }
+
                 console.log("valid move "+this.ValidMove)
                 console.log("target move "+target)
                 return this.CheckValidMove(target)
