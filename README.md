@@ -7,8 +7,8 @@ This project is to help me learn many things such as javascript (what the chess 
 - Finish the main chessboard logic (v1.0.0)
 
   - En passant
-  - Castling
-  - Promotion
+  - ~~Castling~~ Completed
+  - ~~Promotion~~ Completed
 
 - Create an AI to play against(v1.5.0)
 
