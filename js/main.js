@@ -101,6 +101,7 @@ $(function(){
             }
             
             
+            
             game.CheckCheckMate()
             for(let i=0;i<BoardSquares.length;i++)
             {
