@@ -151,6 +151,7 @@ class GAME{
 
         if(this.ExecuteEnpassant===true && TIndex===this.enpassantaTileIndex)
         {
+            this.ExecuteEnpassant === false
             switch(this.MoveMaker){
                 case COLORS.WHITE:
                     this.BoardSquares[this.enpassantaTileIndex+10]=PIECES.bP
