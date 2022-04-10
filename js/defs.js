@@ -568,9 +568,10 @@ class GAME{
             //for when the pawn moves twice upward, set things up allow it to be enpassantable
             for(let i=0;i<8;i++)
             {
-                
+                //this.RemoveEnpassant()
                 if(source===FILES[i]+RANKS[1] && BoardSquares[this.SourceIndex-20]===PIECES.EMPTY)
                 {
+                    this.RemoveEnpassant()
                     this.ValidMove.push (BoardRF[this.SourceIndex-20]);
                     if(BoardRF [this.SourceIndex-19]!=='x')
                     {
@@ -579,6 +580,7 @@ class GAME{
                     if (BoardRF[this.SourceIndex - 21] !== 'x') {
                         this.enpassantableFrom.push(BoardRF[this.SourceIndex - 21])
                     }
+                    
                     this.enpassantaTile = BoardRF[this.SourceIndex - 10];
                     this.enpassantaTileIndex = this.FindFileRank(this.enpassantaTile);
                     this.wPenpassantable=true;
@@ -620,9 +622,11 @@ class GAME{
                 
                 for(let i=0;i<8;i++)
                 {
+                    
                     //console.log("hola"+FILES[i]+RANKS[6])
                     if(source===FILES[i]+RANKS[6] && BoardSquares[this.SourceIndex+20]===PIECES.EMPTY)
                     {
+                        this.RemoveEnpassant()
                         this.ValidMove.push (BoardRF[this.SourceIndex+20]);
                         if (BoardRF[this.SourceIndex + 19] !== 'x') {
                             this.enpassantableFrom.push(BoardRF[this.SourceIndex + 19])
@@ -630,6 +634,7 @@ class GAME{
                         if (BoardRF[this.SourceIndex + 21] !== 'x') {
                             this.enpassantableFrom.push(BoardRF[this.SourceIndex + 21])
                         }
+                        
                         this.enpassantaTile = BoardRF[this.SourceIndex + 10];
                         this.enpassantaTileIndex = this.FindFileRank(this.enpassantaTile);
                         this.bPenpassantable = true;
