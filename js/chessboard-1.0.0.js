@@ -1224,6 +1224,12 @@
       isDragging = false
     }
 
+    function trashPiece(tile){
+      var newPosition = deepCopy(currentPosition)
+      delete newPosition[tile]
+      setCurrentPosition(newPosition)
+    }
+
     function trashDraggedPiece () {
       removeSquareHighlights()
 
@@ -1446,6 +1452,9 @@
       return widget.orientation('flip')
     }
 
+    widget.trash = function(){
+      trashPiece(arguments);
+    }
     // move pieces
     // TODO: this method should be variadic as well as accept an array of moves
     widget.move = function () {

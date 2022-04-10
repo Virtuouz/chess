@@ -56,6 +56,13 @@ class GAME{
         this.Castled=false;
         this.Promote=false;
         this.PawnLocation=null
+        this.bPenpassantable=false;// black pawn up two squars
+        this.wPenpassantable=false;
+        this.enpassantableFrom=[];
+        this.enpassantaTile=null;
+        this.ExecuteEnpassant=false;
+        this.enpassanted=false;
+        this.enpassantMoveCounter=2;
         /*
         var FILES ={FILE_A:0, FILE_B:1, FILE_C:2, FILE_D:3, FILE_E:4, FILE_F:5,FILE_G:6,FILE_H:7,FILE_NONE:8};
 
@@ -231,6 +238,20 @@ class GAME{
                     }
             }
             else if(this.IsBlockingking(this.SourceIndex,this.TargetIndex)){
+                if (this.ExecuteEnpassant === true) {
+                    this.IBKSwapUndo(this.SourceIndex,this.TargetIndex)
+                    this.Enpassant(this.SourceIndex,this.TargetIndex, piece)
+                    this.RemoveCastleAbility(source, piece);
+                    this.RemoveEnpassant()
+                    this.NextTurn();
+                    this.enpassanted = true;
+                    return true;
+                    
+                }
+                if(this.enpassantMoveCounter===0){
+                this.RemoveEnpassant()
+                }
+                else this.enpassantMoveCounter+=-1;
                 this.RemoveCastleAbility(source,piece);
                 this.Promotion(this.TargetIndex,target,piece)
                 this.NextTurn();
@@ -240,6 +261,36 @@ class GAME{
         }
         else{
             return false;
+        }
+        
+    }
+
+    RemoveEnpassant(){
+        this.bPenpassantable = false;// black pawn up two squars
+        this.wPenpassantable = false;
+        this.enpassantableFrom = [];
+        this.enpassantaTile = null;
+        this.ExecuteEnpassant = false;
+        this.enpassantMoveCounter = 2;
+    }
+    
+    Enpassant(SIndex,TIndex,piece){
+        this.enpassantaTileIndex = this.FindFileRank(this.enpassantaTile);
+
+        switch(this.MoveMaker){
+            case COLORS.WHITE:
+                this.BoardSquares[this.enpassantaTileIndex]=PIECES.wP;
+                this.BoardSquares[SIndex]=PIECES.EMPTY
+                this.BoardSquares[this.enpassantaTileIndex+10]=PIECES.EMPTY
+                this.ExecuteEnpassant=false;
+                break;
+            case COLORS.BLACK:
+                this.BoardSquares[this.enpassantaTileIndex]=PIECES.bP;
+                this.BoardSquares[SIndex]=PIECES.EMPTY
+                this.BoardSquares[this.enpassantaTileIndex-10]=PIECES.EMPTY
+                this.ExecuteEnpassant=false;
+                break;
+
         }
         
     }
@@ -484,14 +535,38 @@ class GAME{
             }
             //The basic foward movement of the piece
             
+            //for when the pawn moves twice upward, set things up allow it to be enpassantable
             for(let i=0;i<8;i++)
             {
                 
                 if(source===FILES[i]+RANKS[1] && BoardSquares[this.SourceIndex-20]===PIECES.EMPTY)
                 {
                     this.ValidMove.push (BoardRF[this.SourceIndex-20]);
+                    if(BoardRF [this.SourceIndex-19]!=='x')
+                    {
+                        this.enpassantableFrom.push(BoardRF[this.SourceIndex - 19])
+                    }
+                    if (BoardRF[this.SourceIndex - 21] !== 'x') {
+                        this.enpassantableFrom.push(BoardRF[this.SourceIndex - 21])
+                    }
+                    this.enpassantaTile = BoardRF[this.SourceIndex - 10];
+                    this.wPenpassantable=true;
+                    this.PawnLocation=BoardRF[this.SourceIndex-20];
                 }
             }
+
+            for(let i=0;i<8;i++)
+            {
+                
+                if(source===FILES[i]+RANKS[4] && this.bPenpassantable===true && (source===this.enpassantableFrom[0] || source===this.enpassantableFrom[1]) && target===this.enpassantaTile)
+                {
+                    this.ValidMove.push (this.enpassantaTile);
+                    this.ExecuteEnpassant=true;
+
+                }
+            }
+
+            
             console.log("valid move "+this.ValidMove)
             console.log("target move "+target)
             return this.CheckValidMove(target)
@@ -517,8 +592,27 @@ class GAME{
                     if(source===FILES[i]+RANKS[6] && BoardSquares[this.SourceIndex+20]===PIECES.EMPTY)
                     {
                         this.ValidMove.push (BoardRF[this.SourceIndex+20]);
+                        if (BoardRF[this.SourceIndex + 19] !== 'x') {
+                            this.enpassantableFrom.push(BoardRF[this.SourceIndex + 19])
+                        }
+                        if (BoardRF[this.SourceIndex + 21] !== 'x') {
+                            this.enpassantableFrom.push(BoardRF[this.SourceIndex + 21])
+                        }
+                        this.enpassantaTile = BoardRF[this.SourceIndex + 10];
+                        this.bPenpassantable = true;
+                        this.PawnLocation=BoardRF[this.SourceIndex+20];
                     }
                 }
+
+                for (let i = 0; i < 8; i++) {
+
+                    if (source === FILES[i] + RANKS[3] && this.wPenpassantable === true && (source === this.enpassantableFrom[0] || source === this.enpassantableFrom[1]) && target===this.enpassantaTile) {
+                        this.ValidMove.push(this.enpassantaTile);
+                        this.ExecuteEnpassant=true;
+
+                    }
+                }
+
                 console.log("valid move "+this.ValidMove)
                 console.log("target move "+target)
                 return this.CheckValidMove(target)
@@ -1406,11 +1500,11 @@ class GAME{
                 {    
                     this.ValidMove.push(BoardRF[this.SourceIndex+11])
                 }
-                if(this.CCbKing && this.CCLeftbRook){
+                if (this.CCbKing && this.CCLeftbRook && target === 'c8'){
                     this.ExecuteCastle=true;
                     this.ValidMove.push(BoardRF[23])
                 }
-                if(this.CCbKing && this.CCRightbRook){
+                if (this.CCbKing && this.CCRightbRook && target === 'g8' ){
                     this.ExecuteCastle=true;
                     this.ValidMove.push(BoardRF[27])
                 }

@@ -19,6 +19,7 @@ $(function(){
         let tttt=[];
         
         
+        
         if (piece[0] === game.MoveMaker && game.checkmate===0)
         {
             
@@ -96,9 +97,11 @@ $(function(){
                 }
                 game.Castled=false;
             }
+            
             else{
                 game.SetLastPieceMoved(piece,target);
             }
+            
             
             
             game.CheckCheckMate()
@@ -112,8 +115,21 @@ $(function(){
                 }
     }
         }
+    }
+    
+    function onSnapEnd(source,target,piece){
+        console.log("in snap end")
+        if(game.enpassanted===true){
+            console.log("after enpassant")
+            console.log(`${target}-${game.PawnLocation}`)
+            console.log(target)
+            console.log(game.PawnLocation)
+            console.log(`${target}-${game.PawnLocation}`)
+            board1.move(`${target}-${game.PawnLocation}`)
+            board1.move(`${game.PawnLocation}-${target}`)
+            game.enpassanted=false;
         }
-
+    }
     
     //console.log(game.BoardSquares)
     //console.log(FILES[0][0])
@@ -141,6 +157,7 @@ $(function(){
         position: 'start',
         onDragStart: onDragStart,
         onDrop: onDrop,
+        onSnapEnd:onSnapEnd,
         sparePieces: true
         //onSnapbackEnd: onSnapbackEnd
       }

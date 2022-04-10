@@ -6,7 +6,7 @@ This project is to help me learn many things such as javascript (what the chess 
 
 - Finish the main chessboard logic (v1.0.0)
 
-  - En passant
+  - ~~En passant~~ Completed
   - ~~Castling~~ Completed
   - ~~Promotion~~ Completed
 
