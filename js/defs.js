@@ -88,6 +88,22 @@ class GAME{
             this.PieceOverTaken=this.BoardSquaresCopy[TIndex]
             this.BoardSquaresCopy[TIndex]=PIECES.EMPTY
         }
+
+        
+        if(this.ExecuteEnpassant===true && TIndex===this.enpassantaTileIndex)
+        {
+            
+            switch(this.MoveMaker){
+                case COLORS.WHITE:
+                    this.BoardSquares[this.enpassantaTileIndex+10]=PIECES.EMPTY
+                    break;
+                case COLORS.BLACK:
+                    this.BoardSquares[this.enpassantaTileIndex-10]=PIECES.EMPTY
+                    break;
+    
+            }
+        }
+
         this.temp=this.BoardSquaresCopy[SIndex];
         this.BoardSquaresCopy[SIndex]=this.BoardSquaresCopy[TIndex];
         this.BoardSquaresCopy[TIndex]=this.temp;
@@ -133,6 +149,19 @@ class GAME{
         this.BoardSquaresCopy[TIndex]=this.BoardSquaresCopy[SIndex];
         this.BoardSquaresCopy[SIndex]=this.temp;
 
+        if(this.ExecuteEnpassant===true && TIndex===this.enpassantaTileIndex)
+        {
+            this.ExecuteEnpassant === false
+            switch(this.MoveMaker){
+                case COLORS.WHITE:
+                    this.BoardSquares[this.enpassantaTileIndex+10]=PIECES.bP
+                    break;
+                case COLORS.BLACK:
+                    this.BoardSquares[this.enpassantaTileIndex-10]=PIECES.wP
+                    break;
+    
+            }
+        }
         if(this.PieceOverTaken!==PIECES.EMPTY)
         {
             this.BoardSquaresCopy[TIndex]=PIECES.EMPTY
@@ -271,7 +300,8 @@ class GAME{
         this.enpassantableFrom = [];
         this.enpassantaTile = null;
         this.ExecuteEnpassant = false;
-        this.enpassantMoveCounter = 2;
+        this.enpassantMoveCounter=2;
+        
     }
     
     Enpassant(SIndex,TIndex,piece){
@@ -538,9 +568,10 @@ class GAME{
             //for when the pawn moves twice upward, set things up allow it to be enpassantable
             for(let i=0;i<8;i++)
             {
-                
+                //this.RemoveEnpassant()
                 if(source===FILES[i]+RANKS[1] && BoardSquares[this.SourceIndex-20]===PIECES.EMPTY)
                 {
+                    this.RemoveEnpassant()
                     this.ValidMove.push (BoardRF[this.SourceIndex-20]);
                     if(BoardRF [this.SourceIndex-19]!=='x')
                     {
@@ -549,9 +580,12 @@ class GAME{
                     if (BoardRF[this.SourceIndex - 21] !== 'x') {
                         this.enpassantableFrom.push(BoardRF[this.SourceIndex - 21])
                     }
+                    
                     this.enpassantaTile = BoardRF[this.SourceIndex - 10];
+                    this.enpassantaTileIndex = this.FindFileRank(this.enpassantaTile);
                     this.wPenpassantable=true;
                     this.PawnLocation=BoardRF[this.SourceIndex-20];
+                    
                 }
             }
 
@@ -588,9 +622,11 @@ class GAME{
                 
                 for(let i=0;i<8;i++)
                 {
+                    
                     //console.log("hola"+FILES[i]+RANKS[6])
                     if(source===FILES[i]+RANKS[6] && BoardSquares[this.SourceIndex+20]===PIECES.EMPTY)
                     {
+                        this.RemoveEnpassant()
                         this.ValidMove.push (BoardRF[this.SourceIndex+20]);
                         if (BoardRF[this.SourceIndex + 19] !== 'x') {
                             this.enpassantableFrom.push(BoardRF[this.SourceIndex + 19])
@@ -598,9 +634,12 @@ class GAME{
                         if (BoardRF[this.SourceIndex + 21] !== 'x') {
                             this.enpassantableFrom.push(BoardRF[this.SourceIndex + 21])
                         }
+                        
                         this.enpassantaTile = BoardRF[this.SourceIndex + 10];
+                        this.enpassantaTileIndex = this.FindFileRank(this.enpassantaTile);
                         this.bPenpassantable = true;
                         this.PawnLocation=BoardRF[this.SourceIndex+20];
+                        
                     }
                 }
 
