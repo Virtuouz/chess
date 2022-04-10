@@ -600,7 +600,7 @@ class GAME{
                         }
                         this.enpassantaTile = BoardRF[this.SourceIndex + 10];
                         this.bPenpassantable = true;
-                        this.PawnLocation=BoardRF[this.SourceIndex-20];
+                        this.PawnLocation=BoardRF[this.SourceIndex+20];
                     }
                 }
 
@@ -608,7 +608,7 @@ class GAME{
 
                     if (source === FILES[i] + RANKS[3] && this.wPenpassantable === true && (source === this.enpassantableFrom[0] || source === this.enpassantableFrom[1]) && target===this.enpassantaTile) {
                         this.ValidMove.push(this.enpassantaTile);
-
+                        this.ExecuteEnpassant=true;
 
                     }
                 }
