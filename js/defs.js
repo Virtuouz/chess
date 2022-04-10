@@ -88,6 +88,22 @@ class GAME{
             this.PieceOverTaken=this.BoardSquaresCopy[TIndex]
             this.BoardSquaresCopy[TIndex]=PIECES.EMPTY
         }
+
+        
+        if(this.ExecuteEnpassant===true && TIndex===this.enpassantaTileIndex)
+        {
+            
+            switch(this.MoveMaker){
+                case COLORS.WHITE:
+                    this.BoardSquares[this.enpassantaTileIndex+10]=PIECES.EMPTY
+                    break;
+                case COLORS.BLACK:
+                    this.BoardSquares[this.enpassantaTileIndex-10]=PIECES.EMPTY
+                    break;
+    
+            }
+        }
+
         this.temp=this.BoardSquaresCopy[SIndex];
         this.BoardSquaresCopy[SIndex]=this.BoardSquaresCopy[TIndex];
         this.BoardSquaresCopy[TIndex]=this.temp;
@@ -133,6 +149,18 @@ class GAME{
         this.BoardSquaresCopy[TIndex]=this.BoardSquaresCopy[SIndex];
         this.BoardSquaresCopy[SIndex]=this.temp;
 
+        if(this.ExecuteEnpassant===true && TIndex===this.enpassantaTileIndex)
+        {
+            switch(this.MoveMaker){
+                case COLORS.WHITE:
+                    this.BoardSquares[this.enpassantaTileIndex+10]=PIECES.bP
+                    break;
+                case COLORS.BLACK:
+                    this.BoardSquares[this.enpassantaTileIndex-10]=PIECES.wP
+                    break;
+    
+            }
+        }
         if(this.PieceOverTaken!==PIECES.EMPTY)
         {
             this.BoardSquaresCopy[TIndex]=PIECES.EMPTY
@@ -271,7 +299,8 @@ class GAME{
         this.enpassantableFrom = [];
         this.enpassantaTile = null;
         this.ExecuteEnpassant = false;
-        this.enpassantMoveCounter = 2;
+        this.enpassantMoveCounter=2;
+        
     }
     
     Enpassant(SIndex,TIndex,piece){
@@ -550,8 +579,10 @@ class GAME{
                         this.enpassantableFrom.push(BoardRF[this.SourceIndex - 21])
                     }
                     this.enpassantaTile = BoardRF[this.SourceIndex - 10];
+                    this.enpassantaTileIndex = this.FindFileRank(this.enpassantaTile);
                     this.wPenpassantable=true;
                     this.PawnLocation=BoardRF[this.SourceIndex-20];
+                    
                 }
             }
 
@@ -599,8 +630,10 @@ class GAME{
                             this.enpassantableFrom.push(BoardRF[this.SourceIndex + 21])
                         }
                         this.enpassantaTile = BoardRF[this.SourceIndex + 10];
+                        this.enpassantaTileIndex = this.FindFileRank(this.enpassantaTile);
                         this.bPenpassantable = true;
                         this.PawnLocation=BoardRF[this.SourceIndex+20];
+                        
                     }
                 }
 
