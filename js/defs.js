@@ -815,7 +815,7 @@ class GAME{
                     console.log("In loop")
                     if (BoardRF[this.SourceIndex-i]!=='x')
                     {
-                        if(BoardSquares[this.SourceIndex+i]>0)
+                        if(BoardSquares[this.SourceIndex-i]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-i])
                             console.log("Ataccking")
@@ -1079,7 +1079,7 @@ class GAME{
                     console.log("In loop")
                     if (BoardRF[this.SourceIndex-i]!=='x')
                     {
-                        if(BoardSquares[this.SourceIndex+i]<0)
+                        if(BoardSquares[this.SourceIndex-i]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-i])
                             console.log("Ataccking")
@@ -1251,7 +1251,7 @@ class GAME{
                     console.log("In loop")
                     if (BoardRF[this.SourceIndex-i]!=='x')
                     {
-                        if(BoardSquares[this.SourceIndex+i]>0)
+                        if(BoardSquares[this.SourceIndex-i]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-i])
                             console.log("Ataccking")
