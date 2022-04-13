@@ -5919,6 +5919,10 @@ class GAME{
         return PrevScore;
     }
 
+    AIMiniMax(){
+
+    }
+
     AIValidMoveGeneration(source,target,piece){
         this.FileRank=source;
         this.SourceIndex=this.FindFileRank(this.FileRank);
@@ -5926,7 +5930,7 @@ class GAME{
         this.TargetIndex=this.FindFileRank(this.FileRank);
         this.ValidMove=[];
         switch(piece){
-            case "wP": 
+            case PIECES.wP: 
             
             // this checks they are trying to move forward but there is a piece in the way
             if (BoardSquares[this.SourceIndex-10]===PIECES.EMPTY)
@@ -5983,9 +5987,8 @@ class GAME{
             
             console.log("valid move "+this.ValidMove)
             console.log("target move "+target)
-            return this.CheckValidMove(target)
             break;
-            case "bP":
+            case PIECES.bP:
                 
                 if (target===BoardRF[this.SourceIndex+10]  &&BoardSquares[this.SourceIndex+10]===PIECES.EMPTY)
                 {
@@ -6034,9 +6037,9 @@ class GAME{
 
                 console.log("valid move "+this.ValidMove)
                 console.log("target move "+target)
-                return this.CheckValidMove(target)
+               
                 break;  
-            case "wR":
+            case PIECES.wR:
                 
                 //forward loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*10)]!=='x';i++)
@@ -6122,9 +6125,9 @@ class GAME{
                         console.log("empy left")
                     }
                 }
-                return this.CheckValidMove(target)
+                
                 break;
-            case "bR":
+            case PIECES.bR:
                 
                 //backward loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*10)]!=='x';i++)
@@ -6210,9 +6213,9 @@ class GAME{
                         console.log("empy left")
                     }
                 }
-                return this.CheckValidMove(target)
+                
                 break;
-            case "wB":
+            case PIECES.wB:
                 
                 //upright  diagnol loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*9)]!=='x';i++)
@@ -6298,9 +6301,9 @@ class GAME{
                         console.log("empy downright")
                     }
                 }
-                return this.CheckValidMove(target)
+                
                 break;
-            case "bB":
+            case PIECES.bB:
                 
                 //upright  diagnol loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*9)]!=='x';i++)
@@ -6386,9 +6389,9 @@ class GAME{
                         console.log("empy downright")
                     }
                 }
-                return this.CheckValidMove(target)
+                
                 break;
-            case "wQ":
+            case PIECES.wQ:
                 
                 //forward loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*10)]!=='x';i++)
@@ -6558,9 +6561,9 @@ class GAME{
                         console.log("empy downright")
                     }
                 }
-                return this.CheckValidMove(target)
+                
                 break;
-            case "bQ":
+            case PIECES.bQ:
                 
                 //backward loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*10)]!=='x';i++)
@@ -6730,9 +6733,9 @@ class GAME{
                         console.log("empy downright")
                     }
                 }
-                return this.CheckValidMove(target)
+                
                 break;
-            case "wN":
+            case PIECES.wN:
                 
                 //top right upper
                 if(BoardRF[this.SourceIndex-19]!=='x' && BoardSquares[this.SourceIndex-19]<=0)
@@ -6774,9 +6777,9 @@ class GAME{
                 {    
                     this.ValidMove.push(BoardRF[this.SourceIndex+8])
                 }
-                return this.CheckValidMove(target)
+                
                 break;
-            case "bN":
+            case PIECES.bN:
                 
                 //top right upper
                 if(BoardRF[this.SourceIndex-19]!=='x' && BoardSquares[this.SourceIndex-19]>=0)
@@ -6818,9 +6821,9 @@ class GAME{
                 {    
                     this.ValidMove.push(BoardRF[this.SourceIndex+8])
                 }
-                return this.CheckValidMove(target)
+                
                 break;
-            case 'wK':
+            case PIECES.wK:
                 
                 //move up
                 if(BoardRF[this.SourceIndex-10]!=='x' && BoardSquares[this.SourceIndex-10]<=0)
@@ -6871,13 +6874,9 @@ class GAME{
                     this.ExecuteCastle=true;
                     this.ValidMove.push(BoardRF[97])
                 }
-                if(this.CheckValidMove(target))
-                {
-                    return this.CheckValidKingMove(target)
-                }
-                return false
+                
                 break;
-            case 'bK':
+            case PIECES.bK:
                 
                 //move up
                 if(BoardRF[this.SourceIndex-10]!=='x' && BoardSquares[this.SourceIndex-10]>=0)
@@ -6927,13 +6926,7 @@ class GAME{
                     this.ExecuteCastle=true;
                     this.ValidMove.push(BoardRF[27])
                 }
-                if(this.CheckValidMove(target))
-                {
-                    
-                    return this.CheckValidKingMove(target)
-
-                }
-                return false
+                
                 break;
             }   
 
@@ -6941,6 +6934,8 @@ class GAME{
     
     
 }
+
+
 
 var FILES =['a', 'b', 'c', 'd', 'e', 'f','g','h','x'];
 
