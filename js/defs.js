@@ -5870,7 +5870,56 @@ class GAME{
         }
     }
 
-    AiValidMoveGeneration(source,target,piece){
+    EvaluateBoard(){
+        let PrevScore=0
+        for(let i=0;i<BoardSquares.length;i++){
+            if(BoardSquares[i]!=='x'){
+                PrevScore+=BoardSquares[i]
+                switch(BoardSquares[i]){
+                    case PIECES.wP: 
+                        PrevScore+= PSTW[PIECES.wP][i];
+                        break;
+                    case PIECES.bP:
+                        PrevScore+= PSTW[PIECES.bP][i];
+                        break;
+                    case PIECES.wR:
+                        PrevScore+= PSTW[PIECES.wR][i];
+                        break;
+                    case PIECES.bR:
+                        PrevScore+= PSTW[PIECES.bR][i];
+                        break;
+                    case PIECES.wB:
+                        PrevScore+= PSTW[PIECES.wB][i];
+                        break;
+                    case PIECES.bB:
+                        PrevScore+= PSTW[PIECES.bB][i];
+                        break;
+                    case PIECES.wQ:
+                        PrevScore+= PSTW[PIECES.wQ][i];
+                        break;
+                    case PIECES.bQ:
+                        PrevScore+= PSTW[PIECES.bQ][i];
+                        break;
+                    case PIECES.wN:
+                        PrevScore+= PSTW[PIECES.wN][i];
+                        break;
+                    case PIECES.bN:
+                        PrevScore+= PSTW[PIECES.bN][i];
+                        break;
+                    case PIECES.wK:
+                        PrevScore+= PSTW[PIECES.wK][i];
+                        break;
+                    case PIECES.bK:
+                        PrevScore+= PSTW[PIECES.bK][i];
+                        break;
+                    default: break;
+                }
+            }
+        }
+        return PrevScore;
+    }
+
+    AIValidMoveGeneration(source,target,piece){
         this.FileRank=source;
         this.SourceIndex=this.FindFileRank(this.FileRank);
         this.FileRank=target;
@@ -6897,7 +6946,19 @@ var FILES =['a', 'b', 'c', 'd', 'e', 'f','g','h','x'];
 
 var RANKS =['1', '2', '3', '4', '5', '6', '7', '8','x'];
 
-var PIECES = { EMPTY:0,wP:100,wN:2,wB:3,wR:4,wQ:5,wK:6,bP:-1,bN:-2,bB:-3,bR:-4,bQ:-5,bK:-6};
+var PIECES = { EMPTY:0,
+    wP:100,
+    wN:280,
+    wB:320,
+    wR:479,
+    wQ:929,
+    wK:60000,
+    bP:-100,
+    bN:-280,
+    bB:-320,
+    bR:-479,
+    bQ:-929,
+    bK:-60000};
 var BoardSize=120
 
 var LINEOFSIGHT={TOPLEFT:0,UP:1,TOPRIGHT:2,RIGHT:3,BOTTOMRIGHT:4,DOWN:5,BOTTOMLEFT:6,LEFT:7,NONE:null}
@@ -7051,7 +7112,21 @@ PSTW[PIECES.wP]=[
     'x','x','x','x','x','x','x','x','x','x'
 ]
 
-PSTW[PIECES.bP]= ReversePSTW(PSTW[PIECES.wP])
+PSTW[PIECES.bP]=[
+    'x','x','x','x','x','x','x','x','x','x',
+    'x','x','x','x','x','x','x','x','x','x',
+    'x',0,   0,   0,   0,   0,   0,   0,   0,'x',
+    'x',-31,   8,  -7, -37, -36, -14,   3, -31,'x',
+    'x',-22,   9,   5, -11, -10,  -2,   3, -19,'x',
+    'x',-26,   3,  10,   9,   6,   1,   0, -23,'x',
+    'x',-17,  16,  -2,  15,  14,   0,  15, -13,'x',
+    'x',7,  29,  21,  44,  40,  31,  44,   7,'x',
+    'x',78,  83,  86,  73, 102,  82,  85,  90,'x',
+    'x',100, 100, 100, 100, 105, 100, 100,  100,'x',
+    'x','x','x','x','x','x','x','x','x','x',
+    'x','x','x','x','x','x','x','x','x','x'
+]
+PSTW[PIECES.bP]=MakeNegative(PSTW[PIECES.bP])
 
 PSTW[PIECES.wB]=[
     'x','x','x','x','x','x','x','x','x','x',
@@ -7068,7 +7143,23 @@ PSTW[PIECES.wB]=[
     'x','x','x','x','x','x','x','x','x','x'
 ]
 
-PSTW[PIECES.bB]= ReversePSTW(PSTW[PIECES.wB])
+PSTW[PIECES.bB]=[
+    'x','x','x','x','x','x','x','x','x','x',
+    'x','x','x','x','x','x','x','x','x','x',
+    'x', -7,   2, -15, -12, -14, -15, -10, -10,'x',
+    'x', 19,  20,  11,   6,   7,   6,  20,  16,'x',
+    'x', 14,  25,  24,  15,   8,  25,  20,  15,'x',
+    'x', 13,  10,  17,  23,  17,  16,   0,   7,'x',
+    'x', 25,  17,  20,  34,  26,  25,  15,  10,'x',
+    'x', -9,  39, -32,  41,  52, -10,  28, -14,'x',
+    'x',-11,  20,  35, -42, -39,  31,   2, -22,'x',
+    'x',-59, -78, -82, -76, -23,-107, -37, -50,'x',
+    'x','x','x','x','x','x','x','x','x','x',
+    'x','x','x','x','x','x','x','x','x','x'
+]
+
+
+PSTW[PIECES.bB]=MakeNegative(PSTW[PIECES.bB])
 
 PSTW[PIECES.wN]=[
     'x','x','x','x','x','x','x','x','x','x',
@@ -7085,7 +7176,22 @@ PSTW[PIECES.wN]=[
     'x','x','x','x','x','x','x','x','x','x'
 ]
 
-PSTW[PIECES.bN]= ReversePSTW(PSTW[PIECES.wN])
+PSTW[PIECES.bN]=[
+    'x','x','x','x','x','x','x','x','x','x',
+    'x','x','x','x','x','x','x','x','x','x',
+    'x',-74, -23, -26, -24, -19, -35, -22, -69,'x',
+    'x', -23, -15,   2,   0,   2,   0, -23, -20,'x',
+    'x',-18,  10,  13,  22,  18,  15,  11, -14,'x',
+    'x', -1,   5,  31,  21,  22,  35,   2,   0,'x',
+    'x', 24,  24,  45,  37,  33,  41,  25,  17,'x',
+    'x', 10,  67,   1,  74,  73,  27,  62,  -2,'x',
+    'x', -3,  -6, 100, -36,   4,  62,  -4, -14,'x',
+    'x',-66, -53, -75, -75, -10, -55, -58, -70,'x',
+    'x','x','x','x','x','x','x','x','x','x',
+    'x','x','x','x','x','x','x','x','x','x'
+]
+
+PSTW[PIECES.bN]= MakeNegative(PSTW[PIECES.bN])
 
 PSTW[PIECES.wR]=[
     'x','x','x','x','x','x','x','x','x','x',
@@ -7102,7 +7208,22 @@ PSTW[PIECES.wR]=[
     'x','x','x','x','x','x','x','x','x','x'
 ]
 
-PSTW[PIECES.bR]= ReversePSTW(PSTW[PIECES.wR])
+PSTW[PIECES.bR]=[
+    'x','x','x','x','x','x','x','x','x','x',
+    'x','x','x','x','x','x','x','x','x','x',
+    'x',-30, -24, -18,   5,  -2, -18, -31, -32,'x',
+    'x',-53, -38, -31, -26, -29, -43, -44, -53,'x',
+    'x',-42, -28, -42, -25, -25, -35, -26, -46,'x',
+    'x',-28, -35, -16, -21, -13, -29, -46, -30,'x',
+    'x',  0,   5,  16,  13,  18,  -4,  -9,  -6,'x',
+    'x', 19,  35,  28,  33,  45,  27,  25,  15,'x',
+    'x',55,  29,  56,  67,  55,  62,  34,  60,'x',
+    'x', 35,  29,  33,   4,  37,  33,  56,  50,'x',
+    'x','x','x','x','x','x','x','x','x','x',
+    'x','x','x','x','x','x','x','x','x','x'
+]
+
+PSTW[PIECES.bR]= MakeNegative(PSTW[PIECES.bR])
 
 PSTW[PIECES.wQ]=[
     'x','x','x','x','x','x','x','x','x','x',
@@ -7119,7 +7240,22 @@ PSTW[PIECES.wQ]=[
     'x','x','x','x','x','x','x','x','x','x'
 ]
 
-PSTW[PIECES.bQ]= ReversePSTW(PSTW[PIECES.wQ])
+PSTW[PIECES.bQ]=[
+    'x','x','x','x','x','x','x','x','x','x',
+    'x','x','x','x','x','x','x','x','x','x',
+    'x',-39, -30, -31, -13, -31, -36, -34, -42,'x',
+    'x',-36, -18,   0, -19, -15, -15, -21, -38,'x',
+    'x',-30,  -6, -13, -11, -16, -11, -16, -27,'x',
+    'x',-14, -15,  -2,  -5,  -1, -10, -20, -22,'x',
+    'x',1, -16,  22,  17,  25,  20, -13,  -6,'x',
+    'x',-2,  43,  32,  60,  72,  63,  43,   2,'x',
+    'x',14,  32,  60, -10,  20,  76,  57,  24,'x',
+    'x',  6,   1,  -8,-104,  69,  24,  88,  26,'x',
+    'x','x','x','x','x','x','x','x','x','x',
+    'x','x','x','x','x','x','x','x','x','x'
+]
+
+PSTW[PIECES.bQ]= MakeNegative(PSTW[PIECES.bQ])
 
 PSTW[PIECES.wK]=[
     'x','x','x','x','x','x','x','x','x','x',
@@ -7135,26 +7271,68 @@ PSTW[PIECES.wK]=[
     'x','x','x','x','x','x','x','x','x','x',
     'x','x','x','x','x','x','x','x','x','x'
 ]
-//white king end game
-PSTW['WKE']=[
+
+PSTW[PIECES.bK]=[
     'x','x','x','x','x','x','x','x','x','x',
     'x','x','x','x','x','x','x','x','x','x',
-    'x',  4,  54,  47, -99, -99,  60,  83, -62,'x',
-    'x',-32,  10,  55,  56,  56,  55,  10,   3,'x',
-    'x',-62,  12, -57,  44, -67,  28,  37, -31,'x',
-    'x',-55,  50,  11,  -4, -19,  13,   0, -49,'x',
-    'x',-55, -43, -52, -28, -51, -47,  -8, -50,'x',
-    'x',-47, -42, -43, -79, -64, -32, -29, -32,'x',
-    'x', -4,   3, -14, -50, -57, -18,  13,   4,'x',
     'x', 17,  30,  -3, -14,   6,  -1,  40,  18,'x',
+    'x', -4,   3, -14, -50, -57, -18,  13,   4,'x',
+    'x',-47, -42, -43, -79, -64, -32, -29, -32,'x',
+    'x',-55, -43, -52, -28, -51, -47,  -8, -50,'x',
+    'x',-55,  50,  11,  -4, -19,  13,   0, -49,'x',
+    'x',-62,  12, -57,  44, -67,  28,  37, -31,'x',
+    'x',-32,  10,  55,  56,  56,  55,  10,   3,'x',
+    'x',  4,  54,  47, -99, -99,  60,  83, -62,'x',
     'x','x','x','x','x','x','x','x','x','x',
     'x','x','x','x','x','x','x','x','x','x'
 ]
 
-PSTW['BKE']= ReversePSTW(PSTW['WKE'])
+PSTW[PIECES.bK]= MakeNegative(PSTW[PIECES.bK])
+//white king end game
+PSTW['WKE']=[
+    'x','x','x','x','x','x','x','x','x','x',
+    'x','x','x','x','x','x','x','x','x','x',
+    'x',  -50, -40, -30, -20, -20, -30, -40, -50,'x',
+    'x',-30, -20, -10,   0,   0, -10, -20, -30,'x',
+    'x',-30, -10,  20,  30,  30,  20, -10, -30,'x',
+    'x',-30, -10,  30,  40,  40,  30, -10, -30,'x',
+    'x',-30, -10,  30,  40,  40,  30, -10, -30,'x',
+    'x',-30, -10,  20,  30,  30,  20, -10, -30,'x',
+    'x',-30, -30,   0,   0,   0,   0, -30, -30,'x',
+    'x',-50, -30, -30, -30, -30, -30, -30, -50,'x',
+    'x','x','x','x','x','x','x','x','x','x',
+    'x','x','x','x','x','x','x','x','x','x'
+]
 
+PSTW['BKE']=[
+    'x','x','x','x','x','x','x','x','x','x',
+    'x','x','x','x','x','x','x','x','x','x',
+    'x',-50, -30, -30, -30, -30, -30, -30, -50,'x',
+    'x',-30, -30,   0,   0,   0,   0, -30, -30,'x',
+    'x',-30, -10,  20,  30,  30,  20, -10, -30,'x',
+    'x',-30, -10,  30,  40,  40,  30, -10, -30,'x',
+    'x',-30, -10,  30,  40,  40,  30, -10, -30,'x',
+    'x',-30, -10,  20,  30,  30,  20, -10, -30,'x',
+    'x',-30, -20, -10,   0,   0, -10, -20, -30,'x',
+    'x',  -50, -40, -30, -20, -20, -30, -40, -50,'x',
+    'x','x','x','x','x','x','x','x','x','x',
+    'x','x','x','x','x','x','x','x','x','x'
+]
 
-PSTW[PIECES.bK]= ReversePSTW(PSTW[PIECES.wK])
+PSTW['BKE']= MakeNegative(PSTW['BKE'])
+
+console.log(PSTW)
+
+function MakeNegative(PSTWArray){
+    temp=PSTWArray
+    for( let i=0;i<temp.length;i++){
+        if(temp[i]!=='x'){
+            temp[i]=temp[i]*-1
+        }
+    }
+    
+    return temp
+}
 
 function ReversePSTW(PSTWArray){
     temp=PSTWArray.slice().reverse();

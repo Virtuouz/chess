@@ -129,6 +129,7 @@ $(function(){
             board1.move(`${game.PawnLocation}-${target}`)
             game.enpassanted=false;
         }
+        console.log(game.EvaluateBoard())
     }
     
     //console.log(game.BoardSquares)
@@ -152,6 +153,7 @@ $(function(){
             s=""
         }
     }
+    console.log(game.EvaluateBoard())
     var config = {
         draggable: true,
         position: 'start',
