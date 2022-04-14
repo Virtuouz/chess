@@ -118,7 +118,7 @@ $(function(){
     }
     
     function onSnapEnd(source,target,piece){
-        console.log("in snap end")
+        
         if(game.enpassanted===true){
             console.log("after enpassant")
             console.log(`${target}-${game.PawnLocation}`)
@@ -129,6 +129,7 @@ $(function(){
             board1.move(`${game.PawnLocation}-${target}`)
             game.enpassanted=false;
         }
+       
         console.log(game.EvaluateBoard())
     }
     

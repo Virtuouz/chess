@@ -663,85 +663,85 @@ class GAME{
                 //forward loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*10)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*10)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*10)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
-                        console.log("empy forward")
+                        
                     }
                 }
                 //backward loop
                 for(let i=1; BoardRF[this.SourceIndex+(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*10)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*10)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*10)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
-                        console.log("empy back")
+                        
                     }
                 }
                 //right loop
                 for(let i=1; BoardRF[this.SourceIndex+i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+i]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+i]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+i])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+i]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+i])
-                        console.log("empy right")
+                        
                     }
                 }
                 //left loop
                 for(let i=1; BoardRF[this.SourceIndex-i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-i]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-i]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-i])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-i]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-i])
-                        console.log("empy left")
+                        
                     }
                 }
                 return this.CheckValidMove(target)
@@ -751,85 +751,85 @@ class GAME{
                 //backward loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*10)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*10)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*10)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
-                        console.log("empy backward")
+                        
                     }
                 }
                 //forward loop
                 for(let i=1; BoardRF[this.SourceIndex+(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*10)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*10)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*10)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
-                        console.log("empy forward")
+                        
                     }
                 }
                 //right loop
                 for(let i=1; BoardRF[this.SourceIndex+i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+i]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+i]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+i])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+i]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+i])
-                        console.log("empy right")
+                        
                     }
                 }
                 //left loop
                 for(let i=1; BoardRF[this.SourceIndex-i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-i]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-i]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-i])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-i]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-i])
-                        console.log("empy left")
+                        
                     }
                 }
                 return this.CheckValidMove(target)
@@ -839,85 +839,85 @@ class GAME{
                 //upright  diagnol loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*9)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*9)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*9)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
-                        console.log("empy upright")
+                        
                     }
                 }
                 // upleft diagnal loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*11)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*11)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*11)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
-                        console.log("empy upleft")
+                        
                     }
                 }
                 //down left diagnal
                 for(let i=1; BoardRF[this.SourceIndex+(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*9)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*9)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*9)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
-                        console.log("empy downleft")
+                        
                     }
                 }
                 // downright diagnal loop
                 for(let i=1; BoardRF[this.SourceIndex+(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*11)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*11)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*11)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
-                        console.log("empy downright")
+                        
                     }
                 }
                 return this.CheckValidMove(target)
@@ -927,85 +927,85 @@ class GAME{
                 //upright  diagnol loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*9)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*9)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*9)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
-                        console.log("empy upright")
+                        
                     }
                 }
                 // upleft diagnal loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*11)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*11)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*11)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
-                        console.log("empy upleft")
+                        
                     }
                 }
                 //down left diagnal
                 for(let i=1; BoardRF[this.SourceIndex+(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*9)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*9)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*9)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
-                        console.log("empy downleft")
+                        
                     }
                 }
                 // downright diagnal loop
                 for(let i=1; BoardRF[this.SourceIndex+(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*11)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*11)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*11)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
-                        console.log("empy downright")
+                        
                     }
                 }
                 return this.CheckValidMove(target)
@@ -1015,169 +1015,169 @@ class GAME{
                 //forward loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*10)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*10)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*10)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
-                        console.log("empy forward")
+                        
                     }
                 }
                 //backward loop
                 for(let i=1; BoardRF[this.SourceIndex+(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*10)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*10)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*10)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
-                        console.log("empy back")
+                        
                     }
                 }
                 //right loop
                 for(let i=1; BoardRF[this.SourceIndex+i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+i]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+i]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+i])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+i]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+i])
-                        console.log("empy right")
+                        
                     }
                 }
                 //left loop
                 for(let i=1; BoardRF[this.SourceIndex-i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-i]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-i]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-i])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-i]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-i])
-                        console.log("empy left")
+                        
                     }
                 }
                 //upright  diagnol loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*9)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*9)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*9)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
-                        console.log("empy upright")
+                        
                     }
                 }
                 // upleft diagnal loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*11)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*11)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*11)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
-                        console.log("empy upleft")
+                        
                     }
                 }
                 //down left diagnal
                 for(let i=1; BoardRF[this.SourceIndex+(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*9)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*9)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*9)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
-                        console.log("empy downleft")
+                        
                     }
                 }
                 // downright diagnal loop
                 for(let i=1; BoardRF[this.SourceIndex+(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*11)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*11)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*11)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
-                        console.log("empy downright")
+                        
                     }
                 }
                 return this.CheckValidMove(target)
@@ -1187,169 +1187,169 @@ class GAME{
                 //backward loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*10)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*10)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*10)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
-                        console.log("empy backward")
+                        
                     }
                 }
                 //forward loop
                 for(let i=1; BoardRF[this.SourceIndex+(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*10)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*10)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*10)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
-                        console.log("empy forward")
+                        
                     }
                 }
                 //right loop
                 for(let i=1; BoardRF[this.SourceIndex+i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+i]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+i]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+i])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+i]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+i])
-                        console.log("empy right")
+                        
                     }
                 }
                 //left loop
                 for(let i=1; BoardRF[this.SourceIndex-i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-i]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-i]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-i])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-i]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-i])
-                        console.log("empy left")
+                        
                     }
                 }
                 //upright  diagnol loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*9)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*9)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*9)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
-                        console.log("empy upright")
+                        
                     }
                 }
                 // upleft diagnal loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*11)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*11)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*11)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
-                        console.log("empy upleft")
+                        
                     }
                 }
                 //down left diagnal
                 for(let i=1; BoardRF[this.SourceIndex+(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*9)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*9)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*9)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
-                        console.log("empy downleft")
+                        
                     }
                 }
                 // downright diagnal loop
                 for(let i=1; BoardRF[this.SourceIndex+(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*11)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*11)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*11)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
-                        console.log("empy downright")
+                        
                     }
                 }
                 return this.CheckValidMove(target)
@@ -1572,7 +1572,7 @@ class GAME{
         
         switch(piece){
             case PIECES.wP: 
-            console.log("whiete Pawn")
+            
             // this checks they are trying to move forward but there is a piece in the way
             if (BoardSquares[this.VMGSourceIndex-10]===PIECES.EMPTY)
             {
@@ -1581,13 +1581,13 @@ class GAME{
             //this checks the right diagnal for a black piece and if its there it can move there to overtake it 
             if((BoardSquares[this.VMGSourceIndex-9]<=0 ))
             {
-                console.log("white pawn move "+BoardRF[this.VMGSourceIndex-9])
+                
                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-9])
                 if(this.LastPieceMovedSource === BoardRF[this.VMGSourceIndex] && this.LastPieceMovedLineOfSight===LINEOFSIGHT.TOPRIGHT)
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-9])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-9)
                     {
                         console.log("continuing")
@@ -1599,13 +1599,13 @@ class GAME{
             //this checks the left diagnol for a black piece and if its there it can move there to overtake it
             if((BoardSquares[this.VMGSourceIndex-11]<=0))
             {
-                console.log("white pawn move"+BoardRF[this.VMGSourceIndex-11])
+                
                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-11])
                 if(this.LastPieceMovedSource === BoardRF[this.VMGSourceIndex] && this.LastPieceMovedLineOfSight===LINEOFSIGHT.TOPLEFT)
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-11])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-11)
                     {
                         console.log("continuing")
@@ -1639,7 +1639,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+9])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+9)
                     {
                         console.log("continuing")
@@ -1654,7 +1654,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+11])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+11)
                     {
                         console.log("continuing")
@@ -1671,7 +1671,7 @@ class GAME{
                         //this.AllValidMoves.push (BoardRF[this.VMGSourceIndex+20]);
                     }
                 }
-                console.log("Black pawn moves "+this.AllValidMoves)
+                
                 //console.log("target move "+target)
                 
                 break;  
@@ -1681,10 +1681,10 @@ class GAME{
                 
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*10)]!=='x')
                     {
-                        console.log(this.BoardSquares.indexOf(PIECES.bK)+"current king index")
+                       
                         if(BoardSquares[this.VMGSourceIndex-(i*10)]<=0)
                         {
 
@@ -1693,7 +1693,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                             }
-                            console.log("Ataccking")
+                            
                             //if the king is on on the tile skip keep checking because king could try to 
                             //move back in the same direction
                             
@@ -1716,7 +1716,7 @@ class GAME{
                             //the king it means it could try to move to that square we shouldn't allow it if its in path
                             // of attacking move 
                             
-                            console.log("CKSVALIDMOVE "+this.CKSValidMove)
+                            
                             console.log(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex-(i*10)]))
                             console.log(BoardRF[this.VMGSourceIndex-(i*10)])
                             if(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex-(i*10)]!==-1))
@@ -1724,17 +1724,17 @@ class GAME{
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                                 break;
                             }
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
-                        console.log("empy forward")
+                        
                     }
                 }
                 //backward loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*10)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex+(i*10)]<=0)
@@ -1744,7 +1744,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+(i*10))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.DOWN
@@ -1763,17 +1763,17 @@ class GAME{
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                                 break;
                             }
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
-                        console.log("empy back")
+                        
                     }
                 }
                 //right loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+i]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex+i]<=0)
@@ -1783,7 +1783,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+i])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+i)
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.RIGHT
@@ -1802,17 +1802,17 @@ class GAME{
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
                                 continue;
                             }
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
-                        console.log("empy right")
+                        
                     }
                 }
                 //left loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-i]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex-i]<=0)
@@ -1823,7 +1823,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-i])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-i)
                             {
                                 console.log("continuing")
@@ -1843,11 +1843,11 @@ class GAME{
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
                                 break;
                             }
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
-                        console.log("empy left")
+                        
                     }
                 }
                 
@@ -1857,7 +1857,7 @@ class GAME{
                 //backward loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*10)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex-(i*10)]>=0)
@@ -1867,7 +1867,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*10))
                             {
                                 console.log("continuing")
@@ -1881,7 +1881,7 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex-(i*10)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                             if(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex-(i*10)]!==-1))
                             {
@@ -1891,13 +1891,13 @@ class GAME{
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
-                        console.log("empy backward")
+                        
                     }
                 }
                 //forward loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*10)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex+(i*10)]>=0)
@@ -1907,7 +1907,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*10))
                             {
                                 console.log("continuing")
@@ -1922,19 +1922,19 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex+(i*10)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                             
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
-                        console.log("empy forward")
+                        
                     }
                 }
                 //right loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+i]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex+i]>=0)
@@ -1944,7 +1944,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+i])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+i)
                             {
                                 console.log("continuing")
@@ -1959,18 +1959,18 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex+i]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
-                        console.log("empy right")
+                        
                     }
                 }
                 //left loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-i]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex-i]>=0)
@@ -1980,7 +1980,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-i])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-i)
                             {
                                 console.log("continuing")
@@ -1995,12 +1995,12 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex-i]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
-                        console.log("empy left")
+                        
                     }
                 }
                 
@@ -2010,7 +2010,7 @@ class GAME{
                 //upright  diagnol loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*9)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex-(i*9)]<=0)
@@ -2020,7 +2020,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-(i*9))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
@@ -2034,25 +2034,25 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex-(i*9)]>0)
                         {
-                            console.log(this.CKSValidMove)
+                            
                             this.CheckKingsSurroundings(BoardRF [this.BoardSquares.indexOf(PIECES.bK)],PIECES.bK)
                             if(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex-(i*9)]!==-1))
                             {
-                                console.log("in white bishop right diagnoal")
+                                
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                                 break;
                             }
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
-                        console.log("empy upright")
+                        
                     }
                 }
                 // upleft diagnal loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*11)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex-(i*11)]<=0)
@@ -2062,7 +2062,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*1)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-(i*11))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPLEFT;
@@ -2081,17 +2081,17 @@ class GAME{
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
                                 break;
                             }
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
-                        console.log("empy upleft")
+                        
                     }
                 }
                 //down left diagnal
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*9)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex+(i*9)]<=0)
@@ -2101,7 +2101,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+(i*9))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMLEFT
@@ -2120,17 +2120,17 @@ class GAME{
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                                 break;
                             }
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
-                        console.log("empy downleft")
+                        
                     }
                 }
                 // downright diagnal loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*11)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex+(i*11)]<=0)
@@ -2140,7 +2140,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+(i*11))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMRIGHT
@@ -2159,11 +2159,11 @@ class GAME{
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                                 break;
                             }
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
-                        console.log("empy downright")
+                        
                     }
                 }
                 
@@ -2173,7 +2173,7 @@ class GAME{
                 //upright  diagnol loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*9)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex-(i*9)]>=0)
@@ -2183,7 +2183,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*9))
                             {
                                 console.log("continuing")
@@ -2198,18 +2198,18 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex-(i*9)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                             break;
                         }
                         //this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
-                        console.log("empy upright")
+                        
                     }
                 }
                 // upleft diagnal loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*11)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex-(i*11)]>=0)
@@ -2219,7 +2219,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*11))
                             {
                                 console.log("continuing")
@@ -2234,18 +2234,18 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex-(i*11)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
                             break;
                         }
                         //this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
-                        console.log("empy upleft")
+                        
                     }
                 }
                 //down left diagnal
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*9)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex+(i*9)]>=0)
@@ -2255,7 +2255,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*9))
                             {
                                 console.log("continuing")
@@ -2270,18 +2270,18 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex+(i*9)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
-                        console.log("empy downleft")
+                        
                     }
                 }
                 // downright diagnal loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*11)]!=='x';i++)
                 {
-                    console.log("In loop downright diagnal black bishop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*11)]!=='x')
                     {
                         
@@ -2289,14 +2289,14 @@ class GAME{
                         {
                             console.log(BoardSquares[this.VMGSourceIndex+(i*11)])
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
-                            console.log("asdfwsadfewsdfwsdf "+BoardRF[this.VMGSourceIndex]+" laspieced moved soruce "+this.LastPieceMovedSource+" Line of sight is "+this.LastPieceMovedLineOfSight)
+                            
                             if(this.LastPieceMovedSource === BoardRF[this.VMGSourceIndex] && this.LastPieceMovedLineOfSight===LINEOFSIGHT.BOTTOMRIGHT)
                             {
                                 console.log("PUSHING THE SHIT")
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                                 console.log(this.LastPieceMovedLineOfSightMoves)
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*11))
                             {
                                 console.log("continuing")
@@ -2311,12 +2311,12 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex+(i*11)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
-                        console.log("empy downright")
+                        
                     }
                 }
                 
@@ -2326,7 +2326,7 @@ class GAME{
                 //forward loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*10)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex-(i*10)]<=0)
@@ -2336,7 +2336,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-(i*10))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.UP
@@ -2355,17 +2355,17 @@ class GAME{
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                                 break;
                             }
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
-                        console.log("empy forward")
+                        
                     }
                 }
                 //backward loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*10)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex+(i*10)]<=0)
@@ -2375,7 +2375,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+(i*10))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.DOWN
@@ -2389,18 +2389,18 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex+(i*10)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
-                        console.log("empy back")
+                        
                     }
                 }
                 //right loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+i]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex+i]<=0)
@@ -2410,7 +2410,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+i])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+i)
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.RIGHT
@@ -2424,18 +2424,18 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex+i]>0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
-                        console.log("empy right")
+                        
                     }
                 }
                 //left loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-i]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex-i]<=0)
@@ -2445,7 +2445,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-i])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-i)
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.LEFT
@@ -2459,18 +2459,18 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex-i]>0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
-                        console.log("empy left")
+                        
                     }
                 }
                 //upright  diagnol loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*9)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex-(i*9)]<=0)
@@ -2480,7 +2480,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-(i*9))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
@@ -2494,18 +2494,18 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex-(i*9)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
-                        console.log("empy upright")
+                        
                     }
                 }
                 // upleft diagnal loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*11)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex-(i*11)]<=0)
@@ -2515,7 +2515,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-(i*11))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPLEFT
@@ -2529,18 +2529,18 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex-(i*11)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
-                        console.log("empy upleft")
+                        
                     }
                 }
                 //down left diagnal
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*9)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex+(i*9)]<=0)
@@ -2550,7 +2550,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+(i*9))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMLEFT
@@ -2564,18 +2564,18 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex+(i*9)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
-                        console.log("empy downleft")
+                        
                     }
                 }
                 // downright diagnal loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*11)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex+(i*11)]<=0)
@@ -2585,7 +2585,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+(i*11))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMRIGHT
@@ -2598,12 +2598,12 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex+(i*11)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
-                        console.log("empy downright")
+                        
                     }
                 }
                 
@@ -2613,7 +2613,7 @@ class GAME{
                 //backward loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*10)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex-(i*10)]>=0)
@@ -2623,7 +2623,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*10))
                             {
                                 console.log("continuing")
@@ -2638,18 +2638,18 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex-(i*10)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
-                        console.log("empy backward")
+                        
                     }
                 }
                 //forward loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*10)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex+(i*10)]>=0)
@@ -2659,7 +2659,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*10))
                             {
                                 console.log("continuing")
@@ -2674,18 +2674,18 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex+(i*10)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
-                        console.log("empy forward")
+                        
                     }
                 }
                 //right loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+i]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex+i]>=0)
@@ -2695,7 +2695,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+i])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+i)
                             {
                                 console.log("continuing")
@@ -2709,18 +2709,18 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex+i]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
-                        console.log("empy right")
+                        
                     }
                 }
                 //left loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-i]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex-i]>=0)
@@ -2730,7 +2730,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-i])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-i)
                             {
                                 console.log("continuing")
@@ -2744,18 +2744,18 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex-i]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
-                        console.log("empy left")
+                        
                     }
                 }
                 //upright  diagnol loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*9)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex-(i*9)]>=0)
@@ -2765,7 +2765,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*9))
                             {
                                 console.log("continuing")
@@ -2780,18 +2780,18 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex-(i*9)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
-                        console.log("empy upright")
+                        
                     }
                 }
                 // upleft diagnal loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*11)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex-(i*11)]>=0)
@@ -2801,7 +2801,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*11))
                             {
                                 console.log("continuing")
@@ -2816,18 +2816,18 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex-(i*11)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
-                        console.log("empy upleft")
+                        
                     }
                 }
                 //down left diagnal
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*9)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex+(i*9)]>=0)
@@ -2837,7 +2837,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*9))
                             {
                                 console.log("continuing")
@@ -2852,18 +2852,18 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex+(i*9)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
-                        console.log("empy downleft")
+                        
                     }
                 }
                 // downright diagnal loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*11)]!=='x')
                     {
                         if(BoardSquares[this.VMGSourceIndex+(i*11)]>=0)
@@ -2873,7 +2873,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*11))
                             {
                                 console.log("continuing")
@@ -2888,12 +2888,12 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex+(i*11)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
-                        console.log("empy downright")
+                        
                     }
                 }
                 
@@ -2908,7 +2908,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-19])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-19)
                     {
                         console.log("continuing")
@@ -2926,7 +2926,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-21])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-21)
                     {
                         console.log("continuing")
@@ -2942,7 +2942,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+19])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+19)
                     {
                         console.log("continuing")
@@ -2958,7 +2958,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+21])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+21)
                     {
                         console.log("continuing")
@@ -2974,7 +2974,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-8])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-8)
                     {
                         console.log("continuing")
@@ -2990,7 +2990,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-12])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-12)
                     {
                         console.log("continuing")
@@ -3006,7 +3006,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+12])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+12)
                     {
                         console.log("continuing")
@@ -3022,7 +3022,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+8])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+8)
                     {
                         console.log("continuing")
@@ -3042,7 +3042,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-19])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-19)
                     {
                         console.log("continuing")
@@ -3058,7 +3058,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-21])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-21)
                     {
                         console.log("continuing")
@@ -3074,7 +3074,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+19])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+19)
                     {
                         console.log("continuing")
@@ -3090,7 +3090,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+21])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+21)
                     {
                         console.log("continuing")
@@ -3106,7 +3106,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-8])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-8)
                     {
                         console.log("continuing")
@@ -3122,7 +3122,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-12])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-12)
                     {
                         console.log("continuing")
@@ -3138,7 +3138,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+12])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+12)
                     {
                         console.log("continuing")
@@ -3154,7 +3154,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+8])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+8)
                     {
                         console.log("continuing")
@@ -3174,7 +3174,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-10])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-10)
                     {
                         console.log("continuing")
@@ -3190,7 +3190,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+10])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+10)
                     {
                         console.log("continuing")
@@ -3206,7 +3206,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+1])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+1)
                     {
                         console.log("continuing")
@@ -3222,7 +3222,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-1])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-1)
                     {
                         console.log("continuing")
@@ -3238,7 +3238,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-9])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-9)
                     {
                         console.log("continuing")
@@ -3254,7 +3254,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-11])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-11)
                     {
                         console.log("continuing")
@@ -3270,7 +3270,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+9])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+9)
                     {
                         console.log("continuing")
@@ -3286,7 +3286,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+11])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+11)
                     {
                         console.log("continuing")
@@ -3306,7 +3306,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-10])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-10)
                     {
                         console.log("continuing")
@@ -3322,7 +3322,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+10])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+10)
                     {
                         console.log("continuing")
@@ -3338,7 +3338,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+1])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+1)
                     {
                         console.log("continuing")
@@ -3354,7 +3354,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-1])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-1)
                     {
                         console.log("continuing")
@@ -3370,7 +3370,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-9])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-9)
                     {
                         console.log("continuing")
@@ -3386,7 +3386,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-11])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-11)
                     {
                         console.log("continuing")
@@ -3402,7 +3402,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+9])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+9)
                     {
                         console.log("continuing")
@@ -3418,7 +3418,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+11])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+11)
                     {
                         console.log("continuing")
@@ -3434,7 +3434,7 @@ class GAME{
 
     CheckKingsSurroundings(source, KingtoCheck)
     {
-        console.log("Checking king surrounds")
+    
         this.CKSFileRank=source;
         this.CKSSourceIndex=this.FindFileRank(this.CKSFileRank);
         this.CKSValidMove=[];
@@ -3444,7 +3444,7 @@ class GAME{
                 
             //move up
             if(BoardRF[this.CKSSourceIndex-10]!=='x' && BoardSquares[this.CKSSourceIndex-10]<=0)
-            {   console.log("white up king "+BoardSquares[this.CKSSourceIndex-10])
+            {  
                 this.CKSValidMove.push(BoardRF[this.CKSSourceIndex-10])
             }
             //move down
@@ -4003,7 +4003,7 @@ class GAME{
         
         switch(piece){
             case PIECES.wP: 
-            console.log("whiete Pawn")
+            
             // this checks they are trying to move forward but there is a piece in the way
             if (this.BoardSquaresCopy[this.VMGSourceIndex-10]===PIECES.EMPTY)
             {
@@ -4012,13 +4012,13 @@ class GAME{
             //this checks the right diagnal for a black piece and if its there it can move there to overtake it 
             if((this.BoardSquaresCopy[this.VMGSourceIndex-9]<=0 ))
             {
-                console.log("white pawn move "+BoardRF[this.VMGSourceIndex-9])
+                
                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-9])
                 if(this.LastPieceMovedSource === BoardRF[this.VMGSourceIndex] && this.LastPieceMovedLineOfSight===LINEOFSIGHT.TOPRIGHT)
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-9])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-9)
                     {
                         console.log("continuing")
@@ -4030,13 +4030,13 @@ class GAME{
             //this checks the left diagnol for a black piece and if its there it can move there to overtake it
             if((this.BoardSquaresCopy[this.VMGSourceIndex-11]<=0))
             {
-                console.log("white pawn move"+BoardRF[this.VMGSourceIndex-11])
+                
                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-11])
                 if(this.LastPieceMovedSource === BoardRF[this.VMGSourceIndex] && this.LastPieceMovedLineOfSight===LINEOFSIGHT.TOPLEFT)
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-11])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-11)
                     {
                         console.log("continuing")
@@ -4070,7 +4070,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+9])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+9)
                     {
                         console.log("continuing")
@@ -4085,7 +4085,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+11])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+11)
                     {
                         console.log("continuing")
@@ -4102,7 +4102,7 @@ class GAME{
                         //this.AllValidMoves.push (BoardRF[this.VMGSourceIndex+20]);
                     }
                 }
-                console.log("Black pawn moves "+this.AllValidMoves)
+                
                 //console.log("target move "+target)
                 
                 break;  
@@ -4112,10 +4112,10 @@ class GAME{
                 
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*10)]!=='x')
                     {
-                        console.log(this.BoardSquaresCopy.indexOf(PIECES.bK)+"current king index")
+                        
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*10)]<=0)
                         {
 
@@ -4124,7 +4124,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                             }
-                            console.log("Ataccking")
+                            
                             //if the king is on on the tile skip keep checking because king could try to 
                             //move back in the same direction
                             
@@ -4147,7 +4147,7 @@ class GAME{
                             //the king it means it could try to move to that square we shouldn't allow it if its in path
                             // of attacking move 
                             
-                            console.log("CKSVALIDMOVE "+this.CKSValidMove)
+                            
                             console.log(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex-(i*10)]))
                             console.log(BoardRF[this.VMGSourceIndex-(i*10)])
                             if(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex-(i*10)]!==-1))
@@ -4155,17 +4155,17 @@ class GAME{
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                                 break;
                             }
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
-                        console.log("empy forward")
+                        
                     }
                 }
                 //backward loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*10)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*10)]<=0)
@@ -4175,7 +4175,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+(i*10))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.DOWN
@@ -4194,17 +4194,17 @@ class GAME{
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                                 break;
                             }
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
-                        console.log("empy back")
+                        
                     }
                 }
                 //right loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+i]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+i]<=0)
@@ -4214,7 +4214,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+i])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+i)
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.RIGHT
@@ -4233,17 +4233,17 @@ class GAME{
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
                                 continue;
                             }
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
-                        console.log("empy right")
+                        
                     }
                 }
                 //left loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-i]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-i]<=0)
@@ -4254,7 +4254,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-i])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-i)
                             {
                                 console.log("continuing")
@@ -4274,11 +4274,11 @@ class GAME{
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
                                 break;
                             }
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
-                        console.log("empy left")
+                        
                     }
                 }
                 
@@ -4288,7 +4288,7 @@ class GAME{
                 //backward loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*10)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*10)]>=0)
@@ -4298,7 +4298,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*10))
                             {
                                 console.log("continuing")
@@ -4312,7 +4312,7 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*10)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                             if(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex-(i*10)]!==-1))
                             {
@@ -4322,13 +4322,13 @@ class GAME{
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
-                        console.log("empy backward")
+                        
                     }
                 }
                 //forward loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*10)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*10)]>=0)
@@ -4338,7 +4338,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*10))
                             {
                                 console.log("continuing")
@@ -4353,19 +4353,19 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*10)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                             
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
-                        console.log("empy forward")
+                        
                     }
                 }
                 //right loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+i]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+i]>=0)
@@ -4375,7 +4375,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+i])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+i)
                             {
                                 console.log("continuing")
@@ -4390,18 +4390,18 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+i]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
-                        console.log("empy right")
+                        
                     }
                 }
                 //left loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-i]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+i]>=0)
@@ -4411,7 +4411,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-i])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-i)
                             {
                                 console.log("continuing")
@@ -4426,12 +4426,12 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-i]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
-                        console.log("empy left")
+                        
                     }
                 }
                 
@@ -4441,7 +4441,7 @@ class GAME{
                 //upright  diagnol loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*9)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*9)]<=0)
@@ -4451,7 +4451,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-(i*9))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
@@ -4473,17 +4473,17 @@ class GAME{
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                                 break;
                             }
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
-                        console.log("empy upright")
+                        
                     }
                 }
                 // upleft diagnal loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*11)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*11)]<=0)
@@ -4493,7 +4493,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*1)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-(i*11))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPLEFT;
@@ -4512,17 +4512,17 @@ class GAME{
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
                                 break;
                             }
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
-                        console.log("empy upleft")
+                        
                     }
                 }
                 //down left diagnal
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*9)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*9)]<=0)
@@ -4532,7 +4532,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+(i*9))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMLEFT
@@ -4551,17 +4551,17 @@ class GAME{
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                                 break;
                             }
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
-                        console.log("empy downleft")
+                        
                     }
                 }
                 // downright diagnal loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*11)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*11)]<=0)
@@ -4571,7 +4571,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+(i*11))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMRIGHT
@@ -4590,11 +4590,11 @@ class GAME{
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                                 break;
                             }
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
-                        console.log("empy downright")
+                        
                     }
                 }
                 
@@ -4604,7 +4604,7 @@ class GAME{
                 //upright  diagnol loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*9)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*9)]>=0)
@@ -4614,7 +4614,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*9))
                             {
                                 console.log("continuing")
@@ -4629,18 +4629,18 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*9)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                             break;
                         }
                         //this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
-                        console.log("empy upright")
+                        
                     }
                 }
                 // upleft diagnal loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*11)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*11)]>=0)
@@ -4650,7 +4650,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*11))
                             {
                                 console.log("continuing")
@@ -4665,18 +4665,18 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*11)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
                             break;
                         }
                         //this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
-                        console.log("empy upleft")
+                        
                     }
                 }
                 //down left diagnal
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*9)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*9)]>=0)
@@ -4686,7 +4686,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*9))
                             {
                                 console.log("continuing")
@@ -4701,12 +4701,12 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*9)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
-                        console.log("empy downleft")
+                        
                     }
                 }
                 // downright diagnal loop
@@ -4720,14 +4720,14 @@ class GAME{
                         {
                             console.log(this.BoardSquaresCopy[this.VMGSourceIndex+(i*11)])
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
-                            console.log("asdfwsadfewsdfwsdf "+BoardRF[this.VMGSourceIndex]+" laspieced moved soruce "+this.LastPieceMovedSource+" Line of sight is "+this.LastPieceMovedLineOfSight)
+                            
                             if(this.LastPieceMovedSource === BoardRF[this.VMGSourceIndex] && this.LastPieceMovedLineOfSight===LINEOFSIGHT.BOTTOMRIGHT)
                             {
                                 console.log("PUSHING THE SHIT")
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                                 console.log(this.LastPieceMovedLineOfSightMoves)
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*11))
                             {
                                 console.log("continuing")
@@ -4742,12 +4742,12 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*11)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
-                        console.log("empy downright")
+    
                     }
                 }
                 
@@ -4757,7 +4757,7 @@ class GAME{
                 //forward loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*10)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*10)]<=0)
@@ -4767,7 +4767,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-(i*10))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.UP
@@ -4786,17 +4786,17 @@ class GAME{
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                                 break;
                             }
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
-                        console.log("empy forward")
+                        
                     }
                 }
                 //backward loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*10)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*10)]<=0)
@@ -4806,7 +4806,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+(i*10))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.DOWN
@@ -4820,18 +4820,18 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*10)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
-                        console.log("empy back")
+                        
                     }
                 }
                 //right loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+i]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+i]<=0)
@@ -4841,7 +4841,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+i])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+i)
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.RIGHT
@@ -4855,18 +4855,18 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+i]>0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
-                        console.log("empy right")
+                        
                     }
                 }
                 //left loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-i]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-i]<=0)
@@ -4876,7 +4876,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-i])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-i)
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.LEFT
@@ -4890,18 +4890,18 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-i]>0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
-                        console.log("empy left")
+                        
                     }
                 }
                 //upright  diagnol loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*9)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*9)]<=0)
@@ -4911,7 +4911,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-(i*9))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
@@ -4925,18 +4925,18 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*9)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
-                        console.log("empy upright")
+                        
                     }
                 }
                 // upleft diagnal loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*11)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*11)]<=0)
@@ -4946,7 +4946,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-(i*11))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPLEFT
@@ -4960,18 +4960,18 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*11)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
-                        console.log("empy upleft")
+                        
                     }
                 }
                 //down left diagnal
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*9)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*9)]<=0)
@@ -4981,7 +4981,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+(i*9))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMLEFT
@@ -4995,18 +4995,18 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*9)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
-                        console.log("empy downleft")
+                        
                     }
                 }
                 // downright diagnal loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*11)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*11)]<=0)
@@ -5016,7 +5016,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+(i*11))
                             {
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMRIGHT
@@ -5029,12 +5029,12 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*11)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
-                        console.log("empy downright")
+                        
                     }
                 }
                 
@@ -5044,7 +5044,7 @@ class GAME{
                 //backward loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*10)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*10)]>=0)
@@ -5054,7 +5054,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*10))
                             {
                                 console.log("continuing")
@@ -5069,18 +5069,18 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*10)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
-                        console.log("empy backward")
+                        
                     }
                 }
                 //forward loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*10)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*10)]>=0)
@@ -5090,7 +5090,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*10))
                             {
                                 console.log("continuing")
@@ -5105,18 +5105,18 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*10)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
-                        console.log("empy forward")
+                        
                     }
                 }
                 //right loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+i]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+i]>=0)
@@ -5126,7 +5126,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+i])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+i)
                             {
                                 console.log("continuing")
@@ -5140,18 +5140,18 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+i]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
-                        console.log("empy right")
+                        
                     }
                 }
                 //left loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-i]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-i]>=0)
@@ -5161,7 +5161,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-i])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-i)
                             {
                                 console.log("continuing")
@@ -5175,18 +5175,18 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-i]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
-                        console.log("empy left")
+                        
                     }
                 }
                 //upright  diagnol loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*9)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*9)]>=0)
@@ -5196,7 +5196,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*9))
                             {
                                 console.log("continuing")
@@ -5211,18 +5211,18 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*9)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
-                        console.log("empy upright")
+                        
                     }
                 }
                 // upleft diagnal loop
                 for(let i=1; BoardRF[this.VMGSourceIndex-(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex-(i*11)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*11)]>=0)
@@ -5232,7 +5232,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*11))
                             {
                                 console.log("continuing")
@@ -5247,18 +5247,18 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*11)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
-                        console.log("empy upleft")
+                        
                     }
                 }
                 //down left diagnal
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*9)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*9)]>=0)
@@ -5268,7 +5268,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*9))
                             {
                                 console.log("continuing")
@@ -5283,18 +5283,18 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*9)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
-                        console.log("empy downleft")
+                        
                     }
                 }
                 // downright diagnal loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.VMGSourceIndex+(i*11)]!=='x')
                     {
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*11)]>=0)
@@ -5304,7 +5304,7 @@ class GAME{
                             {
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                             }
-                            console.log("Ataccking")
+                            
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*11))
                             {
                                 console.log("continuing")
@@ -5319,12 +5319,12 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*11)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                             break;
                         }
                         this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
-                        console.log("empy downright")
+                        
                     }
                 }
                 
@@ -5339,7 +5339,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-19])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-19)
                     {
                         console.log("continuing")
@@ -5356,7 +5356,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-21])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-21)
                     {
                         console.log("continuing")
@@ -5372,7 +5372,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+19])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+19)
                     {
                         console.log("continuing")
@@ -5388,7 +5388,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+21])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+21)
                     {
                         console.log("continuing")
@@ -5404,7 +5404,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-8])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-8)
                     {
                         console.log("continuing")
@@ -5420,7 +5420,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-12])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-12)
                     {
                         console.log("continuing")
@@ -5436,7 +5436,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+12])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+12)
                     {
                         console.log("continuing")
@@ -5452,7 +5452,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+8])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+8)
                     {
                         console.log("continuing")
@@ -5472,7 +5472,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-19])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-19)
                     {
                         console.log("continuing")
@@ -5488,7 +5488,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-21])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-21)
                     {
                         console.log("continuing")
@@ -5504,7 +5504,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+19])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+19)
                     {
                         console.log("continuing")
@@ -5520,7 +5520,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+21])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+21)
                     {
                         console.log("continuing")
@@ -5536,7 +5536,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-8])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-8)
                     {
                         console.log("continuing")
@@ -5552,7 +5552,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-12])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-12)
                     {
                         console.log("continuing")
@@ -5568,7 +5568,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+12])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+12)
                     {
                         console.log("continuing")
@@ -5584,7 +5584,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+8])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+8)
                     {
                         console.log("continuing")
@@ -5604,7 +5604,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-10])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-10)
                     {
                         console.log("continuing")
@@ -5620,7 +5620,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+10])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+10)
                     {
                         console.log("continuing")
@@ -5636,7 +5636,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+1])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+1)
                     {
                         console.log("continuing")
@@ -5652,7 +5652,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-1])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-1)
                     {
                         console.log("continuing")
@@ -5668,7 +5668,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-9])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-9)
                     {
                         console.log("continuing")
@@ -5684,7 +5684,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-11])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-11)
                     {
                         console.log("continuing")
@@ -5700,7 +5700,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+9])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+9)
                     {
                         console.log("continuing")
@@ -5716,7 +5716,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+11])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+11)
                     {
                         console.log("continuing")
@@ -5736,7 +5736,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-10])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-10)
                     {
                         console.log("continuing")
@@ -5752,7 +5752,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+10])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+10)
                     {
                         console.log("continuing")
@@ -5768,7 +5768,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+1])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+1)
                     {
                         console.log("continuing")
@@ -5784,7 +5784,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-1])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-1)
                     {
                         console.log("continuing")
@@ -5800,7 +5800,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-9])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-9)
                     {
                         console.log("continuing")
@@ -5816,7 +5816,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex-11])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-11)
                     {
                         console.log("continuing")
@@ -5832,7 +5832,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+9])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+9)
                     {
                         console.log("continuing")
@@ -5848,7 +5848,7 @@ class GAME{
                     {
                         this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+11])
                     }
-                    console.log("Ataccking")
+                    
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+11)
                     {
                         console.log("continuing")
@@ -5873,7 +5873,9 @@ class GAME{
     }
 
     EvaluateBoard(){
+
         let PrevScore=0
+        //evaluates pieces and which tile they are on
         for(let i=0;i<BoardSquares.length;i++){
             if(BoardSquares[i]!=='x'){
                 PrevScore+=BoardSquares[i]
@@ -5918,28 +5920,76 @@ class GAME{
                 }
             }
         }
+        this.AllValidMoves=[];
+        for(let i =0;i<BoardSquares.length;i++)
+        {
+            if(BoardSquares[i]>0){
+                this.ValidMoveGeneration(BoardRF[i],BoardSquares[i])
+            }
+        }
+
+        PrevScore+=(this.AllValidMoves.length)*10
+        console.log(this.AllValidMoves.length)
+        console.log("jlksadfhaskljdfhsad")
+        this.AllValidMoves=[];
+        for(let i =0;i<BoardSquares.length;i++)
+        {
+            if(BoardSquares[i]<0){
+                this.ValidMoveGeneration(BoardRF[i],BoardSquares[i])
+            }
+        }
+        console.log(this.AllValidMoves.length)
+        PrevScore+=(this.AllValidMoves.length)*-10
+
+
         return PrevScore;
     }
 
+    AIMakeAMove(){
+
+    }
+
     AIMiniMax(){
-        //let ThisDepthsMoves=
+
+        let ThisDepthsMoves={}
+        switch(this.MoveMaker){
+            case COLORS.WHITE:
+                if(this.AllValidMoves.indexOf(this.BoardRF [this.BoardSquares.indexOf(PIECES.wK)])!==-1){
+                    this.AllValidMoves=[];
+                    for(let i =0;i<BoardSquares.length;i++){
+                        if(BoardSquares[i]>0){
+                            ThisDepthsMoves= this.AIValidMoveGeneration(ThisDepthsMoves,BoardRF[i],BoardSquares[i])
+                        }
+                    }
+                }
+                break;
+            case COLORS.BLACK:
+                if(this.AllValidMoves.indexOf(this.BoardRF [this.BoardSquares.indexOf(PIECES.wK)])!==-1){
+                    this.AllValidMoves=[];
+                    for(let i =0;i<BoardSquares.length;i++){
+                        if(BoardSquares[i]<0){
+                            ThisDepthsMoves= this.AIValidMoveGeneration(ThisDepthsMoves,BoardRF[i],BoardSquares[i])
+                        }
+                    }
+                }
+                break;
+        }
+        
         //
     }
 
-    AIValidMoveGeneration(source,target,piece){
+    AIValidMoveGeneration(ValidMoves,source,piece){
         this.FileRank=source;
         this.SourceIndex=this.FindFileRank(this.FileRank);
-        this.FileRank=target;
-        this.TargetIndex=this.FindFileRank(this.FileRank);
-        this.ValidMove=[];
-        let moves={}
+        
+        
         switch(piece){
-            case PIECES.wP: 
-            moves[this.SourceIndex]=[]
+            case PIECES.wP:
+            ValidMoves[this.SourceIndex]=[]
             // this checks they are trying to move forward but there is a piece in the way
             if (BoardSquares[this.SourceIndex-10]===PIECES.EMPTY)
             {
-                moves[this.SourceIndex].push(this.SourceIndex-10)
+                ValidMoves[this.SourceIndex].push(this.SourceIndex-10)
                 this.ValidMove.push (BoardRF[this.SourceIndex-10]);
             }
             //this checks the right diagnal for a black piece and if its there it can move there to overtake it 
@@ -5994,7 +6044,7 @@ class GAME{
             console.log("target move "+target)
             break;
             case PIECES.bP:
-                
+                ValidMoves[this.SourceIndex]=[]
                 if (target===BoardRF[this.SourceIndex+10]  &&BoardSquares[this.SourceIndex+10]===PIECES.EMPTY)
                 {
                     this.ValidMove.push (BoardRF[this.SourceIndex+10]);
@@ -6045,703 +6095,703 @@ class GAME{
                
                 break;  
             case PIECES.wR:
-                
+                ValidMoves[this.SourceIndex]=[]
                 //forward loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*10)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*10)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*10)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
-                        console.log("empy forward")
+                        
                     }
                 }
                 //backward loop
                 for(let i=1; BoardRF[this.SourceIndex+(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*10)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*10)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*10)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
-                        console.log("empy back")
+                        
                     }
                 }
                 //right loop
                 for(let i=1; BoardRF[this.SourceIndex+i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+i]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+i]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+i])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+i]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+i])
-                        console.log("empy right")
+                        
                     }
                 }
                 //left loop
                 for(let i=1; BoardRF[this.SourceIndex-i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-i]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-i]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-i])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-i]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-i])
-                        console.log("empy left")
+                        
                     }
                 }
                 
                 break;
             case PIECES.bR:
-                
+                ValidMoves[this.SourceIndex]=[]
                 //backward loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*10)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*10)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*10)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
-                        console.log("empy backward")
+                        
                     }
                 }
                 //forward loop
                 for(let i=1; BoardRF[this.SourceIndex+(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*10)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*10)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*10)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
-                        console.log("empy forward")
+                        
                     }
                 }
                 //right loop
                 for(let i=1; BoardRF[this.SourceIndex+i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+i]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+i]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+i])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+i]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+i])
-                        console.log("empy right")
+                        
                     }
                 }
                 //left loop
                 for(let i=1; BoardRF[this.SourceIndex-i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-i]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-i]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-i])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-i]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-i])
-                        console.log("empy left")
+                        
                     }
                 }
                 
                 break;
             case PIECES.wB:
-                
+                ValidMoves[this.SourceIndex]=[]
                 //upright  diagnol loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*9)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*9)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*9)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
-                        console.log("empy upright")
+                        
                     }
                 }
                 // upleft diagnal loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*11)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*11)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*11)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
-                        console.log("empy upleft")
+                        
                     }
                 }
                 //down left diagnal
                 for(let i=1; BoardRF[this.SourceIndex+(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*9)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*9)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*9)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
-                        console.log("empy downleft")
+                        
                     }
                 }
                 // downright diagnal loop
                 for(let i=1; BoardRF[this.SourceIndex+(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*11)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*11)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*11)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
-                        console.log("empy downright")
+                        
                     }
                 }
                 
                 break;
             case PIECES.bB:
-                
+                ValidMoves[this.SourceIndex]=[]
                 //upright  diagnol loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*9)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*9)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*9)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
-                        console.log("empy upright")
+                        
                     }
                 }
                 // upleft diagnal loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*11)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*11)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*11)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
-                        console.log("empy upleft")
+                        
                     }
                 }
                 //down left diagnal
                 for(let i=1; BoardRF[this.SourceIndex+(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*9)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*9)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*9)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
-                        console.log("empy downleft")
+                        
                     }
                 }
                 // downright diagnal loop
                 for(let i=1; BoardRF[this.SourceIndex+(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*11)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*11)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*11)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
-                        console.log("empy downright")
+                        
                     }
                 }
                 
                 break;
             case PIECES.wQ:
-                
+                ValidMoves[this.SourceIndex]=[]
                 //forward loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*10)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*10)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*10)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
-                        console.log("empy forward")
+                        
                     }
                 }
                 //backward loop
                 for(let i=1; BoardRF[this.SourceIndex+(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*10)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*10)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*10)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
-                        console.log("empy back")
+                        
                     }
                 }
                 //right loop
                 for(let i=1; BoardRF[this.SourceIndex+i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+i]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+i]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+i])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+i]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+i])
-                        console.log("empy right")
+                        
                     }
                 }
                 //left loop
                 for(let i=1; BoardRF[this.SourceIndex-i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-i]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-i]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-i])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-i]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-i])
-                        console.log("empy left")
+                        
                     }
                 }
                 //upright  diagnol loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*9)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*9)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*9)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
-                        console.log("empy upright")
+                        
                     }
                 }
                 // upleft diagnal loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*11)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*11)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*11)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
-                        console.log("empy upleft")
+                        
                     }
                 }
                 //down left diagnal
                 for(let i=1; BoardRF[this.SourceIndex+(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*9)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*9)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*9)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
-                        console.log("empy downleft")
+                        
                     }
                 }
                 // downright diagnal loop
                 for(let i=1; BoardRF[this.SourceIndex+(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*11)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*11)]<0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*11)]>0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
-                        console.log("empy downright")
+                        
                     }
                 }
                 
                 break;
             case PIECES.bQ:
-                
+                ValidMoves[this.SourceIndex]=[]
                 //backward loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*10)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*10)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*10)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
-                        console.log("empy backward")
+                        
                     }
                 }
                 //forward loop
                 for(let i=1; BoardRF[this.SourceIndex+(i*10)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*10)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*10)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*10)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
-                        console.log("empy forward")
+                        
                     }
                 }
                 //right loop
                 for(let i=1; BoardRF[this.SourceIndex+i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+i]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+i]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+i])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+i]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+i])
-                        console.log("empy right")
+                        
                     }
                 }
                 //left loop
                 for(let i=1; BoardRF[this.SourceIndex-i]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-i]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-i]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-i])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-i]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-i])
-                        console.log("empy left")
+                        
                     }
                 }
                 //upright  diagnol loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*9)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*9)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*9)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
-                        console.log("empy upright")
+                        
                     }
                 }
                 // upleft diagnal loop
                 for(let i=1; BoardRF[this.SourceIndex-(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex-(i*11)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex-(i*11)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex-(i*11)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
-                        console.log("empy upleft")
+                        
                     }
                 }
                 //down left diagnal
                 for(let i=1; BoardRF[this.SourceIndex+(i*9)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*9)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*9)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*9)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
-                        console.log("empy downleft")
+                        
                     }
                 }
                 // downright diagnal loop
                 for(let i=1; BoardRF[this.SourceIndex+(i*11)]!=='x';i++)
                 {
-                    console.log("In loop")
+                    
                     if (BoardRF[this.SourceIndex+(i*11)]!=='x')
                     {
                         if(BoardSquares[this.SourceIndex+(i*11)]>0)
                         {
                             this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
-                            console.log("Ataccking")
+                            
                             break;
                         }
                         if(BoardSquares[this.SourceIndex+(i*11)]<0)
                         {
-                            console.log("Not attacking")
+                            
                             break;
                         }
                         this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
-                        console.log("empy downright")
+                        
                     }
                 }
                 
                 break;
             case PIECES.wN:
-                
+                ValidMoves[this.SourceIndex]=[]
                 //top right upper
                 if(BoardRF[this.SourceIndex-19]!=='x' && BoardSquares[this.SourceIndex-19]<=0)
                 {    
@@ -6785,7 +6835,7 @@ class GAME{
                 
                 break;
             case PIECES.bN:
-                
+                ValidMoves[this.SourceIndex]=[]
                 //top right upper
                 if(BoardRF[this.SourceIndex-19]!=='x' && BoardSquares[this.SourceIndex-19]>=0)
                 {    
@@ -6829,7 +6879,7 @@ class GAME{
                 
                 break;
             case PIECES.wK:
-                
+                ValidMoves[this.SourceIndex]=[]
                 //move up
                 if(BoardRF[this.SourceIndex-10]!=='x' && BoardSquares[this.SourceIndex-10]<=0)
                 {    
@@ -6882,7 +6932,7 @@ class GAME{
                 
                 break;
             case PIECES.bK:
-                
+                ValidMoves[this.SourceIndex]=[]
                 //move up
                 if(BoardRF[this.SourceIndex-10]!=='x' && BoardSquares[this.SourceIndex-10]>=0)
                 {    
@@ -6933,8 +6983,8 @@ class GAME{
                 }
                 
                 break;
-            }   
-
+        }   
+        return ValidMoves
     }
     
     
