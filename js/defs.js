@@ -63,6 +63,8 @@ class GAME{
         this.ExecuteEnpassant=false;
         this.enpassanted=false;
         this.enpassantMoveCounter=2;
+        this.BestMoveSource=null;
+        this.BestMoveSource=null;
         /*
         var FILES ={FILE_A:0, FILE_B:1, FILE_C:2, FILE_D:3, FILE_E:4, FILE_F:5,FILE_G:6,FILE_H:7,FILE_NONE:8};
 
@@ -5920,7 +5922,8 @@ class GAME{
     }
 
     AIMiniMax(){
-
+        //let ThisDepthsMoves=
+        //
     }
 
     AIValidMoveGeneration(source,target,piece){
@@ -5929,12 +5932,14 @@ class GAME{
         this.FileRank=target;
         this.TargetIndex=this.FindFileRank(this.FileRank);
         this.ValidMove=[];
+        let moves={}
         switch(piece){
             case PIECES.wP: 
-            
+            moves[this.SourceIndex]=[]
             // this checks they are trying to move forward but there is a piece in the way
             if (BoardSquares[this.SourceIndex-10]===PIECES.EMPTY)
             {
+                moves[this.SourceIndex].push(this.SourceIndex-10)
                 this.ValidMove.push (BoardRF[this.SourceIndex-10]);
             }
             //this checks the right diagnal for a black piece and if its there it can move there to overtake it 
@@ -7218,6 +7223,7 @@ PSTW[PIECES.bR]=[
     'x','x','x','x','x','x','x','x','x','x'
 ]
 
+
 PSTW[PIECES.bR]= MakeNegative(PSTW[PIECES.bR])
 
 PSTW[PIECES.wQ]=[
@@ -7317,6 +7323,19 @@ PSTW['BKE']=[
 PSTW['BKE']= MakeNegative(PSTW['BKE'])
 
 console.log(PSTW)
+
+PSTW[0]=[]
+PSTW[0][PIECES.wP]=[1,2,3,4,5]
+console.log(PSTW[0][PIECES.wP])
+console.log(Object.keys(PSTW).length)
+console.log(PSTW[PIECES.bR].length)
+
+let test={}
+test[95]=[]
+test[95].push(55);
+console.log(Object.keys(test))
+let hi=Object.keys(test)[0]
+console.log(hi)
 
 function MakeNegative(PSTWArray){
     temp=PSTWArray
