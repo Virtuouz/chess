@@ -203,31 +203,56 @@ class GAME{
 
                     this.PawnLocationIndex= this.FindFileRank(this.PawnLocation)
                     switch(piece){
-                        case 'wP':this.BoardSquares[this.PawnLocationIndex]=PIECES.wP
+                        case 'wP':
+                            this.BoardSquares[this.PawnLocationIndex]=PIECES.wP
+                            this.SetLastPieceMoved(PIECES.wP,this.PawnLocationIndex)
                         break;
-                        case 'bP':this.BoardSquares[this.PawnLocationIndex]=PIECES.bP
+                        case 'bP':
+                            this.BoardSquares[this.PawnLocationIndex]=PIECES.bP
+                            this.SetLastPieceMoved(PIECES.bP,this.PawnLocationIndex)
                         break;
-                        case 'wR':this.BoardSquares[this.PawnLocationIndex]=PIECES.wR
+                        case 'wR':
+                            this.BoardSquares[this.PawnLocationIndex]=PIECES.wR
+                            this.SetLastPieceMoved(PIECES.wR,this.PawnLocationIndex)
                         break;
-                        case 'bR':this.BoardSquares[this.PawnLocationIndex]=PIECES.bR
+                        case 'bR':
+                            this.BoardSquares[this.PawnLocationIndex]=PIECES.bR
+                            this.SetLastPieceMoved(PIECES.bR,this.PawnLocationIndex)
                         break;
-                        case 'wB':this.BoardSquares[this.PawnLocationIndex]=PIECES.wB
+                        case 'wB':
+                            this.BoardSquares[this.PawnLocationIndex]=PIECES.wB
+                            this.SetLastPieceMoved(PIECES.wB,this.PawnLocationIndex)
                         break;
-                        case 'bB':this.BoardSquares[this.PawnLocationIndex]=PIECES.bB
+                        case 'bB':
+                            this.BoardSquares[this.PawnLocationIndex]=PIECES.bB
+                            this.SetLastPieceMoved(PIECES.bB,this.PawnLocationIndex)
                         break;
-                        case 'wN':this.BoardSquares[this.PawnLocationIndex]=PIECES.wN
+                        case 'wN':
+                            this.BoardSquares[this.PawnLocationIndex]=PIECES.wN
+                            this.SetLastPieceMoved(PIECES.wN,this.PawnLocationIndex)
                         break;
-                        case 'bN':this.BoardSquares[this.PawnLocationIndex]=PIECES.bN
+                        case 'bN':
+                            this.BoardSquares[this.PawnLocationIndex]=PIECES.bN
+                            this.SetLastPieceMoved(PIECES.bN,this.PawnLocationIndex)
                         break;
-                        case 'wQ':this.BoardSquares[this.PawnLocationIndex]=PIECES.wQ
+                        case 'wQ':
+                            this.BoardSquares[this.PawnLocationIndex]=PIECES.wQ
+                            this.SetLastPieceMoved(PIECES.wQ,this.PawnLocationIndex)
                         break;
-                        case 'bQ':this.BoardSquares[this.PawnLocationIndex]=PIECES.bQ
+                        case 'bQ':
+                            this.BoardSquares[this.PawnLocationIndex]=PIECES.bQ
+                            this.SetLastPieceMoved(PIECES.bQ,this.PawnLocationIndex)
                         break;
-                        case 'wK':this.BoardSquares[this.PawnLocationIndex]=PIECES.wK
+                        case 'wK':
+                            this.BoardSquares[this.PawnLocationIndex]=PIECES.wK
+                            this.SetLastPieceMoved(PIECES.wK,this.PawnLocationIndex)
                         break;
-                        case 'bK':this.BoardSquares[this.PawnLocationIndex]=PIECES.bK
+                        case 'bK':
+                            this.BoardSquares[this.PawnLocationIndex]=PIECES.bK
+                            this.SetLastPieceMoved(PIECES.bK,this.PawnLocationIndex)
                         break;
                     }
+                    
                     this.Promote=false;
                     this.NextTurn()
                     return true;
