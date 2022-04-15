@@ -3641,6 +3641,8 @@ class GAME{
                 this.CheckKingsSurroundings(this.BoardRF [this.BoardSquares.indexOf(PIECES.wK)],PIECES.wK)
                 this.LastPieceMovedLineOfSightMoves.push(this.LastPieceMovedSource)
                 this.PossibleAvailableCounterMoves=this.LastPieceMovedLineOfSightMoves
+                //this.PossibleAvailableCounterMoves.splice(this.PossibleAvailableCounterMoves.indexOf(this.BoardRF[this.BoardSquares.indexOf(PIECES.wK)],1))
+                
                 console.log(this.CKSValidMove)
                 //this loops removes the moves that kings can't do
                 for(let i=0; i<length;i++)
@@ -3727,6 +3729,8 @@ class GAME{
                 this.CheckKingsSurroundings(this.BoardRF [this.BoardSquares.indexOf(PIECES.bK)],PIECES.bK)
                 this.LastPieceMovedLineOfSightMoves.push(this.LastPieceMovedSource)
                 this.PossibleAvailableCounterMoves=this.LastPieceMovedLineOfSightMoves
+                //this.PossibleAvailableCounterMoves.splice(this.PossibleAvailableCounterMoves.indexOf(this.BoardRF[this.BoardSquares.indexOf(PIECES.bK)],1))
+                
                 console.log(this.CKSValidMove)
                 for(let i=0; i<length;i++)
                 {
@@ -6021,18 +6025,16 @@ class GAME{
         console.log(RandomSource)
         console.log( RandomTarget);
         
-        var CheckMateTimeOut
+        var CheckMateTimeOut=0
         do{
+            
             seed=Math.random()
             keys = Object.keys(ThisDepthsMoves);
             randomkey=keys.length * seed << 0
             RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
             RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(seed * ThisDepthsMoves[keys[randomkey]].length)]
             Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
-
-            if(typeof(RandomTarget) === 'undefined'){
-                continue;
-            }
+            
             
             
 
@@ -6047,14 +6049,23 @@ class GAME{
             }
             Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] == null) && delete ThisDepthsMoves[key])
             console.log(ThisDepthsMoves)
+            CheckMateTimeOut+=1
+            this.CheckCheckMate()
+            if (CheckMateTimeOut>=100)
+            {this.checkmate=this.MoveMaker
+                break;
+            }
         } while((typeof(RandomTarget) === 'undefined' || SuccessfulMove===false ) )
 
+        
         console.log("Randome source"+RandomSource)
         console.log("random target "+ RandomTarget)
         console.log(ThisDepthsMoves[keys[randomkey]])
         console.log("seeed"+seed)
         game.SetLastPieceMoved(Piece,RandomTarget)
-        return [RandomSource, RandomTarget]
+        if (SuccessfulMove===true)
+            return [RandomSource, RandomTarget]
+        else return [null,null]
 
         
         //

@@ -120,7 +120,7 @@ $(function(){
                     console.log(s);
                     s=""
                 }
-    }
+            }
         }
     }
     
@@ -141,12 +141,23 @@ $(function(){
         var lel=0
         console.log(lel)
         console.log(game.EvaluateBoard(lel))
-        if(game.MoveMaker==='b'){
+        
+        if(game.MoveMaker==='b' && game.checkmate===0){
             var [AISource,AITarget] =game.AIMakeAMove()
             console.log(AISource,AITarget)
             board1.move(`${AISource}-${AITarget}`)
             game.CheckCheckMate()
         }
+
+        for(let i=0;i<BoardSquares.length;i++)
+            {
+                s+= BoardSquares[i]+" ";
+                if (i%10===9 )
+                {
+                    console.log(s);
+                    s=""
+                }
+            }
         
         console.log("lel")
 
