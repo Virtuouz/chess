@@ -124,6 +124,8 @@ $(function(){
         }
     }
     
+    
+
     function onSnapEnd(source,target,piece){
         
         if(game.enpassanted===true){
@@ -139,11 +141,12 @@ $(function(){
         var lel=0
         console.log(lel)
         console.log(game.EvaluateBoard(lel))
-        
+        if(game.MoveMaker==='b'){
+            var [AISource,AITarget] =game.AIMakeAMove()
+            console.log(AISource,AITarget)
+            board1.move(`${AISource}-${AITarget}`)
+        }
         console.log("lel")
-        var [AISource,AITarget] =game.AIMakeAMove()
-        console.log(AISource,AITarget)
-        board1.move(`${AISource}-${AITarget}`)
 
         
         
