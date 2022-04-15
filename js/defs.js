@@ -5979,6 +5979,11 @@ class GAME{
         }
         
         console.log(ThisDepthsMoves)
+        var keys = Object.keys(ThisDepthsMoves);
+        var randomkey=keys.length * Math.random() << 0
+        console.log(randomkey)
+        console.log(Object.keys(ThisDepthsMoves)[randomkey])
+        console.log( ThisDepthsMoves[keys[randomkey ]]);
 
         
         //
@@ -5997,18 +6002,18 @@ class GAME{
             // this checks they are trying to move forward but there is a piece in the way
             if (BoardSquares[this.SourceIndex-10]===PIECES.EMPTY)
             {
-                ValidMoves[this.SourceIndex].push(this.SourceIndex-10)
-                this.ValidMove.push (BoardRF[this.SourceIndex-10]);
+                
+                ValidMoves[this.SourceIndex].push (BoardRF[this.SourceIndex-10]);
             }
             //this checks the right diagnal for a black piece and if its there it can move there to overtake it 
             if(BoardSquares[this.SourceIndex-9]<0 )
             {
-                this.ValidMove.push(BoardRF[this.SourceIndex-9])
+                ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-9])
             }
             //this checks the left diagnol for a black piece and if its there it can move there to overtake it
             if(BoardSquares[this.SourceIndex-11]<0 )
             {
-                this.ValidMove.push(BoardRF[this.SourceIndex-11])
+                ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-11])
             }
             //The basic foward movement of the piece
             
@@ -6019,7 +6024,7 @@ class GAME{
                 if(source===FILES[i]+RANKS[1] && BoardSquares[this.SourceIndex-20]===PIECES.EMPTY)
                 {
                     this.RemoveEnpassant()
-                    this.ValidMove.push (BoardRF[this.SourceIndex-20]);
+                    ValidMoves[this.SourceIndex].push (BoardRF[this.SourceIndex-20]);
                     if(BoardRF [this.SourceIndex-19]!=='x')
                     {
                         this.enpassantableFrom.push(BoardRF[this.SourceIndex - 19])
@@ -6041,7 +6046,7 @@ class GAME{
                 
                 if(source===FILES[i]+RANKS[4] && this.bPenpassantable===true && (source===this.enpassantableFrom[0] || source===this.enpassantableFrom[1]) )
                 {
-                    this.ValidMove.push (this.enpassantaTile);
+                    ValidMoves[this.SourceIndex].push (this.enpassantaTile);
                     
 
                 }
@@ -6054,15 +6059,15 @@ class GAME{
                 ValidMoves[this.SourceIndex]=[]
                 if (BoardSquares[this.SourceIndex+10]===PIECES.EMPTY)
                 {
-                    this.ValidMove.push (BoardRF[this.SourceIndex+10]);
+                    ValidMoves[this.SourceIndex].push (BoardRF[this.SourceIndex+10]);
                 }
                 if(BoardSquares[this.SourceIndex+9]>0 )
                 {
-                    this.ValidMove.push(BoardRF[this.SourceIndex+9])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+9])
                 }
                 if( BoardSquares[this.SourceIndex+11]>0 )
                 {
-                    this.ValidMove.push(BoardRF[this.SourceIndex+11])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+11])
                 }
                 
                 for(let i=0;i<8;i++)
@@ -6072,7 +6077,7 @@ class GAME{
                     if(source===FILES[i]+RANKS[6] && BoardSquares[this.SourceIndex+20]===PIECES.EMPTY)
                     {
                         this.RemoveEnpassant()
-                        this.ValidMove.push (BoardRF[this.SourceIndex+20]);
+                        ValidMoves[this.SourceIndex].push (BoardRF[this.SourceIndex+20]);
                         if (BoardRF[this.SourceIndex + 19] !== 'x') {
                             this.enpassantableFrom.push(BoardRF[this.SourceIndex + 19])
                         }
@@ -6091,7 +6096,7 @@ class GAME{
                 for (let i = 0; i < 8; i++) {
 
                     if (source === FILES[i] + RANKS[3] && this.wPenpassantable === true && (source === this.enpassantableFrom[0] || source === this.enpassantableFrom[1])) {
-                        this.ValidMove.push(this.enpassantaTile);
+                        ValidMoves[this.SourceIndex].push(this.enpassantaTile);
                         
 
                     }
@@ -6111,7 +6116,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex-(i*10)]<0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*10)])
                             
                             break;
                         }
@@ -6120,7 +6125,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*10)])
                         
                     }
                 }
@@ -6132,7 +6137,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex+(i*10)]<0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*10)])
                             
                             break;
                         }
@@ -6141,7 +6146,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*10)])
                         
                     }
                 }
@@ -6153,7 +6158,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex+i]<0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex+i])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+i])
                             
                             break;
                         }
@@ -6162,7 +6167,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex+i])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+i])
                         
                     }
                 }
@@ -6174,7 +6179,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex-i]<0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex-i])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-i])
                             
                             break;
                         }
@@ -6183,7 +6188,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex-i])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-i])
                         
                     }
                 }
@@ -6199,7 +6204,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex-(i*10)]>0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*10)])
                             
                             break;
                         }
@@ -6208,7 +6213,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*10)])
                         
                     }
                 }
@@ -6220,7 +6225,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex+(i*10)]>0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*10)])
                             
                             break;
                         }
@@ -6229,7 +6234,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*10)])
                         
                     }
                 }
@@ -6241,7 +6246,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex+i]>0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex+i])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+i])
                             
                             break;
                         }
@@ -6250,7 +6255,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex+i])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+i])
                         
                     }
                 }
@@ -6262,7 +6267,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex-i]>0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex-i])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-i])
                             
                             break;
                         }
@@ -6271,7 +6276,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex-i])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-i])
                         
                     }
                 }
@@ -6287,7 +6292,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex-(i*9)]<0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*9)])
                             
                             break;
                         }
@@ -6296,7 +6301,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*9)])
                         
                     }
                 }
@@ -6308,7 +6313,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex-(i*11)]<0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*11)])
                             
                             break;
                         }
@@ -6317,7 +6322,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*11)])
                         
                     }
                 }
@@ -6329,7 +6334,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex+(i*9)]<0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*9)])
                             
                             break;
                         }
@@ -6338,7 +6343,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*9)])
                         
                     }
                 }
@@ -6350,7 +6355,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex+(i*11)]<0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*11)])
                             
                             break;
                         }
@@ -6359,7 +6364,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*11)])
                         
                     }
                 }
@@ -6375,7 +6380,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex-(i*9)]>0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*9)])
                             
                             break;
                         }
@@ -6384,7 +6389,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*9)])
                         
                     }
                 }
@@ -6396,7 +6401,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex-(i*11)]>0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*11)])
                             
                             break;
                         }
@@ -6405,7 +6410,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*11)])
                         
                     }
                 }
@@ -6417,7 +6422,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex+(i*9)]>0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*9)])
                             
                             break;
                         }
@@ -6426,7 +6431,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*9)])
                         
                     }
                 }
@@ -6438,7 +6443,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex+(i*11)]>0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*11)])
                             
                             break;
                         }
@@ -6447,7 +6452,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*11)])
                         
                     }
                 }
@@ -6463,7 +6468,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex-(i*10)]<0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*10)])
                             
                             break;
                         }
@@ -6472,7 +6477,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*10)])
                         
                     }
                 }
@@ -6484,7 +6489,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex+(i*10)]<0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*10)])
                             
                             break;
                         }
@@ -6493,7 +6498,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*10)])
                         
                     }
                 }
@@ -6505,7 +6510,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex+i]<0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex+i])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+i])
                             
                             break;
                         }
@@ -6514,7 +6519,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex+i])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+i])
                         
                     }
                 }
@@ -6526,7 +6531,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex-i]<0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex-i])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-i])
                             
                             break;
                         }
@@ -6535,7 +6540,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex-i])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-i])
                         
                     }
                 }
@@ -6547,7 +6552,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex-(i*9)]<0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*9)])
                             
                             break;
                         }
@@ -6556,7 +6561,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*9)])
                         
                     }
                 }
@@ -6568,7 +6573,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex-(i*11)]<0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*11)])
                             
                             break;
                         }
@@ -6577,7 +6582,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*11)])
                         
                     }
                 }
@@ -6589,7 +6594,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex+(i*9)]<0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*9)])
                             
                             break;
                         }
@@ -6598,7 +6603,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*9)])
                         
                     }
                 }
@@ -6610,7 +6615,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex+(i*11)]<0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*11)])
                             
                             break;
                         }
@@ -6619,7 +6624,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*11)])
                         
                     }
                 }
@@ -6635,7 +6640,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex-(i*10)]>0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*10)])
                             
                             break;
                         }
@@ -6644,7 +6649,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex-(i*10)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*10)])
                         
                     }
                 }
@@ -6656,7 +6661,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex+(i*10)]>0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*10)])
                             
                             break;
                         }
@@ -6665,7 +6670,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex+(i*10)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*10)])
                         
                     }
                 }
@@ -6677,7 +6682,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex+i]>0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex+i])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+i])
                             
                             break;
                         }
@@ -6686,7 +6691,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex+i])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+i])
                         
                     }
                 }
@@ -6698,7 +6703,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex-i]>0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex-i])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-i])
                             
                             break;
                         }
@@ -6707,7 +6712,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex-i])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-i])
                         
                     }
                 }
@@ -6719,7 +6724,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex-(i*9)]>0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*9)])
                             
                             break;
                         }
@@ -6728,7 +6733,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex-(i*9)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*9)])
                         
                     }
                 }
@@ -6740,7 +6745,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex-(i*11)]>0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*11)])
                             
                             break;
                         }
@@ -6749,7 +6754,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex-(i*11)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-(i*11)])
                         
                     }
                 }
@@ -6761,7 +6766,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex+(i*9)]>0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*9)])
                             
                             break;
                         }
@@ -6770,7 +6775,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex+(i*9)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*9)])
                         
                     }
                 }
@@ -6782,7 +6787,7 @@ class GAME{
                     {
                         if(BoardSquares[this.SourceIndex+(i*11)]>0)
                         {
-                            this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
+                            ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*11)])
                             
                             break;
                         }
@@ -6791,7 +6796,7 @@ class GAME{
                             
                             break;
                         }
-                        this.ValidMove.push(BoardRF[this.SourceIndex+(i*11)])
+                        ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+(i*11)])
                         
                     }
                 }
@@ -6802,42 +6807,42 @@ class GAME{
                 //top right upper
                 if(BoardRF[this.SourceIndex-19]!=='x' && BoardSquares[this.SourceIndex-19]<=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex-19])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-19])
                 }
                 //top left upper
                 if(BoardRF[this.SourceIndex-21]!=='x' && BoardSquares[this.SourceIndex-21]<=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex-21])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-21])
                 }
                 //bottom left lower
                 if(BoardRF[this.SourceIndex+19]!=='x' && BoardSquares[this.SourceIndex+19]<=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex+19])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+19])
                 }
                 //bottom right lower
                 if(BoardRF[this.SourceIndex+21]!=='x' && BoardSquares[this.SourceIndex+21]<=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex+21])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+21])
                 }
                 //top right lower
                 if(BoardRF[this.SourceIndex-8]!=='x' && BoardSquares[this.SourceIndex-8]<=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex-8])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-8])
                 }
                 //top left lower
                 if(BoardRF[this.SourceIndex-12]!=='x' && BoardSquares[this.SourceIndex-12]<=0)
                 {   
-                    this.ValidMove.push(BoardRF[this.SourceIndex-12])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-12])
                 }
                 //bottom right upper
                 if(BoardRF[this.SourceIndex+12]!=='x' && BoardSquares[this.SourceIndex+12]<=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex+12])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+12])
                 }
                 //bottom left uppeer
                 if(BoardRF[this.SourceIndex+8]!=='x' && BoardSquares[this.SourceIndex+8]<=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex+8])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+8])
                 }
                 
                 break;
@@ -6846,42 +6851,42 @@ class GAME{
                 //top right upper
                 if(BoardRF[this.SourceIndex-19]!=='x' && BoardSquares[this.SourceIndex-19]>=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex-19])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-19])
                 }
                 //top left upper
                 if(BoardRF[this.SourceIndex-21]!=='x' && BoardSquares[this.SourceIndex-21]>=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex-21])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-21])
                 }
                 //bottom left lower
                 if(BoardRF[this.SourceIndex+19]!=='x' && BoardSquares[this.SourceIndex+19]>=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex+19])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+19])
                 }
                 //bottom right lower
                 if(BoardRF[this.SourceIndex+21]!=='x' && BoardSquares[this.SourceIndex+21]>=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex+21])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+21])
                 }
                 //top right lower
                 if(BoardRF[this.SourceIndex-8]!=='x' && BoardSquares[this.SourceIndex-8]>=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex-8])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-8])
                 }
                 //top left lower
                 if(BoardRF[this.SourceIndex-12]!=='x' && BoardSquares[this.SourceIndex-12]>=0)
                 {   
-                    this.ValidMove.push(BoardRF[this.SourceIndex-12])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-12])
                 }
                 //bottom right upper
                 if(BoardRF[this.SourceIndex+12]!=='x' && BoardSquares[this.SourceIndex+12]>=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex+12])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+12])
                 }
                 //bottom left uppeer
                 if(BoardRF[this.SourceIndex+8]!=='x' && BoardSquares[this.SourceIndex+8]>=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex+8])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+8])
                 }
                 
                 break;
@@ -6890,51 +6895,51 @@ class GAME{
                 //move up
                 if(BoardRF[this.SourceIndex-10]!=='x' && BoardSquares[this.SourceIndex-10]<=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex-10])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-10])
                 }
                 //move down
                 if(BoardRF[this.SourceIndex+10]!=='x' && BoardSquares[this.SourceIndex+10]<=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex+10])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+10])
                 }
                 //move right 
                 if(BoardRF[this.SourceIndex+1]!=='x' && BoardSquares[this.SourceIndex+1]<=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex+1])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+1])
                 }
                 //move left
                 if(BoardRF[this.SourceIndex-1]!=='x' && BoardSquares[this.SourceIndex-1]<=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex-1])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-1])
                 }
                 //move diagnol top right
                 if(BoardRF[this.SourceIndex-9]!=='x' && BoardSquares[this.SourceIndex-9]<=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex-9])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-9])
                 }
                 //move diagnal top left
                 if(BoardRF[this.SourceIndex-11]!=='x' && BoardSquares[this.SourceIndex-11]<=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex-11])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-11])
                 }
                 //move diagnol bottom left
                 if(BoardRF[this.SourceIndex+9]!=='x' && BoardSquares[this.SourceIndex+9]<=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex+9])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+9])
                 }
                 //move diagnal bottom right
                 if(BoardRF[this.SourceIndex+11]!=='x' && BoardSquares[this.SourceIndex+11]<=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex+11])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+11])
                 }
 
                 if(this.CCwKing && this.CCLeftwRook ){
                     
-                    this.ValidMove.push(BoardRF[93])
+                    ValidMoves[this.SourceIndex].push(BoardRF[93])
                 }
                 if(this.CCwKing && this.CCRightwRook ){
                     
-                    this.ValidMove.push(BoardRF[97])
+                    ValidMoves[this.SourceIndex].push(BoardRF[97])
                 }
                 
                 break;
@@ -6943,50 +6948,50 @@ class GAME{
                 //move up
                 if(BoardRF[this.SourceIndex-10]!=='x' && BoardSquares[this.SourceIndex-10]>=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex-10])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-10])
                 }
                 //move down
                 if(BoardRF[this.SourceIndex+10]!=='x' && BoardSquares[this.SourceIndex+10]>=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex+10])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+10])
                 }
                 //move right 
                 if(BoardRF[this.SourceIndex+1]!=='x' && BoardSquares[this.SourceIndex+1]>=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex+1])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+1])
                 }
                 //move left
                 if(BoardRF[this.SourceIndex-1]!=='x' && BoardSquares[this.SourceIndex-1]>=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex-1])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-1])
                 }
                 //move diagnol top right
                 if(BoardRF[this.SourceIndex-9]!=='x' && BoardSquares[this.SourceIndex-9]>=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex-9])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-9])
                 }
                 //move diagnal top left
                 if(BoardRF[this.SourceIndex-11]!=='x' && BoardSquares[this.SourceIndex-11]>=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex-11])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex-11])
                 }
                 //move diagnol bottom left
                 if(BoardRF[this.SourceIndex+9]!=='x' && BoardSquares[this.SourceIndex+9]>=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex+9])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+9])
                 }
                 //move diagnal bottom right
                 if(BoardRF[this.SourceIndex+11]!=='x' && BoardSquares[this.SourceIndex+11]>=0)
                 {    
-                    this.ValidMove.push(BoardRF[this.SourceIndex+11])
+                    ValidMoves[this.SourceIndex].push(BoardRF[this.SourceIndex+11])
                 }
                 if (this.CCbKing && this.CCLeftbRook ){
                     
-                    this.ValidMove.push(BoardRF[23])
+                    ValidMoves[this.SourceIndex].push(BoardRF[23])
                 }
                 if (this.CCbKing && this.CCRightbRook   ){
                     
-                    this.ValidMove.push(BoardRF[27])
+                    ValidMoves[this.SourceIndex].push(BoardRF[27])
                 }
                 
                 break;
