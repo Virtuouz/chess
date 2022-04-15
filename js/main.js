@@ -141,7 +141,10 @@ $(function(){
         console.log(game.EvaluateBoard(lel))
         
         console.log("lel")
-        game.AIMakeAMove()
+        var [AISource,AITarget] =game.AIMakeAMove()
+        console.log(AISource,AITarget)
+        board1.move(`${AISource}-${AITarget}`)
+
         
         
     }

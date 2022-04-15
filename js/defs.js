@@ -548,6 +548,7 @@ class GAME{
         this.TargetIndex=this.FindFileRank(this.FileRank);
         this.ValidMove=[];
         switch(piece){
+            case PIECES.wP:
             case "wP": 
             
             // this checks they are trying to move forward but there is a piece in the way
@@ -607,6 +608,7 @@ class GAME{
             console.log("target move "+target)
             return this.CheckValidMove(target)
             break;
+            case PIECES.bP:
             case "bP":
                 
                 if (target===BoardRF[this.SourceIndex+10]  &&BoardSquares[this.SourceIndex+10]===PIECES.EMPTY)
@@ -658,6 +660,7 @@ class GAME{
                 console.log("target move "+target)
                 return this.CheckValidMove(target)
                 break;  
+            case PIECES.wR:
             case "wR":
                 
                 //forward loop
@@ -746,6 +749,7 @@ class GAME{
                 }
                 return this.CheckValidMove(target)
                 break;
+            case PIECES.bR:
             case "bR":
                 
                 //backward loop
@@ -834,6 +838,7 @@ class GAME{
                 }
                 return this.CheckValidMove(target)
                 break;
+            case PIECES.wB:
             case "wB":
                 
                 //upright  diagnol loop
@@ -922,6 +927,7 @@ class GAME{
                 }
                 return this.CheckValidMove(target)
                 break;
+            case PIECES.bB:
             case "bB":
                 
                 //upright  diagnol loop
@@ -1010,6 +1016,7 @@ class GAME{
                 }
                 return this.CheckValidMove(target)
                 break;
+            case PIECES.wQ:
             case "wQ":
                 
                 //forward loop
@@ -1182,6 +1189,7 @@ class GAME{
                 }
                 return this.CheckValidMove(target)
                 break;
+            case PIECES.bQ:
             case "bQ":
                 
                 //backward loop
@@ -1354,6 +1362,7 @@ class GAME{
                 }
                 return this.CheckValidMove(target)
                 break;
+            case PIECES.wN:
             case "wN":
                 
                 //top right upper
@@ -1398,6 +1407,7 @@ class GAME{
                 }
                 return this.CheckValidMove(target)
                 break;
+            case PIECES.bN:
             case "bN":
                 
                 //top right upper
@@ -1442,6 +1452,7 @@ class GAME{
                 }
                 return this.CheckValidMove(target)
                 break;
+            case PIECES.wK:
             case 'wK':
                 
                 //move up
@@ -1499,6 +1510,7 @@ class GAME{
                 }
                 return false
                 break;
+            case PIECES.bK:
             case 'bK':
                 
                 //move up
@@ -5946,8 +5958,7 @@ class GAME{
 
     AIMakeAMove(){
         let score=this.EvaluateBoard(0);
-        this.AIMiniMax()
-        return
+        return this.AIMiniMax()
 
 
     }
@@ -5977,13 +5988,32 @@ class GAME{
                 
                 break;
         }
-        
+        var SuccessfulMove=false;
         console.log(ThisDepthsMoves)
         var keys = Object.keys(ThisDepthsMoves);
         var randomkey=keys.length * Math.random() << 0
+        var RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
+        var RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(Math.random() * ThisDepthsMoves[keys[randomkey]].length)]
+        var Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
         console.log(randomkey)
-        console.log(Object.keys(ThisDepthsMoves)[randomkey])
-        console.log( ThisDepthsMoves[keys[randomkey ]]);
+        console.log(RandomSource)
+        console.log( RandomTarget);
+
+        do{
+            keys = Object.keys(ThisDepthsMoves);
+            randomkey=keys.length * Math.random() << 0
+            RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
+            RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(Math.random() * ThisDepthsMoves[keys[randomkey]].length)]
+            Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
+
+            if(this.Move(RandomSource,RandomTarget,Piece)===true){
+                SuccessfulMove=true;
+            }
+        } while(typeof(RandomTarget) === 'undefined' || SuccessfulMove===false)
+
+        console.log(RandomSource)
+        console.log( RandomTarget)
+        return [RandomSource, RandomTarget]
 
         
         //
