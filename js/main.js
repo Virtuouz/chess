@@ -6,7 +6,13 @@ $(function(){
 
 game=new GAME();
 var board1 = null
+
+
+
 $(function(){
+
+    
+
     function onDragStart (source, piece, position, orientation) {
         console.log('Drag started:')
         console.log('Source: ' + source)
@@ -32,8 +38,9 @@ $(function(){
     
     
 
-      }
-
+    }
+    
+    
 
     let s =""
     function onDrop (source, target, piece, newPos, oldPos, orientation) {
@@ -129,8 +136,14 @@ $(function(){
             board1.move(`${game.PawnLocation}-${target}`)
             game.enpassanted=false;
         }
-       
-        console.log(game.EvaluateBoard())
+        var lel=0
+        console.log(lel)
+        console.log(game.EvaluateBoard(lel))
+        
+        console.log("lel")
+        game.AIMakeAMove()
+        
+        
     }
     
     //console.log(game.BoardSquares)
@@ -154,7 +167,9 @@ $(function(){
             s=""
         }
     }
-    console.log(game.EvaluateBoard())
+    var lel=0
+        console.log(lel)
+    console.log(game.EvaluateBoard(lel))
     var config = {
         draggable: true,
         position: 'start',
@@ -167,6 +182,8 @@ $(function(){
     board1 = ChessBoard('board1', config);
     
 })
+
+
 
 function init(){
     console.log("init() called");

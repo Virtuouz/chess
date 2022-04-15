@@ -5872,9 +5872,8 @@ class GAME{
         }
     }
 
-    EvaluateBoard(){
-
-        let PrevScore=0
+    EvaluateBoard(PrevScore){
+        
         //evaluates pieces and which tile they are on
         for(let i=0;i<BoardSquares.length;i++){
             if(BoardSquares[i]!=='x'){
@@ -5946,6 +5945,10 @@ class GAME{
     }
 
     AIMakeAMove(){
+        let score=this.EvaluateBoard(0);
+        this.AIMiniMax()
+        return
+
 
     }
 
@@ -5954,26 +5957,29 @@ class GAME{
         let ThisDepthsMoves={}
         switch(this.MoveMaker){
             case COLORS.WHITE:
-                if(this.AllValidMoves.indexOf(this.BoardRF [this.BoardSquares.indexOf(PIECES.wK)])!==-1){
-                    this.AllValidMoves=[];
-                    for(let i =0;i<BoardSquares.length;i++){
-                        if(BoardSquares[i]>0){
-                            ThisDepthsMoves= this.AIValidMoveGeneration(ThisDepthsMoves,BoardRF[i],BoardSquares[i])
-                        }
+                this.AllValidMoves=[];
+                for(let i =0;i<BoardSquares.length;i++){
+                    if(BoardSquares[i]>0){
+                        ThisDepthsMoves= this.AIValidMoveGeneration(ThisDepthsMoves,BoardRF[i],BoardSquares[i])
                     }
                 }
+                
                 break;
             case COLORS.BLACK:
-                if(this.AllValidMoves.indexOf(this.BoardRF [this.BoardSquares.indexOf(PIECES.wK)])!==-1){
-                    this.AllValidMoves=[];
-                    for(let i =0;i<BoardSquares.length;i++){
-                        if(BoardSquares[i]<0){
-                            ThisDepthsMoves= this.AIValidMoveGeneration(ThisDepthsMoves,BoardRF[i],BoardSquares[i])
-                        }
+                this.AllValidMoves=[];
+                for(let i =0;i<BoardSquares.length;i++){
+                    if(BoardSquares[i]<0){
+                        ThisDepthsMoves= this.AIValidMoveGeneration(ThisDepthsMoves,BoardRF[i],BoardSquares[i])
                     }
                 }
+                
+
+                
                 break;
         }
+        
+        console.log(ThisDepthsMoves)
+
         
         //
     }
@@ -5981,11 +5987,13 @@ class GAME{
     AIValidMoveGeneration(ValidMoves,source,piece){
         this.FileRank=source;
         this.SourceIndex=this.FindFileRank(this.FileRank);
+        console.log("dfasdfasdf"+this.SourceIndex)
         
         
         switch(piece){
             case PIECES.wP:
             ValidMoves[this.SourceIndex]=[]
+
             // this checks they are trying to move forward but there is a piece in the way
             if (BoardSquares[this.SourceIndex-10]===PIECES.EMPTY)
             {
@@ -6031,29 +6039,28 @@ class GAME{
             for(let i=0;i<8;i++)
             {
                 
-                if(source===FILES[i]+RANKS[4] && this.bPenpassantable===true && (source===this.enpassantableFrom[0] || source===this.enpassantableFrom[1]) && target===this.enpassantaTile)
+                if(source===FILES[i]+RANKS[4] && this.bPenpassantable===true && (source===this.enpassantableFrom[0] || source===this.enpassantableFrom[1]) )
                 {
                     this.ValidMove.push (this.enpassantaTile);
-                    this.ExecuteEnpassant=true;
+                    
 
                 }
             }
 
             
-            console.log("valid move "+this.ValidMove)
-            console.log("target move "+target)
+            
             break;
             case PIECES.bP:
                 ValidMoves[this.SourceIndex]=[]
-                if (target===BoardRF[this.SourceIndex+10]  &&BoardSquares[this.SourceIndex+10]===PIECES.EMPTY)
+                if (BoardSquares[this.SourceIndex+10]===PIECES.EMPTY)
                 {
                     this.ValidMove.push (BoardRF[this.SourceIndex+10]);
                 }
-                if(target===BoardRF[this.SourceIndex+9] && BoardSquares[this.SourceIndex+9]>0 )
+                if(BoardSquares[this.SourceIndex+9]>0 )
                 {
                     this.ValidMove.push(BoardRF[this.SourceIndex+9])
                 }
-                if(target===BoardRF[this.SourceIndex+11] && BoardSquares[this.SourceIndex+11]>0 )
+                if( BoardSquares[this.SourceIndex+11]>0 )
                 {
                     this.ValidMove.push(BoardRF[this.SourceIndex+11])
                 }
@@ -6083,15 +6090,15 @@ class GAME{
 
                 for (let i = 0; i < 8; i++) {
 
-                    if (source === FILES[i] + RANKS[3] && this.wPenpassantable === true && (source === this.enpassantableFrom[0] || source === this.enpassantableFrom[1]) && target===this.enpassantaTile) {
+                    if (source === FILES[i] + RANKS[3] && this.wPenpassantable === true && (source === this.enpassantableFrom[0] || source === this.enpassantableFrom[1])) {
                         this.ValidMove.push(this.enpassantaTile);
-                        this.ExecuteEnpassant=true;
+                        
 
                     }
                 }
 
-                console.log("valid move "+this.ValidMove)
-                console.log("target move "+target)
+                
+               
                
                 break;  
             case PIECES.wR:
@@ -6921,12 +6928,12 @@ class GAME{
                     this.ValidMove.push(BoardRF[this.SourceIndex+11])
                 }
 
-                if(this.CCwKing && this.CCLeftwRook && target==='c1'){
-                    this.ExecuteCastle=true;
+                if(this.CCwKing && this.CCLeftwRook ){
+                    
                     this.ValidMove.push(BoardRF[93])
                 }
-                if(this.CCwKing && this.CCRightwRook && target==='g1'){
-                    this.ExecuteCastle=true;
+                if(this.CCwKing && this.CCRightwRook ){
+                    
                     this.ValidMove.push(BoardRF[97])
                 }
                 
@@ -6973,12 +6980,12 @@ class GAME{
                 {    
                     this.ValidMove.push(BoardRF[this.SourceIndex+11])
                 }
-                if (this.CCbKing && this.CCLeftbRook && target === 'c8'){
-                    this.ExecuteCastle=true;
+                if (this.CCbKing && this.CCLeftbRook ){
+                    
                     this.ValidMove.push(BoardRF[23])
                 }
-                if (this.CCbKing && this.CCRightbRook && target === 'g8' ){
-                    this.ExecuteCastle=true;
+                if (this.CCbKing && this.CCRightbRook   ){
+                    
                     this.ValidMove.push(BoardRF[27])
                 }
                 
