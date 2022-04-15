@@ -145,7 +145,9 @@ $(function(){
             var [AISource,AITarget] =game.AIMakeAMove()
             console.log(AISource,AITarget)
             board1.move(`${AISource}-${AITarget}`)
+            game.CheckCheckMate()
         }
+        
         console.log("lel")
 
         

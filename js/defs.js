@@ -237,12 +237,13 @@ class GAME{
         }
         else if(source!=='spare' && this.check===this.MoveMaker )
         {
-            if(this.ValidMoveCheck(source,target,piece) && (game.LastPieceMovedLineOfSightMoves.indexOf(target)!==-1 || piece[1]==='K'))
+            if(this.ValidMoveCheck(source,target,piece) && (this.LastPieceMovedLineOfSightMoves.indexOf(target)!==-1 || piece[1]==='K' || piece===PIECES.wK || piece===PIECES.bK))
             {
                 this.swap(this.BoardSquares,this.SourceIndex,this.TargetIndex);
                 this.RemoveCastleAbility(source,piece);
                 this.NextTurn();
                 this.check=0
+                return true;
             }
             else{
                 return false;
@@ -357,6 +358,7 @@ class GAME{
     }
     RemoveCastleAbility(source, piece){
         switch(piece){
+            case PIECES.wR:
             case 'wR': 
                 if(source==='a1'){
                     this.CCLeftwRook=false;
@@ -365,6 +367,7 @@ class GAME{
                     this.CCRightwRook=false;
                 }
                 break;
+            case PIECES.bR:
             case 'bR':
                 if(source==='a8'){
                     this.CCLeftbRook=false;
@@ -373,8 +376,10 @@ class GAME{
                     this.CCRightbRook=false;
                 }
                 break;
+            case PIECES.wK:
             case 'wK': this.CCwKing=false; 
                 break;
+            case PIECES.bK:
             case 'bK': this.CCbKing= false; 
                 break;
 
@@ -512,28 +517,40 @@ class GAME{
         this.LastPieceMovedLineOfSight=LINEOFSIGHT.NONE
         switch(piece)
         {
+            case PIECES.wP:
             case 'wP':this.LastPieceMoved=PIECES.wP
             break;
+            case PIECES.bP:
             case 'bP':this.LastPieceMoved=PIECES.bP
             break;
+            case PIECES.wR:
             case 'wR':this.LastPieceMoved=PIECES.wR
             break;
+            case PIECES.bR:
             case 'bR':this.LastPieceMoved=PIECES.bR
             break;
+            case PIECES.wB:
             case 'wB':this.LastPieceMoved=PIECES.wB
             break;
+            case PIECES.bB:
             case 'bB':this.LastPieceMoved=PIECES.bB
             break;
+            case PIECES.wN:
             case 'wN':this.LastPieceMoved=PIECES.wN
             break;
+            case PIECES.bN:
             case 'bN':this.LastPieceMoved=PIECES.bN
             break;
+            case PIECES.wQ:
             case 'wQ':this.LastPieceMoved=PIECES.wQ
             break;
+            case PIECES.bQ:
             case 'bQ':this.LastPieceMoved=PIECES.bQ
             break;
+            case PIECES.wK:
             case 'wK':this.LastPieceMoved=PIECES.wK
             break;
+            case PIECES.bK:
             case 'bK':this.LastPieceMoved=PIECES.bK
             break;
 
@@ -572,7 +589,7 @@ class GAME{
             for(let i=0;i<8;i++)
             {
                 //this.RemoveEnpassant()
-                if(source===FILES[i]+RANKS[1] && BoardSquares[this.SourceIndex-20]===PIECES.EMPTY)
+                if(source===FILES[i]+RANKS[1] && BoardSquares[this.SourceIndex-20]===PIECES.EMPTY && BoardSquares[this.SourceIndex-10]===PIECES.EMPTY)
                 {
                     this.RemoveEnpassant()
                     this.ValidMove.push (BoardRF[this.SourceIndex-20]);
@@ -628,7 +645,7 @@ class GAME{
                 {
                     
                     //console.log("hola"+FILES[i]+RANKS[6])
-                    if(source===FILES[i]+RANKS[6] && BoardSquares[this.SourceIndex+20]===PIECES.EMPTY)
+                    if(source===FILES[i]+RANKS[6] && BoardSquares[this.SourceIndex+20]===PIECES.EMPTY && BoardSquares[this.SourceIndex+10]===PIECES.EMPTY)
                     {
                         this.RemoveEnpassant()
                         this.ValidMove.push (BoardRF[this.SourceIndex+20]);
@@ -1591,7 +1608,7 @@ class GAME{
                 //this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-10])
             }
             //this checks the right diagnal for a black piece and if its there it can move there to overtake it 
-            if((BoardSquares[this.VMGSourceIndex-9]<=0 ))
+            if((BoardSquares[this.VMGSourceIndex-9]!=='x' ))
             {
                 
                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-9])
@@ -1609,7 +1626,7 @@ class GAME{
                 
             }
             //this checks the left diagnol for a black piece and if its there it can move there to overtake it
-            if((BoardSquares[this.VMGSourceIndex-11]<=0))
+            if((BoardSquares[this.VMGSourceIndex-11]!=='x'))
             {
                 
                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-11])
@@ -1644,7 +1661,7 @@ class GAME{
                 {
                     //this.AllValidMoves.push (BoardRF[this.VMGSourceIndex+10]);
                 }
-                if((BoardSquares[this.VMGSourceIndex+9]>=0) )
+                if((BoardSquares[this.VMGSourceIndex+9]!=='x') )
                 {
                     this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+9])
                     if(this.LastPieceMovedSource === BoardRF[this.VMGSourceIndex] && this.LastPieceMovedLineOfSight===LINEOFSIGHT.BOTTOMLEFT)
@@ -1659,7 +1676,7 @@ class GAME{
                         
                     }
                 }
-                if((BoardSquares[this.VMGSourceIndex+11]>=0 ) )
+                if((BoardSquares[this.VMGSourceIndex+11]!=='x' ) )
                 {
                     this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+11])
                     if(this.LastPieceMovedSource === BoardRF[this.VMGSourceIndex] && this.LastPieceMovedLineOfSight===LINEOFSIGHT.BOTTOMRIGHT)
@@ -3692,6 +3709,7 @@ class GAME{
             break;
         case COLORS.BLACK:
 
+
             this.ValidMoveGeneration(this.LastPieceMovedSource,this.LastPieceMoved)
             
             //check to see if the king kings spot is within attacking distance of last moved piece
@@ -3755,6 +3773,7 @@ class GAME{
                 if(this.CKSValidMove.length!==0 || this.AvailableCounterMoves.length!==0)
                 {
                     this.check=this.MoveMaker
+                    console.log("Black is in check")
                     //AvaileableTargetList
                     console.log(this.LastPieceMovedLineOfSightMoves)
                 }
@@ -5988,31 +6007,53 @@ class GAME{
                 
                 break;
         }
+        Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] == null) && delete ThisDepthsMoves[key])
         var SuccessfulMove=false;
         console.log(ThisDepthsMoves)
+        var seed=Math.random()
+        
         var keys = Object.keys(ThisDepthsMoves);
-        var randomkey=keys.length * Math.random() << 0
+        var randomkey=keys.length * seed << 0
         var RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
-        var RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(Math.random() * ThisDepthsMoves[keys[randomkey]].length)]
+        var RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(seed * ThisDepthsMoves[keys[randomkey]].length)]
         var Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
         console.log(randomkey)
         console.log(RandomSource)
         console.log( RandomTarget);
-
+        
+        var CheckMateTimeOut
         do{
+            seed=Math.random()
             keys = Object.keys(ThisDepthsMoves);
-            randomkey=keys.length * Math.random() << 0
+            randomkey=keys.length * seed << 0
             RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
-            RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(Math.random() * ThisDepthsMoves[keys[randomkey]].length)]
+            RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(seed * ThisDepthsMoves[keys[randomkey]].length)]
             Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
+
+            if(typeof(RandomTarget) === 'undefined'){
+                continue;
+            }
+            
+            
 
             if(this.Move(RandomSource,RandomTarget,Piece)===true){
                 SuccessfulMove=true;
             }
-        } while(typeof(RandomTarget) === 'undefined' || SuccessfulMove===false)
+            else{
+                var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
+                ThisDepthsMoves[keys[randomkey]].splice(Index,1);
+                
+                
+            }
+            Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] == null) && delete ThisDepthsMoves[key])
+            console.log(ThisDepthsMoves)
+        } while((typeof(RandomTarget) === 'undefined' || SuccessfulMove===false ) )
 
-        console.log(RandomSource)
-        console.log( RandomTarget)
+        console.log("Randome source"+RandomSource)
+        console.log("random target "+ RandomTarget)
+        console.log(ThisDepthsMoves[keys[randomkey]])
+        console.log("seeed"+seed)
+        game.SetLastPieceMoved(Piece,RandomTarget)
         return [RandomSource, RandomTarget]
 
         
@@ -6051,7 +6092,7 @@ class GAME{
             for(let i=0;i<8;i++)
             {
                 //this.RemoveEnpassant()
-                if(source===FILES[i]+RANKS[1] && BoardSquares[this.SourceIndex-20]===PIECES.EMPTY)
+                if(source===FILES[i]+RANKS[1] && BoardSquares[this.SourceIndex-20]===PIECES.EMPTY && BoardSquares[this.SourceIndex-10]===PIECES.EMPTY)
                 {
                     this.RemoveEnpassant()
                     ValidMoves[this.SourceIndex].push (BoardRF[this.SourceIndex-20]);
@@ -6104,7 +6145,7 @@ class GAME{
                 {
                     
                     //console.log("hola"+FILES[i]+RANKS[6])
-                    if(source===FILES[i]+RANKS[6] && BoardSquares[this.SourceIndex+20]===PIECES.EMPTY)
+                    if(source===FILES[i]+RANKS[6] && BoardSquares[this.SourceIndex+20]===PIECES.EMPTY && BoardSquares[this.SourceIndex+10]===PIECES.EMPTY)
                     {
                         this.RemoveEnpassant()
                         ValidMoves[this.SourceIndex].push (BoardRF[this.SourceIndex+20]);
