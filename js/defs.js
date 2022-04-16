@@ -1765,23 +1765,12 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex-(i*10)]>0)
                         {
-                            //this.CKSValidMove = this.CheckKingsSurroundings(this.BoardSquares.indexOf(PIECES.bK),PIECES.bK)   
-                            //this checks the kings possible moves and if a friendly is within attacking distance of 
-                            //the king it means it could try to move to that square we shouldn't allow it if its in path
-                            // of attacking move 
-                            
-                            
-                            console.log(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex-(i*10)]))
-                            console.log(BoardRF[this.VMGSourceIndex-(i*10)])
-                            if(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex-(i*10)]!==-1))
-                            {
-                                this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
-                                break;
-                            }
-                            
+                           
+                            this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
+                
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
+                        
                         
                     }
                 }
@@ -1812,15 +1801,11 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex+(i*10)]>0)
                         {
-                            if(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex+(i*10)]!==-1))
-                            {
-                                this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
-                                break;
-                            }
+                            this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                             
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
+                        
                         
                     }
                 }
@@ -1851,15 +1836,10 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex+i]>0)
                         {
-                            if(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex+i]!==-1))
-                            {
-                                this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
-                                continue;
-                            }
+                            this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
                             
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
                         
                     }
                 }
@@ -1892,15 +1872,10 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex-i]>0)
                         {
-                            if(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex-i]!==-1))
-                            {
-                                this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
-                                break;
-                            }
+                            this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
                             
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
                         
                     }
                 }
@@ -1935,16 +1910,11 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex-(i*10)]<0)
                         {
-                            
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
-                            if(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex-(i*10)]!==-1))
-                            {
-                                this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
-                                break;
-                            }
+                            
+                           
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                         
                     }
                 }
@@ -1976,12 +1946,12 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex+(i*10)]<0)
                         {
+
                             
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                             
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                         
                     }
                 }
@@ -2017,7 +1987,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
+                        
                         
                     }
                 }
@@ -2053,7 +2023,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
+                        
                         
                     }
                 }
@@ -2089,17 +2059,11 @@ class GAME{
                         if(BoardSquares[this.VMGSourceIndex-(i*9)]>0)
                         {
                             
-                            this.CheckKingsSurroundings(BoardRF [this.BoardSquares.indexOf(PIECES.bK)],PIECES.bK)
-                            if(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex-(i*9)]!==-1))
-                            {
-                                
-                                this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
-                                break;
-                            }
+                            
+                            this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                             
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                         
                     }
                 }
@@ -2130,15 +2094,10 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex-(i*11)]>0)
                         {
-                            if(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex-(i*11)]!==-1))
-                            {
-                                this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
-                                break;
-                            }
-                            
+                           
+                            this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
                         
                     }
                 }
@@ -2169,15 +2128,10 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex+(i*9)]>0)
                         {
-                            if(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex+(i*9)]!==-1))
-                            {
-                                this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
-                                break;
-                            }
+                            this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                             
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                         
                     }
                 }
@@ -2208,15 +2162,10 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex+(i*11)]>0)
                         {
-                            if(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex+(i*11)]!==-1))
-                            {
-                                this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
-                                break;
-                            }
                             
+                            this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                         
                     }
                 }
@@ -2328,7 +2277,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
+                        
                         
                     }
                 }
@@ -2369,7 +2318,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
+                        
                         
                     }
                 }
@@ -2404,15 +2353,10 @@ class GAME{
                         }
                         if(BoardSquares[this.VMGSourceIndex-(i*10)]>0)
                         {
-                            if(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex-(i*10)]!==-1))
-                            {
-                                this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
-                                break;
-                            }
                             
+                            this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                         
                     }
                 }
@@ -2447,7 +2391,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
+                        
                         
                     }
                 }
@@ -2482,7 +2426,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
+                        
                         
                     }
                 }
@@ -2517,7 +2461,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
+                       
                         
                     }
                 }
@@ -2552,7 +2496,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
+                        
                         
                     }
                 }
@@ -2587,7 +2531,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
+                        
                         
                     }
                 }
@@ -2622,7 +2566,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
+                        
                         
                     }
                 }
@@ -2656,7 +2600,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
+                        
                         
                     }
                 }
@@ -2696,7 +2640,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
+                        
                         
                     }
                 }
@@ -2732,7 +2676,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*10)])
+                        
                         
                     }
                 }
@@ -2767,7 +2711,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+i])
+                        
                         
                     }
                 }
@@ -2802,7 +2746,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-i])
+                        
                         
                     }
                 }
@@ -2838,7 +2782,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
+                        
                         
                     }
                 }
@@ -2874,7 +2818,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*11)])
+                        
                         
                     }
                 }
@@ -2910,7 +2854,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*9)])
+                        
                         
                     }
                 }
@@ -2946,7 +2890,7 @@ class GAME{
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                             break;
                         }
-                        this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
+                        
                         
                     }
                 }
