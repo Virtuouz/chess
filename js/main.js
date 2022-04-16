@@ -6,13 +6,7 @@ $(function(){
 
 game=new GAME();
 var board1 = null
-
-
-
 $(function(){
-
-    
-
     function onDragStart (source, piece, position, orientation) {
         console.log('Drag started:')
         console.log('Source: ' + source)
@@ -38,9 +32,8 @@ $(function(){
     
     
 
-    }
-    
-    
+      }
+
 
     let s =""
     function onDrop (source, target, piece, newPos, oldPos, orientation) {
@@ -120,14 +113,12 @@ $(function(){
                     console.log(s);
                     s=""
                 }
-            }
+    }
         }
     }
     
-    
-
     function onSnapEnd(source,target,piece){
-        
+        console.log("in snap end")
         if(game.enpassanted===true){
             console.log("after enpassant")
             console.log(`${target}-${game.PawnLocation}`)
@@ -138,31 +129,6 @@ $(function(){
             board1.move(`${game.PawnLocation}-${target}`)
             game.enpassanted=false;
         }
-        var lel=0
-        console.log(lel)
-        console.log(game.EvaluateBoard(lel))
-        
-       if(game.MoveMaker==='b' && game.checkmate===0){
-            var [AISource,AITarget] =game.AIMakeAMove()
-            console.log(AISource,AITarget)
-            board1.move(`${AISource}-${AITarget}`)
-            game.CheckCheckMate()
-        }
-
-        for(let i=0;i<BoardSquares.length;i++)
-        {
-            s+= BoardSquares[i]+" ";
-            if (i%10===9 )
-            {
-                console.log(s);
-                s=""
-            }
-        }
-        
-        console.log("lel")
-
-        
-        
     }
     
     //console.log(game.BoardSquares)
@@ -186,9 +152,6 @@ $(function(){
             s=""
         }
     }
-    var lel=0
-        console.log(lel)
-    console.log(game.EvaluateBoard(lel))
     var config = {
         draggable: true,
         position: 'start',
@@ -201,8 +164,6 @@ $(function(){
     board1 = ChessBoard('board1', config);
     
 })
-
-
 
 function init(){
     console.log("init() called");
