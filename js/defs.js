@@ -262,7 +262,7 @@ class GAME{
         }
         else if(source!=='spare' && this.check===this.MoveMaker )
         {
-            if(this.ValidMoveCheck(source,target,piece) && (this.LastPieceMovedLineOfSightMoves.indexOf(target)!==-1 || piece[1]==='K' || piece===PIECES.wK || piece===PIECES.bK))
+            if(this.ValidMoveCheck(source,target,piece) && ((this.IsBlockingking(this.SourceIndex,this.TargetIndex) &&  this.LastPieceMovedLineOfSightMoves.indexOf(target)!==-1) || piece[1]==='K' || piece===PIECES.wK || piece===PIECES.bK))
             {
                 this.swap(this.BoardSquares,this.SourceIndex,this.TargetIndex);
                 this.RemoveCastleAbility(source,piece);
@@ -3765,24 +3765,24 @@ class GAME{
 
     IsBlockingking(SIndex,TIndex)
     {
-        if(this.check!==this.MoveMaker){
-            this.BoardSquaresCopy=this.BoardSquares
-            let s=0
-            for(let i=0;i<this.BoardSquaresCopy.length;i++)
-            {
-            s+= this.BoardSquaresCopy[i]+" ";
-            if (i%10===9 )
-            {
-                console.log(s);
-                s=""
-            }
-            }
-            this.IBKSwap(SIndex,TIndex)
-            
-            console.log("lelll")
-            return this.ISBKCheckCheckMate(SIndex,TIndex)
+        //if(this.check!==this.MoveMaker){
+        this.BoardSquaresCopy=this.BoardSquares
+        let s=0
+        for(let i=0;i<this.BoardSquaresCopy.length;i++)
+        {
+        s+= this.BoardSquaresCopy[i]+" ";
+        if (i%10===9 )
+        {
+            console.log(s);
+            s=""
         }
-        else return false;
+        }
+        this.IBKSwap(SIndex,TIndex)
+        
+        console.log("lelll")
+        return this.ISBKCheckCheckMate(SIndex,TIndex)
+        //}
+        //else return false;
         
 
     }
