@@ -29,7 +29,7 @@ class PIESA{
 class GAME{
     constructor(){
         
-        
+        this.FENstring=[]
         this.BoardSquares=BoardSquares
         this.BoardRF=BoardRF
         this.MoveMaker=COLORS.WHITE;
@@ -3685,6 +3685,7 @@ class GAME{
                     //console.log("line of sight is "+this.LastPieceMovedLineOfSight)
                     //console.log(this.LastPieceMovedSource)
                     this.checkmate=this.MoveMaker
+                    console.log(this.checkmate+" is in checkmate")
                 }
                 
             }
@@ -3764,6 +3765,7 @@ class GAME{
                     //AvaileableTargetList
                     //console.log(this.LastPieceMovedLineOfSightMoves)
                     this.checkmate=this.MoveMaker
+                    console.log(this.checkmate+" is in checkmate")
                 }
                 
                 
@@ -6025,8 +6027,17 @@ class GAME{
             if (typeof(RandomTarget) === 'undefined'){
                 var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
                 ThisDepthsMoves[keys[randomkey]].splice(Index,1);
-                if (CheckMateTimeOut>=100){
+                if (CheckMateTimeOut>=200){
                     this.checkmate=this.MoveMaker
+                    console.log(this.checkmate)
+                    let s=0
+                    for(let i=0;i<this.BoardSquaresCopy.length;i++){
+                        s+= this.BoardSquaresCopy[i]+" ";
+                        if (i%10===9 ){
+                            console.log(s);
+                            s=""
+                        }
+                    }
                     break;
                 }
                 CheckMateTimeOut+=1
@@ -7083,6 +7094,118 @@ class GAME{
                 break;
         }   
         return ValidMoves
+    }
+
+    GetFEN(){
+        return this.BoardToFEN()
+    }
+
+    BoardToFEN(){
+        this.FENstring=[]
+        let EmptySpaceCounter=0;
+        for(let i=0;i<this.BoardSquares.length;i++){
+            if(i%10===0 && i>=21 && i<=98){
+                console.log(i)
+                if(EmptySpaceCounter!==0){
+                    this.FENstring.push(`${EmptySpaceCounter}`)
+                    EmptySpaceCounter=0;
+                }
+                this.FENstring.push('/')
+            }
+            switch(this.BoardSquares[i]){
+                case PIECES.wP:
+                    if(EmptySpaceCounter!==0){
+                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        EmptySpaceCounter=0;
+                    }
+                    this.FENstring.push('P')
+                    break;
+                case PIECES.bP:
+                    if(EmptySpaceCounter!==0){
+                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        EmptySpaceCounter=0;
+                    }
+                    this.FENstring.push('p')
+                    break;
+                case PIECES.wR:
+                    if(EmptySpaceCounter!==0){
+                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        EmptySpaceCounter=0;
+                    }
+                    this.FENstring.push('R')
+                    break;
+                case PIECES.bR:
+                    if(EmptySpaceCounter!==0){
+                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        EmptySpaceCounter=0;
+                    }
+                    this.FENstring.push('r')
+                    break;
+                case PIECES.wB:
+                    if(EmptySpaceCounter!==0){
+                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        EmptySpaceCounter=0;
+                    }
+                    this.FENstring.push('B')
+                    break;
+                case PIECES.bB:
+                    if(EmptySpaceCounter!==0){
+                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        EmptySpaceCounter=0;
+                    }
+                    this.FENstring.push('b')
+                    break;
+                case PIECES.wN:
+                    if(EmptySpaceCounter!==0){
+                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        EmptySpaceCounter=0;
+                    }
+                    this.FENstring.push('N')
+                    break;
+                case PIECES.bN:
+                    if(EmptySpaceCounter!==0){
+                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        EmptySpaceCounter=0;
+                    }
+                    this.FENstring.push('n')
+                    break;
+                case PIECES.wQ:
+                    if(EmptySpaceCounter!==0){
+                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        EmptySpaceCounter=0;
+                    }
+                    this.FENstring.push('Q')
+                    break;
+                case PIECES.bQ:
+                    if(EmptySpaceCounter!==0){
+                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        EmptySpaceCounter=0;
+                    }
+                    this.FENstring.push('q')
+                    break;
+                case PIECES.wK:
+                    if(EmptySpaceCounter!==0){
+                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        EmptySpaceCounter=0;
+                    }
+                    this.FENstring.push('K')
+                    break;
+                case PIECES.bK:
+                    if(EmptySpaceCounter!==0){
+                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        EmptySpaceCounter=0;
+                    }
+                    this.FENstring.push('k')
+                    break;
+                case PIECES.EMPTY:
+                    EmptySpaceCounter++;
+                    break;
+                
+            }
+        }
+        this.FENstring=this.FENstring.join("")
+        console.log(this.FENstring)
+        return this.FENstring
     }
     
     
