@@ -23,7 +23,7 @@ $(function(){
         whatpiece(piece[0]);
         console.log(game.MoveMaker[0])
         let tttt=[];
-        board1.move('spare-d8')
+        game.BoardToFEN()
         
         
         
@@ -125,7 +125,9 @@ $(function(){
         }
     }
     
-  
+
+
+        
     
 
     function onSnapEnd(source,target,piece){
@@ -171,16 +173,26 @@ $(function(){
                 }
                 game.Castled=false;
             }
+            if(game.enpassanted===true){
+                console.log("after enpassant")
+                console.log(`${AITarget}-${game.PawnLocation}`)
+                console.log(AITarget)
+                console.log(game.PawnLocation)
+                console.log(`${AITarget}-${game.PawnLocation}`)
+                board1.move(`${AITarget}-${game.PawnLocation}`)
+                board1.move(`${game.PawnLocation}-${AITarget}`)
+                game.enpassanted=false;
+            }
             
             else{
-                game.SetLastPieceMoved(piece,AITarget);
+                game.SetLastPieceMoved(AISource,AITarget);
             }
             if(game.Promote===true){
                 game.PawnLocationIndex= game.FindFileRank(game.PawnLocation)
                 game.BoardSquares[game.PawnLocationIndex]=PIECES.bQ
                 game.SetLastPieceMoved(PIECES.bQ,game.PawnLocation)
                 game.Promote=false;
-                board1.move(`spare-${game.PawnLocation}`)
+                board1.position(game.GetFEN())
                 game.NextTurn()
             }
             console.log(lel)
@@ -200,7 +212,7 @@ $(function(){
                     s=""
                 }
             }
-        
+        game.BoardToFEN()
         console.log("lel")
 
         
