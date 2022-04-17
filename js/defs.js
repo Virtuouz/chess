@@ -264,7 +264,7 @@ class GAME{
         }
         else if(source!=='spare' && this.check===this.MoveMaker )
         {
-            if(this.ValidMoveCheck(source,target,piece)  &&(this.LastPieceMovedLineOfSightMoves.indexOf(target)!==-1 || piece[1]==='K' || piece===PIECES.wK || piece===PIECES.bK))
+            if(this.ValidMoveCheck(source,target,piece)  &&(this.AvailableCounterMoves.indexOf(target)!==-1 || piece[1]==='K' || piece===PIECES.wK || piece===PIECES.bK))
             {
                 if(this.IsBlockingking(this.SourceIndex,this.TargetIndex)){
                     //this.swap(this.BoardSquares,this.SourceIndex,this.TargetIndex);
@@ -546,6 +546,7 @@ class GAME{
 
     SetLastPieceMoved(piece, target)
     {
+        piece=this.BoardSquares[ this.FindFileRank(target)]
         this.LastPieceMovedSource=target
         this.LastPieceMovedLineOfSightMoves=[];
         this.LastPieceMovedLineOfSight=LINEOFSIGHT.NONE
@@ -3610,6 +3611,8 @@ class GAME{
             {
                 this.check=this.MoveMaker
                 console.log("White is in check")
+                console.log(this.LastPieceMoved)
+                console.log(this.LastPieceMovedSource)
                 this.AllValidMoves=[];
                 for(let i =0;i<BoardSquares.length;i++)
                 {
@@ -6060,7 +6063,13 @@ class GAME{
             return [RandomSource, RandomTarget]
         }
         
-        else return [null,null]
+        else {
+            this.LastPieceMoved=null
+            this.LastPieceMovedSource=null
+            this.LastPieceMovedLineOfSight=LINEOFSIGHT.NONE
+            this.LastPieceMovedLineOfSightMoves=[];
+            return [null,null]
+        }
 
         
         //
