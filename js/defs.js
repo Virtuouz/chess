@@ -194,6 +194,7 @@ class GAME{
         {
             if(this.Promote===true)
             {
+                
                 if(source!=='spare' || target!==this.PawnLocation ){
                     return false;
                 }
@@ -263,7 +264,7 @@ class GAME{
         }
         else if(source!=='spare' && this.check===this.MoveMaker )
         {
-            if(this.ValidMoveCheck(source,target,piece)  &&(this.LastPieceMovedLineOfSightMoves.indexOf(target)!==-1 || piece[1]==='K' || piece===PIECES.wK || piece===PIECES.bK))
+            if(this.ValidMoveCheck(source,target,piece)  &&(this.AvailableCounterMoves.indexOf(target)!==-1 || piece[1]==='K' || piece===PIECES.wK || piece===PIECES.bK))
             {
                 if(this.IsBlockingking(this.SourceIndex,this.TargetIndex)){
                     //this.swap(this.BoardSquares,this.SourceIndex,this.TargetIndex);
@@ -316,7 +317,7 @@ class GAME{
                 if(this.enpassantMoveCounter===0){
                 this.RemoveEnpassant()
                 }
-                else this.enpassantMoveCounter+=-1;
+                else {this.enpassantMoveCounter+=-1};
                 this.RemoveCastleAbility(source,piece);
                 this.Promotion(this.TargetIndex,target,piece)
                 this.NextTurn();
@@ -363,7 +364,7 @@ class GAME{
 
     Promotion(TIndex,target,piece){
         //last piece moved is promoted piece
-        if(piece[1]==='P')
+        if(piece[1]==='P' || piece===PIECES.wP || piece==PIECES.bP)
         {
             switch(this.MoveMaker){
                 case COLORS.WHITE: 
@@ -545,6 +546,7 @@ class GAME{
 
     SetLastPieceMoved(piece, target)
     {
+        piece=this.BoardSquares[ this.FindFileRank(target)]
         this.LastPieceMovedSource=target
         this.LastPieceMovedLineOfSightMoves=[];
         this.LastPieceMovedLineOfSight=LINEOFSIGHT.NONE
@@ -3607,6 +3609,10 @@ class GAME{
             //if yes activate check to only king to move and check to see if king is in checkmate
             if(this.AllValidMoves.indexOf(this.BoardRF [this.BoardSquares.indexOf(PIECES.wK)])!==-1)
             {
+                this.check=this.MoveMaker
+                console.log("White is in check")
+                console.log(this.LastPieceMoved)
+                console.log(this.LastPieceMovedSource)
                 this.AllValidMoves=[];
                 for(let i =0;i<BoardSquares.length;i++)
                 {
@@ -3669,16 +3675,15 @@ class GAME{
                        
                     }
                 } 
-                if(this.CKSValidMove.length!==0 || this.AvailableCounterMoves.length!==0)
+                console.log(this.CKSValidMove)
+                console.log(this.AvailableCounterMoves)
+                if(this.CKSValidMove.length===0 && this.AvailableCounterMoves.length===0)
                 {
-                    this.check=this.MoveMaker
+                    
                     //AvaileableTargetList
-                    console.log(this.LastPieceMovedLineOfSightMoves)
-                    console.log("line of sight is "+this.LastPieceMovedLineOfSight)
-                    console.log(this.LastPieceMovedSource)
-                }
-                else
-                {
+                    //console.log(this.LastPieceMovedLineOfSightMoves)
+                    //console.log("line of sight is "+this.LastPieceMovedLineOfSight)
+                    //console.log(this.LastPieceMovedSource)
                     this.checkmate=this.MoveMaker
                 }
                 
@@ -3695,6 +3700,8 @@ class GAME{
             //if yes activate check to only king to move and check to see if king is in checkmate
             if(this.AllValidMoves.indexOf(this.BoardRF [this.BoardSquares.indexOf(PIECES.bK)])!==-1)
             {
+                this.check=this.MoveMaker
+                console.log("Black is in check")
                 this.AllValidMoves=[];
                 for(let i =0;i<BoardSquares.length;i++)
                 {
@@ -3751,17 +3758,14 @@ class GAME{
                         
                     }
                 }
-                if(this.CKSValidMove.length!==0 || this.AvailableCounterMoves.length!==0)
+                if(this.CKSValidMove.length===0 && this.AvailableCounterMoves.length===0)
                 {
-                    this.check=this.MoveMaker
-                    console.log("Black is in check")
+                    
                     //AvaileableTargetList
-                    console.log(this.LastPieceMovedLineOfSightMoves)
-                }
-                else
-                {
+                    //console.log(this.LastPieceMovedLineOfSightMoves)
                     this.checkmate=this.MoveMaker
                 }
+                
                 
             }
             console.log("Checking black king")
@@ -6041,7 +6045,7 @@ class GAME{
             Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] == null) && delete ThisDepthsMoves[key])
             console.log(ThisDepthsMoves)
             CheckMateTimeOut+=1
-            this.CheckCheckMate()
+            //this.CheckCheckMate()
             if (CheckMateTimeOut>=100)
             {this.checkmate=this.MoveMaker
                 break;
@@ -6053,10 +6057,19 @@ class GAME{
         console.log("random target "+ RandomTarget)
         console.log(ThisDepthsMoves[keys[randomkey]])
         console.log("seeed"+seed)
-        game.SetLastPieceMoved(Piece,RandomTarget)
-        if (SuccessfulMove===true)
+        
+        if (SuccessfulMove===true){
+            this.SetLastPieceMoved(Piece,RandomTarget)
             return [RandomSource, RandomTarget]
-        else return [null,null]
+        }
+        
+        else {
+            this.LastPieceMoved=null
+            this.LastPieceMovedSource=null
+            this.LastPieceMovedLineOfSight=LINEOFSIGHT.NONE
+            this.LastPieceMovedLineOfSightMoves=[];
+            return [null,null]
+        }
 
         
         //
