@@ -12,7 +12,7 @@ This project is to help me learn many things such as javascript (what the chess 
 
 - Create an AI to play against(v1.5.0)
 
-  - Random moves
+  - ~~Random moves~~
   - Basic preference to taking over pieces when possible (If option to take a piece exists, do it)
   - Over take pieces depending on value
 
