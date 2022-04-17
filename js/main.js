@@ -124,6 +124,7 @@ $(function(){
         }
     }
     
+  
     
 
     function onSnapEnd(source,target,piece){

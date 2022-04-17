@@ -46,6 +46,7 @@ class GAME{
         this.LastPieceMovedLineOfSightMoves=[];
         this.BoardSquaresCopy=BoardSquares;
         this.PieceOverTaken=PIECES.EMPTY
+        this.ISBKCCMReturnedValue=false;
         this.CCLeftbRook=true;//can castle, left black rook
         this.CCRightbRook=true;// can castle, right black rook
         this.CCLeftwRook=true;//can castle, left white rook
@@ -85,7 +86,7 @@ class GAME{
     }
     IBKSwap(SIndex,TIndex)
     {
-        if (this.BoardSquaresCopy[TIndex]!==PIECES.EMPTY)
+        if (this.BoardSquaresCopy[TIndex]!==PIECES.EMPTY && typeof(this.BoardSquaresCopy[TIndex]) != "undefined" )
         {
             this.PieceOverTaken=this.BoardSquaresCopy[TIndex]
             this.BoardSquaresCopy[TIndex]=PIECES.EMPTY
@@ -164,7 +165,7 @@ class GAME{
     
             }
         }
-        if(this.PieceOverTaken!==PIECES.EMPTY)
+        if(this.PieceOverTaken!==PIECES.EMPTY && typeof(this.PieceOverTaken) != "undefined")
         {
             this.BoardSquaresCopy[TIndex]=PIECES.EMPTY
             this.PieceOverTaken=PIECES.EMPTY
@@ -262,15 +263,22 @@ class GAME{
         }
         else if(source!=='spare' && this.check===this.MoveMaker )
         {
-            if(this.ValidMoveCheck(source,target,piece) && (this.LastPieceMovedLineOfSightMoves.indexOf(target)!==-1 || piece[1]==='K' || piece===PIECES.wK || piece===PIECES.bK))
+            if(this.ValidMoveCheck(source,target,piece)  &&(this.LastPieceMovedLineOfSightMoves.indexOf(target)!==-1 || piece[1]==='K' || piece===PIECES.wK || piece===PIECES.bK))
             {
-                this.swap(this.BoardSquares,this.SourceIndex,this.TargetIndex);
-                this.RemoveCastleAbility(source,piece);
-                this.NextTurn();
-                this.check=0
-                return true;
+                if(this.IsBlockingking(this.SourceIndex,this.TargetIndex)){
+                    //this.swap(this.BoardSquares,this.SourceIndex,this.TargetIndex);
+                    this.RemoveCastleAbility(source,piece);
+                    this.NextTurn();
+                    this.check=0
+                    return true;
+                }
+                else {
+                    
+                    return false;
+                }
             }
             else{
+                
                 return false;
             }
         }
@@ -3765,24 +3773,26 @@ class GAME{
 
     IsBlockingking(SIndex,TIndex)
     {
-        if(this.check!==this.MoveMaker){
-            this.BoardSquaresCopy=this.BoardSquares
-            let s=0
-            for(let i=0;i<this.BoardSquaresCopy.length;i++)
-            {
-            s+= this.BoardSquaresCopy[i]+" ";
-            if (i%10===9 )
-            {
-                console.log(s);
-                s=""
-            }
-            }
-            this.IBKSwap(SIndex,TIndex)
-            
-            console.log("lelll")
-            return this.ISBKCheckCheckMate(SIndex,TIndex)
+        this.ISBKCCMReturnedValue=false;
+        this.PieceOverTaken=PIECES.EMPTY
+        //if(this.check!==this.MoveMaker){
+        this.BoardSquaresCopy=this.BoardSquares
+        let s=0
+        for(let i=0;i<this.BoardSquaresCopy.length;i++)
+        {
+        s+= this.BoardSquaresCopy[i]+" ";
+        if (i%10===9 )
+        {
+            console.log(s);
+            s=""
         }
-        else return false;
+        }
+        this.IBKSwap(SIndex,TIndex)
+        
+        console.log("lelll")
+        return this.ISBKCheckCheckMate(SIndex,TIndex)
+        //}
+        //else return false;
         
 
     }
@@ -3828,7 +3838,7 @@ class GAME{
             
             if (this.LastPieceMovedLineOfSight=== LINEOFSIGHT.NONE)
             {
-                
+                this.ISBKCCMReturnedValue=true;
                 return true
             }
             else
@@ -3921,6 +3931,8 @@ class GAME{
             }
             if (this.LastPieceMovedLineOfSight=== LINEOFSIGHT.NONE)
             {
+                this.ISBKCCMReturnedValue=true
+                
                 return true
             }
             else
@@ -5950,12 +5962,12 @@ class GAME{
 
     AIMakeAMove(){
         let score=this.EvaluateBoard(0);
-        return this.AIMiniMax()
+        return this.AIRandomMove()
 
 
     }
 
-    AIMiniMax(){
+    AIRandomMove(){
 
         let ThisDepthsMoves={}
         switch(this.MoveMaker){
@@ -6003,10 +6015,20 @@ class GAME{
             RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
             RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(seed * ThisDepthsMoves[keys[randomkey]].length)]
             Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
+            Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] == null) && delete ThisDepthsMoves[key])
             
             
+            if (typeof(RandomTarget) === 'undefined'){
+                var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
+                ThisDepthsMoves[keys[randomkey]].splice(Index,1);
+                if (CheckMateTimeOut>=100){
+                    this.checkmate=this.MoveMaker
+                    break;
+                }
+                CheckMateTimeOut+=1
+                continue
+            }
             
-
             if(this.Move(RandomSource,RandomTarget,Piece)===true){
                 SuccessfulMove=true;
             }
