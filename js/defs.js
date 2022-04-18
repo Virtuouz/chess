@@ -30,6 +30,7 @@ class GAME{
     constructor(){
         
         this.FENstring=[]
+        this.MoveHistory=[];
         this.BoardSquares=BoardSquares
         this.BoardRF=BoardRF
         this.MoveMaker=COLORS.WHITE;
@@ -337,7 +338,7 @@ class GAME{
         this.enpassantableFrom = [];
         this.enpassantaTile = null;
         this.ExecuteEnpassant = false;
-        this.enpassantMoveCounter=2;
+        this.enpassantMoveCounter=1;
         
     }
     
@@ -5973,6 +5974,119 @@ class GAME{
 
     }
 
+    AIBestSingleMove(){
+        let ThisDepthsMoves={}
+        switch(this.MoveMaker){
+            case COLORS.WHITE:
+                this.AllValidMoves=[];
+                for(let i =0;i<BoardSquares.length;i++){
+                    if(BoardSquares[i]>0){
+                        ThisDepthsMoves= this.AIValidMoveGeneration(ThisDepthsMoves,BoardRF[i],BoardSquares[i])
+                    }
+                }
+                
+                break;
+            case COLORS.BLACK:
+                this.AllValidMoves=[];
+                for(let i =0;i<BoardSquares.length;i++){
+                    if(BoardSquares[i]<0){
+                        ThisDepthsMoves= this.AIValidMoveGeneration(ThisDepthsMoves,BoardRF[i],BoardSquares[i])
+                    }
+                }
+                
+
+                
+                break;
+            }
+        Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] == null) && delete ThisDepthsMoves[key])
+        var SuccessfulMove=false;
+        console.log(ThisDepthsMoves)
+        var seed=Math.random()
+        
+        var keys = Object.keys(ThisDepthsMoves);
+        var randomkey=keys.length * seed << 0
+        var RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
+        var RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(seed * ThisDepthsMoves[keys[randomkey]].length)]
+        var Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
+        console.log(randomkey)
+        console.log(RandomSource)
+        console.log( RandomTarget);
+        
+        var CheckMateTimeOut=0
+        do{
+            
+            seed=Math.random()
+            keys = Object.keys(ThisDepthsMoves);
+            randomkey=keys.length * seed << 0
+            RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
+            RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(seed * ThisDepthsMoves[keys[randomkey]].length)]
+            Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
+            Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] == null) && delete ThisDepthsMoves[key])
+            
+            
+            if (typeof(RandomTarget) === 'undefined'){
+                var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
+                ThisDepthsMoves[keys[randomkey]].splice(Index,1);
+                if (CheckMateTimeOut>=200){
+                    this.checkmate=this.MoveMaker
+                    console.log(this.checkmate)
+                    let s=0
+                    for(let i=0;i<this.BoardSquaresCopy.length;i++){
+                        s+= this.BoardSquaresCopy[i]+" ";
+                        if (i%10===9 ){
+                            console.log(s);
+                            s=""
+                        }
+                    }
+                    break;
+                }
+                CheckMateTimeOut+=1
+                continue
+            }
+            
+            if(this.Move(RandomSource,RandomTarget,Piece)===true){
+                SuccessfulMove=true;
+            }
+            else{
+                var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
+                ThisDepthsMoves[keys[randomkey]].splice(Index,1);
+                
+                
+            }
+            Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] == null) && delete ThisDepthsMoves[key])
+            console.log(ThisDepthsMoves)
+            CheckMateTimeOut+=1
+            //this.CheckCheckMate()
+            if (CheckMateTimeOut>=100)
+            {this.checkmate=this.MoveMaker
+                break;
+            }
+        } while((typeof(RandomTarget) === 'undefined' || SuccessfulMove===false ) )
+
+        
+        console.log("Randome source"+RandomSource)
+        console.log("random target "+ RandomTarget)
+        console.log(ThisDepthsMoves[keys[randomkey]])
+        console.log("seeed"+seed)
+        
+        if (SuccessfulMove===true){
+            this.SetLastPieceMoved(Piece,RandomTarget)
+            return [RandomSource, RandomTarget]
+        }
+        
+        else {
+            this.LastPieceMoved=null
+            this.LastPieceMovedSource=null
+            this.LastPieceMovedLineOfSight=LINEOFSIGHT.NONE
+            this.LastPieceMovedLineOfSightMoves=[];
+            return [null,null]
+        } 
+
+
+
+
+    }
+
     AIRandomMove(){
 
         let ThisDepthsMoves={}
@@ -7100,6 +7214,131 @@ class GAME{
         return this.BoardToFEN()
     }
 
+    FENToBoard(){
+        this.FENstring=this.FENstringjoined.split("")
+        let element;
+        while(this.FENstring.length!==0){
+            element=this.FENstring.pop()
+            if(element !== "-"){
+                this.enpassantaTile=element;
+                this.enpassantaTileIndex=this.FileRank(this.enpassantaTile)
+                this.enpassantMoveCounter=1
+                this.wPenpassantable=true;
+                this.bPenpassantable=true;
+                if(this.enpassantaTileIndex>65)
+                this.PawnLocation=BoardRF[this.enpassantaTileIndex-10];
+                if(this.enpassantaTileIndex<65)
+                this.PawnLocation=BoardRF[this.enpassantaTileIndex+10];
+            }
+            this.FENstring.pop()//popping the blank space
+
+            do{
+                element=this.FENstring.pop();
+                if(element=== '-' || element===" ")
+                {
+                    break;
+                }
+                switch(element){
+                    case 'k': 
+                        this.CCbKing=true;
+                        this.CCRightbRook=true;
+                        break;
+                    case 'q':
+                        this.CCbKing=true;
+                        this.CCLeftbRook=true;
+                        break;
+                    case 'K':
+                        this.CCwKing=true;
+                        this.CCRightwRook=true;
+                        break;
+                    case 'Q':
+                        this.CCwKing=true;
+                        this.CCLeftwRook=true;
+                    default:
+                        break;
+                }
+
+            }while(element!== '-' || element!==" ")
+            if(element==='-')
+            {
+                this.FENstring.pop();
+            }
+            element=this.FENstring.pop()
+            if(element===COLORS.WHITE){
+                this.MoveMaker=COLORS.WHITE
+            }
+            else{
+                this.MoveMaker=COLORS.BLACK
+            }
+            this.FENstring.pop()
+            // popping the black space
+            let i=98
+            do{
+                element=this.FENstring.pop()
+                switch(element){
+                    case 'P':
+                        this.BoardSquares[i]=PIECES.wP
+                        i--;
+                        break;
+                    case 'p':
+                        this.BoardSquares[i]=PIECES.bP
+                        i--;
+                        break;
+                    case 'R':
+                        this.BoardSquares[i]=PIECES.wR
+                        i--;
+                        break;
+                    case 'r':
+                        this.BoardSquares[i]=PIECES.bR
+                        i--;
+                        break;
+                    case 'B':
+                        this.BoardSquares[i]=PIECES.wB
+                        i--;
+                        break;
+                    case 'b':
+                        this.BoardSquares[i]=PIECES.bB
+                        i--;
+                        break;
+                    case 'N':
+                        this.BoardSquares[i]=PIECES.wN
+                        i--;
+                        break;
+                    case 'n':
+                        this.BoardSquares[i]=PIECES.bN
+                        i--;
+                        break;
+                    case 'Q':
+                        this.BoardSquares[i]=PIECES.wQ
+                        i--;
+                        break;
+                    case 'q':
+                        this.BoardSquares[i]=PIECES.bQ
+                        i--;
+                        break;
+                    case 'K':
+                        this.BoardSquares[i]=PIECES.wK
+                        i--;
+                        break;
+                    case 'k':
+                        this.BoardSquares[i]=PIECES.bK
+                        i--;
+                        break;
+                    case '/':
+                        i-=2;
+                        break;
+                    //If entering the default it is because of empty spaces.
+                    default :
+                        for(let j=0;j<element;j++){
+                            this.BoardSquares[i]=PIECES.EMPTY;
+                            i--;
+                        }
+                        break;
+                }
+            }while(this.FENstring.length!==0)
+        }
+    }
+
     BoardToFEN(){
         this.FENstring=[]
         let EmptySpaceCounter=0;
@@ -7203,9 +7442,47 @@ class GAME{
                 
             }
         }
-        this.FENstring=this.FENstring.join("")
-        console.log(this.FENstring)
-        return this.FENstring
+
+        this.FENstring.push(" ")
+        
+        this.FENstring.push(this.MoveMaker)
+        this.FENstring.push(" ")
+        if(this.CCwKing===true || this.CCbKing===true){
+            if(this.CCwKing===true){
+                if(this.CCLeftwRook===true){
+                    this.FENstring.push("Q")
+                }
+                if(this.CCRightwRook===true){
+                    this.FENstring.push("K")
+                }
+            }
+
+            if(this.CCbKing===true){
+                if(this.CCLeftbRook===true){
+                    this.FENstring.push("q")
+                }
+                if(this.CCRightbRook===true){
+                    this.FENstring.push("k")
+                }
+            }
+        }
+        else{
+            this.FENstring.push("-")
+        }
+        this.FENstring.push(" ")
+        if(this.enpassantaTile!==null){
+            this.FENstring.push(this.enpassantaTile)
+        }
+        else{
+            this.FENstring.push("-")
+        }
+
+        
+        let test=['h']
+        console.log(test.pop())
+        this.FENstringjoined=this.FENstring.join("")
+        console.log(this.FENstringjoined)
+        return this.FENstringjoined
     }
     
     

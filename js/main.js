@@ -83,7 +83,8 @@ $(function(){
             return "snapback"
         }
         else{
-
+            
+            game.BoardToFEN()
             if(game.Castled===true){
                 switch(target){
                     case 'c1':
