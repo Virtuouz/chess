@@ -29,7 +29,7 @@ class PIESA{
 class GAME{
     constructor(){
         
-        this.FENstring=[]
+        
         this.MoveHistory=[];
         this.BoardSquares=BoardSquares
         this.BoardRF=BoardRF
@@ -184,8 +184,8 @@ class GAME{
         
     }
     UndoMove(){
-        this.FENstringjoined= this.MoveHistory.pop()
-        this.FENToBoard()
+         
+        this.FENToBoard(this.MoveHistory.pop())
         let s=0
         for(let i=0;i<this.BoardSquaresCopy.length;i++)
         {
@@ -6079,8 +6079,7 @@ class GAME{
                         this.SetLastPieceMoved(PIECES.bQ,this.PawnLocation)
                         this. NextTurn()
                     }
-                    if(this.MoveMaker=COLORS.BLACK){
-                        
+                    if(this.MoveMaker=COLORS.WHITE){
                         this.BoardSquares[this.PawnLocationIndex]=PIECES.wQ
                         this.SetLastPieceMoved(PIECES.wQ,this.PawnLocation)
                         this. NextTurn()
@@ -6112,7 +6111,8 @@ class GAME{
                         }
                         break;
                 }
-
+                var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
+                ThisDepthsMoves[keys[randomkey]].splice(Index,1);
                 this.UndoMove()
             }
             else{
@@ -6128,7 +6128,7 @@ class GAME{
             //this.CheckCheckMate()
             if (CheckMateTimeOut>=100)
             {//this.checkmate=this.MoveMaker
-                break;
+                //break;
             }
         } while(( keys.length!==1 ) )
 
@@ -6139,7 +6139,9 @@ class GAME{
         console.log("seeed"+seed)
         
         if (SuccessfulMove===true){
-            this.FENToBoard()
+            this.SetLastPieceMoved(BestMovePiece,BestMoveTarget)
+            this.FENToBoard(BestMoveFENString)
+            return BestMoveFENString
             /*this.Move(BestMoveSource,BestMoveTarget,Piece)
             this.SetLastPieceMoved(Piece,this.be)
             return [BestMoveSource, BestMoveTarget]*/
@@ -7286,18 +7288,28 @@ class GAME{
         return this.BoardToFEN()
     }
 
-    FENToBoard(){
-        if(this.FENstring[this.FENstring.length-1]!='-')
+    FENToBoard(FENstring){
+        
+        FENstring= FENstring.split("")
+        console.log(FENstring)
+        if(FENstring[FENstring.length-1]!='-')
         {
-            this.FENstring.slice(this.FENstring.length-2,this.FENstring.length-1).join("")
-            console.log(this.FENstring)
+            let file=FENstring.pop()
+            let rank=FENstring.pop()
+            let temp=[];
+            temp.push(rank)
+            temp.push(file)
+            temp=temp.join("")
+            FENstring.push(temp)
+            //FENstring.slice(FENstring.length-2,FENstring.length-1).join("")
+            console.log(FENstring)
         }
         else{
-        this.FENstring=this.FENstringjoined.split("")
+        FENstring=FENstringjoined.split("")
         }
         let element;
-        while(this.FENstring.length!==0){
-            element=this.FENstring.pop()
+        while(FENstring.length!==0){
+            element=FENstring.pop()
             if(element !== "-"){
                 this.enpassantaTile=element;
                 this.enpassantaTileIndex=this.FindFileRank(this.enpassantaTile)
@@ -7309,10 +7321,10 @@ class GAME{
                 if(this.enpassantaTileIndex<65)
                 this.PawnLocation=BoardRF[this.enpassantaTileIndex+10];
             }
-            this.FENstring.pop()//popping the blank space
+            FENstring.pop()//popping the blank space
 
             do{
-                element=this.FENstring.pop();
+                element=FENstring.pop();
                 if(element=== '-' || element===" ")
                 {
                     break;
@@ -7340,20 +7352,20 @@ class GAME{
             }while(element!== '-' || element!==" ")
             if(element==='-')
             {
-                this.FENstring.pop();
+                FENstring.pop();
             }
-            element=this.FENstring.pop()
+            element=FENstring.pop()
             if(element===COLORS.WHITE){
                 this.MoveMaker=COLORS.WHITE
             }
             else{
                 this.MoveMaker=COLORS.BLACK
             }
-            this.FENstring.pop()
+            FENstring.pop()
             // popping the black space
             let i=98
             do{
-                element=this.FENstring.pop()
+                element=FENstring.pop()
                 switch(element){
                     case 'P':
                         this.BoardSquares[i]=PIECES.wP
@@ -7414,106 +7426,107 @@ class GAME{
                         }
                         break;
                 }
-            }while(this.FENstring.length!==0)
+            }while(FENstring.length!==0)
         }
     }
 
     BoardToFEN(){
-        this.FENstring=[]
+        let FENstring=[]
+        let FENstringjoined;
         let EmptySpaceCounter=0;
         for(let i=0;i<this.BoardSquares.length;i++){
             if(i%10===0 && i>=21 && i<=98){
                 console.log(i)
                 if(EmptySpaceCounter!==0){
-                    this.FENstring.push(`${EmptySpaceCounter}`)
+                    FENstring.push(`${EmptySpaceCounter}`)
                     EmptySpaceCounter=0;
                 }
-                this.FENstring.push('/')
+                FENstring.push('/')
             }
             switch(this.BoardSquares[i]){
                 case PIECES.wP:
                     if(EmptySpaceCounter!==0){
-                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        FENstring.push(`${EmptySpaceCounter}`)
                         EmptySpaceCounter=0;
                     }
-                    this.FENstring.push('P')
+                    FENstring.push('P')
                     break;
                 case PIECES.bP:
                     if(EmptySpaceCounter!==0){
-                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        FENstring.push(`${EmptySpaceCounter}`)
                         EmptySpaceCounter=0;
                     }
-                    this.FENstring.push('p')
+                    FENstring.push('p')
                     break;
                 case PIECES.wR:
                     if(EmptySpaceCounter!==0){
-                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        FENstring.push(`${EmptySpaceCounter}`)
                         EmptySpaceCounter=0;
                     }
-                    this.FENstring.push('R')
+                    FENstring.push('R')
                     break;
                 case PIECES.bR:
                     if(EmptySpaceCounter!==0){
-                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        FENstring.push(`${EmptySpaceCounter}`)
                         EmptySpaceCounter=0;
                     }
-                    this.FENstring.push('r')
+                    FENstring.push('r')
                     break;
                 case PIECES.wB:
                     if(EmptySpaceCounter!==0){
-                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        FENstring.push(`${EmptySpaceCounter}`)
                         EmptySpaceCounter=0;
                     }
-                    this.FENstring.push('B')
+                    FENstring.push('B')
                     break;
                 case PIECES.bB:
                     if(EmptySpaceCounter!==0){
-                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        FENstring.push(`${EmptySpaceCounter}`)
                         EmptySpaceCounter=0;
                     }
-                    this.FENstring.push('b')
+                    FENstring.push('b')
                     break;
                 case PIECES.wN:
                     if(EmptySpaceCounter!==0){
-                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        FENstring.push(`${EmptySpaceCounter}`)
                         EmptySpaceCounter=0;
                     }
-                    this.FENstring.push('N')
+                    FENstring.push('N')
                     break;
                 case PIECES.bN:
                     if(EmptySpaceCounter!==0){
-                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        FENstring.push(`${EmptySpaceCounter}`)
                         EmptySpaceCounter=0;
                     }
-                    this.FENstring.push('n')
+                    FENstring.push('n')
                     break;
                 case PIECES.wQ:
                     if(EmptySpaceCounter!==0){
-                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        FENstring.push(`${EmptySpaceCounter}`)
                         EmptySpaceCounter=0;
                     }
-                    this.FENstring.push('Q')
+                    FENstring.push('Q')
                     break;
                 case PIECES.bQ:
                     if(EmptySpaceCounter!==0){
-                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        FENstring.push(`${EmptySpaceCounter}`)
                         EmptySpaceCounter=0;
                     }
-                    this.FENstring.push('q')
+                    FENstring.push('q')
                     break;
                 case PIECES.wK:
                     if(EmptySpaceCounter!==0){
-                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        FENstring.push(`${EmptySpaceCounter}`)
                         EmptySpaceCounter=0;
                     }
-                    this.FENstring.push('K')
+                    FENstring.push('K')
                     break;
                 case PIECES.bK:
                     if(EmptySpaceCounter!==0){
-                        this.FENstring.push(`${EmptySpaceCounter}`)
+                        FENstring.push(`${EmptySpaceCounter}`)
                         EmptySpaceCounter=0;
                     }
-                    this.FENstring.push('k')
+                    FENstring.push('k')
                     break;
                 case PIECES.EMPTY:
                     EmptySpaceCounter++;
@@ -7522,46 +7535,46 @@ class GAME{
             }
         }
 
-        this.FENstring.push(" ")
+        FENstring.push(" ")
         
-        this.FENstring.push(this.MoveMaker)
-        this.FENstring.push(" ")
+        FENstring.push(this.MoveMaker)
+        FENstring.push(" ")
         if(this.CCwKing===true || this.CCbKing===true){
             if(this.CCwKing===true){
                 if(this.CCLeftwRook===true){
-                    this.FENstring.push("Q")
+                    FENstring.push("Q")
                 }
                 if(this.CCRightwRook===true){
-                    this.FENstring.push("K")
+                    FENstring.push("K")
                 }
             }
 
             if(this.CCbKing===true){
                 if(this.CCLeftbRook===true){
-                    this.FENstring.push("q")
+                    FENstring.push("q")
                 }
                 if(this.CCRightbRook===true){
-                    this.FENstring.push("k")
+                    FENstring.push("k")
                 }
             }
         }
         else{
-            this.FENstring.push("-")
+            FENstring.push("-")
         }
-        this.FENstring.push(" ")
+        FENstring.push(" ")
         if(this.enpassantaTile!==null){
-            this.FENstring.push(this.enpassantaTile)
+            FENstring.push(this.enpassantaTile)
         }
         else{
-            this.FENstring.push("-")
+            FENstring.push("-")
         }
 
         
         let test=['h']
         console.log(test.pop())
-        this.FENstringjoined=this.FENstring.join("")
-        console.log(this.FENstringjoined)
-        return this.FENstringjoined
+        FENstringjoined=FENstring.join("")
+        console.log(FENstringjoined)
+        return FENstringjoined
     }
     
     

@@ -169,7 +169,7 @@ $(function(){
 
                 board1.position(FENstring)
             }
-            
+            game.NextTurn()
             /*var [AISource,AITarget] =game.AIMakeAMove()
             if(!AISource,!AITarget){
                 return;
