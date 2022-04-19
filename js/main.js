@@ -147,7 +147,30 @@ $(function(){
         
         
         if(game.MoveMaker==='b' && game.checkmate===0){
-            var [AISource,AITarget] =game.AIMakeAMove()
+            let FENstring=game.AIBestSingleMove()
+            if(game.Promote===true){
+                game.PawnLocationIndex= game.FindFileRank(game.PawnLocation)
+                game.BoardSquares[game.PawnLocationIndex]=PIECES.bQ
+                game.SetLastPieceMoved(PIECES.bQ,game.PawnLocation)
+                game.Promote=false;
+                board1.position(game.GetFEN())
+                game.NextTurn()
+                
+            }
+            else if(game.enpassanted===true){
+                game.enpassanted=false;
+                board1.position(FENstring)
+            }
+            else if(game.Castled===true){
+                game.Castled=false;
+                board1.position(FENstring)
+            }
+            else{
+
+                board1.position(FENstring)
+            }
+            
+            /*var [AISource,AITarget] =game.AIMakeAMove()
             if(!AISource,!AITarget){
                 return;
             }
@@ -195,7 +218,7 @@ $(function(){
                 game.Promote=false;
                 board1.position(game.GetFEN())
                 game.NextTurn()
-            }
+            }*/
             console.log(lel)
             console.log(game.EvaluateBoard(lel))
             game.CheckCheckMate()

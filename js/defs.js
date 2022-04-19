@@ -5983,7 +5983,7 @@ class GAME{
 
     AIMakeAMove(){
         let score=this.EvaluateBoard(0);
-        return this.AIBestSingleMove()
+        return this.AIRandomMove()
 
 
     }
@@ -5994,6 +5994,7 @@ class GAME{
         let NewScore;
         let ThisDepthsMoves={}
         let BestMoveFENString;
+        let BestMovePiece;
         let BestMoveSource=null;
         let BestMoveTarget=null;
         switch(this.MoveMaker){
@@ -6070,24 +6071,44 @@ class GAME{
             this.MoveHistory.push(this.GetFEN())
             if(this.Move(RandomSource,RandomTarget,Piece)===true){
                 SuccessfulMove=true;
+                if(game.Promote===true){
+                    this.PawnLocationIndex= this.FindFileRank(this.PawnLocation)
+                    if(this.MoveMaker=COLORS.BLACK){
+                        
+                        this.BoardSquares[this.PawnLocationIndex]=PIECES.bQ
+                        this.SetLastPieceMoved(PIECES.bQ,this.PawnLocation)
+                        this. NextTurn()
+                    }
+                    if(this.MoveMaker=COLORS.BLACK){
+                        
+                        this.BoardSquares[this.PawnLocationIndex]=PIECES.wQ
+                        this.SetLastPieceMoved(PIECES.wQ,this.PawnLocation)
+                        this. NextTurn()
+                    }
+                    this.Promote=false;
+                }
                 this. NextTurn()
                 switch(this.MoveMaker){
                     case COLORS.WHITE:
                         NewScore=this.EvaluateBoard(0)
                         if(NewScore>PrevScore){
-                            
+                            BestMoveFENString=this.GetFEN()
                             PrevScore=NewScore
                             BestMoveSource=RandomSource
                             BestMoveTarget=RandomTarget
+                            BestMovePiece=Piece
+
                         }
                         break;
                     case COLORS.BLACK:
                         NewScore=this.EvaluateBoard(0)
                         if(NewScore<PrevScore){
-                            
+
+                           BestMoveFENString=this.GetFEN()
                             PrevScore=NewScore
                             BestMoveSource=RandomSource
                             BestMoveTarget=RandomTarget
+                            BestMovePiece=Piece
                         }
                         break;
                 }
@@ -6118,9 +6139,10 @@ class GAME{
         console.log("seeed"+seed)
         
         if (SuccessfulMove===true){
-            this.Move(BestMoveSource,BestMoveTarget,Piece)
+            this.FENToBoard()
+            /*this.Move(BestMoveSource,BestMoveTarget,Piece)
             this.SetLastPieceMoved(Piece,this.be)
-            return [BestMoveSource, BestMoveTarget]
+            return [BestMoveSource, BestMoveTarget]*/
         }
         
         else {
@@ -6232,9 +6254,10 @@ class GAME{
         console.log(ThisDepthsMoves[keys[randomkey]])
         console.log("seeed"+seed)
         
+        
         if (SuccessfulMove===true){
             this.SetLastPieceMoved(Piece,RandomTarget)
-            return [RandomSource, RandomTarget]
+            return this.GetFEN()
         }
         
         else {
