@@ -5990,8 +5990,10 @@ class GAME{
 
     AIBestSingleMove(){
         let StartingScore=this.EvaluateBoard(0)
+        let PrevScore=StartingScore;
         let NewScore;
         let ThisDepthsMoves={}
+        let BestMoveFENString;
         let BestMoveSource=null;
         let BestMoveTarget=null;
         switch(this.MoveMaker){
@@ -6025,6 +6027,8 @@ class GAME{
         var randomkey=keys.length * seed << 0
         var RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
         var RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(seed * ThisDepthsMoves[keys[randomkey]].length)]
+        BestMoveSource=RandomSource;
+        BestMoveTarget=RandomTarget;
         var Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
         console.log(randomkey)
         console.log(RandomSource)
@@ -6046,7 +6050,7 @@ class GAME{
             if (typeof(RandomTarget) === 'undefined'){
                 var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
                 ThisDepthsMoves[keys[randomkey]].splice(Index,1);
-                if (CheckMateTimeOut>=200){
+                if (CheckMateTimeOut>=100){
                     break;
                     this.checkmate=this.MoveMaker
                     console.log(this.checkmate)
@@ -6066,18 +6070,22 @@ class GAME{
             this.MoveHistory.push(this.GetFEN())
             if(this.Move(RandomSource,RandomTarget,Piece)===true){
                 SuccessfulMove=true;
-                this.NextTurn()
+                this. NextTurn()
                 switch(this.MoveMaker){
                     case COLORS.WHITE:
-                        NewScore=this.EvaluateBoard(StartingScore)
-                        if(NewScore>StartingScore){
+                        NewScore=this.EvaluateBoard(0)
+                        if(NewScore>PrevScore){
+                            
+                            PrevScore=NewScore
                             BestMoveSource=RandomSource
                             BestMoveTarget=RandomTarget
                         }
                         break;
                     case COLORS.BLACK:
-                        NewScore=this.EvaluateBoard(StartingScore)
-                        if(NewScore<StartingScore){
+                        NewScore=this.EvaluateBoard(0)
+                        if(NewScore<PrevScore){
+                            
+                            PrevScore=NewScore
                             BestMoveSource=RandomSource
                             BestMoveTarget=RandomTarget
                         }
