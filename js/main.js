@@ -83,7 +83,8 @@ $(function(){
             return "snapback"
         }
         else{
-
+            
+            //game.BoardToFEN()
             if(game.Castled===true){
                 switch(target){
                     case 'c1':
@@ -125,7 +126,48 @@ $(function(){
         }
     }
     
+/*   function onMoveEnd(source,target,piece){
+        var lel=0
+        
+        setTimeout(function(){
+        if(game.MoveMaker==='b' && game.checkmate===0){
+            let FENstring=game.AIBestSingleMove()
+            
+            console.log(FENstring)
+            board1.position(FENstring)
+            game.NextTurn()
+            console.log(lel)
+            console.log(game.EvaluateBoard(lel))
+            game.CheckCheckMate()
 
+
+        }}, 250)
+
+        if(game.MoveMaker==='w' && game.checkmate===0){
+            let FENstring=game.AIBestSingleMove()
+            console.log(FENstring)
+            board1.position(FENstring)
+            game.NextTurn()
+            console.log(lel)
+            console.log(game.EvaluateBoard(lel))
+            game.CheckCheckMate()
+
+
+        }
+        
+
+        for(let i=0;i<BoardSquares.length;i++)
+            {
+                s+= BoardSquares[i]+" ";
+                if (i%10===9 )
+                {
+                    console.log(s);
+                    s=""
+                }
+            }
+        console.log(game.checkmate)
+        console.log(game.check)
+    }*/
 
         
     
@@ -146,47 +188,7 @@ $(function(){
         
         
         if(game.MoveMaker==='b' && game.checkmate===0){
-            var [AISource,AITarget] =game.AIMakeAMove()
-            if(!AISource,!AITarget){
-                return;
-            }
-            console.log(AISource,AITarget)
-            board1.move(`${AISource}-${AITarget}`)
-            if(game.Castled===true){
-                switch(target){
-                    case 'c1':
-                        board1.move('a1-d1')
-                        game.SetLastPieceMoved('wR','d1')
-                        break;
-                    case 'g1':
-                        board1.move('h1-f1')
-                        game.SetLastPieceMoved('wR','f1')
-                        break;
-                    case 'c8':
-                        board1.move('a8-d8')
-                        game.SetLastPieceMoved('bR','d8')
-                        break;
-                    case 'g8':
-                        board1.move('h8-f8')
-                        game.SetLastPieceMoved('bR','f8')
-                        break;
-                }
-                game.Castled=false;
-            }
-            if(game.enpassanted===true){
-                console.log("after enpassant")
-                console.log(`${AITarget}-${game.PawnLocation}`)
-                console.log(AITarget)
-                console.log(game.PawnLocation)
-                console.log(`${AITarget}-${game.PawnLocation}`)
-                board1.move(`${AITarget}-${game.PawnLocation}`)
-                board1.move(`${game.PawnLocation}-${AITarget}`)
-                game.enpassanted=false;
-            }
-            
-            else{
-                game.SetLastPieceMoved(AISource,AITarget);
-            }
+            let FENstring=game.AIBestSingleMove()
             if(game.Promote===true){
                 game.PawnLocationIndex= game.FindFileRank(game.PawnLocation)
                 game.BoardSquares[game.PawnLocationIndex]=PIECES.bQ
@@ -194,7 +196,21 @@ $(function(){
                 game.Promote=false;
                 board1.position(game.GetFEN())
                 game.NextTurn()
+                
             }
+            else if(game.enpassanted===true){
+                game.enpassanted=false;
+                board1.position(FENstring)
+            }
+            else if(game.Castled===true){
+                game.Castled=false;
+                board1.position(FENstring)
+            }
+            else{
+
+                board1.position(FENstring)
+            }
+            game.NextTurn()
             console.log(lel)
             console.log(game.EvaluateBoard(lel))
             game.CheckCheckMate()
@@ -212,7 +228,6 @@ $(function(){
                     s=""
                 }
             }
-        game.BoardToFEN()
         console.log("lel")
 
         
@@ -248,6 +263,7 @@ $(function(){
         position: 'start',
         onDragStart: onDragStart,
         onDrop: onDrop,
+        //onMoveEnd:onMoveEnd,
         onSnapEnd:onSnapEnd,
         sparePieces: true
         //onSnapbackEnd: onSnapbackEnd
