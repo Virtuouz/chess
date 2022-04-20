@@ -188,7 +188,8 @@ $(function(){
         
         
         if(game.MoveMaker==='b' && game.checkmate===0){
-            let FENstring=game.AIBestSingleMove()
+            let FENstring=game.AIMakeAMove()
+            game.NextTurn()
             if(game.Promote===true){
                 game.PawnLocationIndex= game.FindFileRank(game.PawnLocation)
                 game.BoardSquares[game.PawnLocationIndex]=PIECES.bQ
