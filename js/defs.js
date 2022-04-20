@@ -192,7 +192,7 @@ class GAME{
         s+= this.BoardSquaresCopy[i]+" ";
         if (i%10===9 )
         {
-            console.log(s);
+            //console.log(s);
             s=""
         }
         }
@@ -204,7 +204,7 @@ class GAME{
         this.SourceIndex=this.FindFileRank(this.FileRank);
         this.FileRank=target;
         this.TargetIndex=this.FindFileRank(this.FileRank);
-        console.log(this.BoardSquares[this.SourceIndex]);
+        //console.log(this.BoardSquares[this.SourceIndex]);
         if(this.Promote===true)
         {
             if(this.Promote===true)
@@ -671,8 +671,8 @@ class GAME{
             }
 
             
-            console.log("valid move "+this.ValidMove)
-            console.log("target move "+target)
+            //console.log("valid move "+this.ValidMove)
+            //console.log("target move "+target)
             return this.CheckValidMove(target)
             break;
             case PIECES.bP:
@@ -694,7 +694,7 @@ class GAME{
                 for(let i=0;i<8;i++)
                 {
                     
-                    //console.log("hola"+FILES[i]+RANKS[6])
+                    ////console.log("hola"+FILES[i]+RANKS[6])
                     if(source===FILES[i]+RANKS[6] && BoardSquares[this.SourceIndex+20]===PIECES.EMPTY && BoardSquares[this.SourceIndex+10]===PIECES.EMPTY)
                     {
                         this.RemoveEnpassant()
@@ -723,8 +723,8 @@ class GAME{
                     }
                 }
 
-                console.log("valid move "+this.ValidMove)
-                console.log("target move "+target)
+                //console.log("valid move "+this.ValidMove)
+                //console.log("target move "+target)
                 return this.CheckValidMove(target)
                 break;  
             case PIECES.wR:
@@ -1669,7 +1669,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-9)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
                         
                     }
@@ -1687,7 +1687,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-11)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPLEFT  
                         
                     }
@@ -1701,8 +1701,8 @@ class GAME{
                     //this.AllValidMoves.push (BoardRF[this.VMGSourceIndex-20]);
                 }
             }
-            //console.log("White Pawn moves "+this.AllValidMoves)
-            //console.log("target move "+target)
+            ////console.log("White Pawn moves "+this.AllValidMoves)
+            ////console.log("target move "+target)
             
             break;
             case PIECES.bP:
@@ -1721,7 +1721,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+9)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMLEFT
                         
                     }
@@ -1736,7 +1736,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+11)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMRIGHT
                         
                     }
@@ -1744,14 +1744,14 @@ class GAME{
                 
                 for(let i=0;i<8;i++)
                 {
-                    //console.log("hola"+FILES[i]+RANKS[6])
+                    ////console.log("hola"+FILES[i]+RANKS[6])
                     if(source===FILES[i]+RANKS[6])
                     {
                         //this.AllValidMoves.push (BoardRF[this.VMGSourceIndex+20]);
                     }
                 }
                 
-                //console.log("target move "+target)
+                ////console.log("target move "+target)
                 
                 break;  
             case PIECES.wR:
@@ -1778,7 +1778,7 @@ class GAME{
                             
                             if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-(i*10))
                             {
-                                console.log("cotinuing becauae found king")
+                                //console.log("cotinuing becauae found king")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.UP
                                 continue;
                             }
@@ -1885,7 +1885,7 @@ class GAME{
                             
                             if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-i)
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.LEFT
                                 continue;
                             }
@@ -1924,7 +1924,7 @@ class GAME{
                             
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*10))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.UP
                                 continue;
                             }
@@ -1959,7 +1959,7 @@ class GAME{
                             
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*10))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.DOWN
                                 continue;
                             }
@@ -1996,7 +1996,7 @@ class GAME{
                             
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+i)
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.RIGHT
                                 continue;
                             }
@@ -2032,7 +2032,7 @@ class GAME{
                             
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-i)
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.LEFT
                                 continue;
                             }
@@ -2214,7 +2214,7 @@ class GAME{
                             
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*9))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
                                 continue;
                             }
@@ -2250,7 +2250,7 @@ class GAME{
                             
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*11))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPLEFT
                                 continue;
                             }
@@ -2286,7 +2286,7 @@ class GAME{
                             
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*9))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMLEFT
                                 continue;
                             }
@@ -2315,19 +2315,19 @@ class GAME{
                         
                         if(BoardSquares[this.VMGSourceIndex+(i*11)]>=0)
                         {
-                            console.log(BoardSquares[this.VMGSourceIndex+(i*11)])
+                            //console.log(BoardSquares[this.VMGSourceIndex+(i*11)])
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                             
                             if(this.LastPieceMovedSource === BoardRF[this.VMGSourceIndex] && this.LastPieceMovedLineOfSight===LINEOFSIGHT.BOTTOMRIGHT)
                             {
-                                console.log("PUSHING THE SHIT")
+                                //console.log("PUSHING THE SHIT")
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
-                                console.log(this.LastPieceMovedLineOfSightMoves)
+                                //console.log(this.LastPieceMovedLineOfSightMoves)
                             }
                             
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*11))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMRIGHT
                                 continue;
                             }
@@ -2649,7 +2649,7 @@ class GAME{
                             
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*10))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.UP
                                 continue;
                             }
@@ -2685,7 +2685,7 @@ class GAME{
                             
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*10))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.DOWN
                                 continue;
                             }
@@ -2721,7 +2721,7 @@ class GAME{
                             
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+i)
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.RIGHT
                                 continue;
                             }
@@ -2756,7 +2756,7 @@ class GAME{
                             
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-i)
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.LEFT
                                 continue;
                             }
@@ -2791,7 +2791,7 @@ class GAME{
                             
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*9))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
                                 continue;
                             }
@@ -2827,7 +2827,7 @@ class GAME{
                             
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*11))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPLEFT
                                 continue;
                             }
@@ -2863,7 +2863,7 @@ class GAME{
                             
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*9))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMLEFT
                                 continue;
                             }
@@ -2899,7 +2899,7 @@ class GAME{
                             
                             if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*11))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMRIGHT
                                 continue;
                             }
@@ -2934,7 +2934,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-19)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPLEFT
                         
                         
@@ -2952,7 +2952,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-21)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.UP
                         
                     }
@@ -2968,7 +2968,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+19)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
                         
                     }
@@ -2984,7 +2984,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+21)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.RIGHT
                         
                     }
@@ -3000,7 +3000,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-8)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMRIGHT
                         
                     }
@@ -3016,7 +3016,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-12)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.DOWN
                         
                     }
@@ -3032,7 +3032,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+12)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMLEFT
                         
                     }
@@ -3048,7 +3048,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+8)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.LEFT
                         
                     }
@@ -3068,7 +3068,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-19)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPLEFT
                         
                     }
@@ -3084,7 +3084,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-21)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.UP
                         
                     }
@@ -3100,7 +3100,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+19)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
                         
                     }
@@ -3116,7 +3116,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+21)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.RIGHT
                         
                     }
@@ -3132,7 +3132,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-8)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMRIGHT
                         
                     }
@@ -3148,7 +3148,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex-12)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.DOWN
                         
                     }
@@ -3164,7 +3164,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+12)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMLEFT
                         
                     }
@@ -3180,7 +3180,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.wK)===this.VMGSourceIndex+8)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.LEFT
                         
                     }
@@ -3200,7 +3200,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-10)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.UP
                         
                     }
@@ -3216,7 +3216,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+10)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.DOWN
                         
                     }
@@ -3232,7 +3232,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+1)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.RIGHT
                         
                     }
@@ -3248,7 +3248,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-1)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.LEFT
                         
                     }
@@ -3264,7 +3264,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-9)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
                         
                     }
@@ -3280,7 +3280,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-11)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
                         
                     }
@@ -3296,7 +3296,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+9)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMLEFT
                         
                     }
@@ -3312,7 +3312,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+11)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMRIGHT
                         
                     }
@@ -3332,7 +3332,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-10)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.UP
                         
                     }
@@ -3348,7 +3348,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+10)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.DOWN
                         
                     }
@@ -3364,7 +3364,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+1)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.RIGHT
                         
                     }
@@ -3380,7 +3380,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-1)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.LEFT
                         
                     }
@@ -3396,7 +3396,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-9)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
                         
                     }
@@ -3412,7 +3412,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex-11)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
                         
                     }
@@ -3428,7 +3428,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+9)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMLEFT
                         
                     }
@@ -3444,7 +3444,7 @@ class GAME{
                     
                     if(this.BoardSquares.indexOf(PIECES.bK)===this.VMGSourceIndex+11)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMRIGHT
                         
                     }
@@ -3572,7 +3572,7 @@ class GAME{
                     this.ValidMoveGeneration(BoardRF[i],BoardSquares[i])
                 }
             }
-            console.log("aftyer loop "+this.AllValidMoves)
+            //console.log("aftyer loop "+this.AllValidMoves)
             if(this.AllValidMoves.indexOf(target)===-1){
                 this.AllValidMoves=[];
                 return true;
@@ -3589,7 +3589,7 @@ class GAME{
                     this.ValidMoveGeneration(BoardRF[i],BoardSquares[i])
                 }
             }
-            console.log("aftyer loop "+this.AllValidMoves)
+            //console.log("aftyer loop "+this.AllValidMoves)
             if(this.AllValidMoves.indexOf(target)===-1){
                 this.AllValidMoves=[];
                 return true;
@@ -3625,9 +3625,9 @@ class GAME{
             if(this.AllValidMoves.indexOf(this.BoardRF [this.BoardSquares.indexOf(PIECES.wK)])!==-1)
             {
                 this.check=this.MoveMaker
-                console.log("White is in check")
-                console.log(this.LastPieceMoved)
-                console.log(this.LastPieceMovedSource)
+                //console.log("White is in check")
+                //console.log(this.LastPieceMoved)
+                //console.log(this.LastPieceMovedSource)
                 this.AllValidMoves=[];
                 for(let i =0;i<BoardSquares.length;i++)
                 {
@@ -3641,12 +3641,12 @@ class GAME{
                 this.PossibleAvailableCounterMoves=this.LastPieceMovedLineOfSightMoves
                 //this.PossibleAvailableCounterMoves.splice(this.PossibleAvailableCounterMoves.indexOf(this.BoardRF[this.BoardSquares.indexOf(PIECES.wK)],1))
                 
-                console.log(this.CKSValidMove)
+                //console.log(this.CKSValidMove)
                 //this loops removes the moves that kings can't do
                 for(let i=0; i<length;i++)
                 {
-                    console.log(this.CKSValidMove.length+" "+i)
-                    console.log(this.CKSValidMove)
+                    //console.log(this.CKSValidMove.length+" "+i)
+                    //console.log(this.CKSValidMove)
                     
                     if(this.CKSValidMove.indexOf(this.AllValidMoves[i])!==-1)
                     {
@@ -3656,9 +3656,9 @@ class GAME{
                         }
                         else
                         {
-                            console.log(this.CKSValidMove.indexOf(this.AllValidMoves[i]))
+                            //console.log(this.CKSValidMove.indexOf(this.AllValidMoves[i]))
                             this.CKSValidMove.splice(this.CKSValidMove.indexOf(this.AllValidMoves[i],1))
-                            console.log(this.CKSValidMove.indexOf(this.AllValidMoves[i]))
+                            //console.log(this.CKSValidMove.indexOf(this.AllValidMoves[i]))
                             
                         }
                         //i=-1
@@ -3666,9 +3666,9 @@ class GAME{
                     }
                 }
                 
-                console.log("aftyer loop "+this.AllValidMoves[45])
-                console.log(this.AllValidMoves)
-                console.log(this.CKSValidMove)
+                //console.log("aftyer loop "+this.AllValidMoves[45])
+                //console.log(this.AllValidMoves)
+                //console.log(this.CKSValidMove)
 
                 this.AllValidMoves=[];
                 for(let i =0;i<BoardSquares.length;i++)
@@ -3690,22 +3690,22 @@ class GAME{
                        
                     }
                 } 
-                console.log(this.CKSValidMove)
-                console.log(this.AvailableCounterMoves)
+                //console.log(this.CKSValidMove)
+                //console.log(this.AvailableCounterMoves)
                 if(this.CKSValidMove.length===0 && this.AvailableCounterMoves.length===0)
                 {
                     
                     //AvaileableTargetList
-                    //console.log(this.LastPieceMovedLineOfSightMoves)
-                    //console.log("line of sight is "+this.LastPieceMovedLineOfSight)
-                    //console.log(this.LastPieceMovedSource)
+                    ////console.log(this.LastPieceMovedLineOfSightMoves)
+                    ////console.log("line of sight is "+this.LastPieceMovedLineOfSight)
+                    ////console.log(this.LastPieceMovedSource)
                     this.checkmate=this.MoveMaker
-                    console.log(this.checkmate+" is in checkmate")
+                    //console.log(this.checkmate+" is in checkmate")
                 }
                 
             }
             
-            console.log("checking white king")
+            //console.log("checking white king")
             break;
         case COLORS.BLACK:
 
@@ -3717,7 +3717,7 @@ class GAME{
             if(this.AllValidMoves.indexOf(this.BoardRF [this.BoardSquares.indexOf(PIECES.bK)])!==-1)
             {
                 this.check=this.MoveMaker
-                console.log("Black is in check")
+                //console.log("Black is in check")
                 this.AllValidMoves=[];
                 for(let i =0;i<BoardSquares.length;i++)
                 {
@@ -3731,10 +3731,10 @@ class GAME{
                 this.PossibleAvailableCounterMoves=this.LastPieceMovedLineOfSightMoves
                 //this.PossibleAvailableCounterMoves.splice(this.PossibleAvailableCounterMoves.indexOf(this.BoardRF[this.BoardSquares.indexOf(PIECES.bK)],1))
                 
-                console.log(this.CKSValidMove)
+                //console.log(this.CKSValidMove)
                 for(let i=0; i<length;i++)
                 {
-                    console.log(this.CKSValidMove.length)
+                    //console.log(this.CKSValidMove.length)
                     
                     if(this.CKSValidMove.indexOf(this.AllValidMoves[i])!==-1)
                     {
@@ -3744,16 +3744,16 @@ class GAME{
                         }
                         else
                         {
-                            console.log(this.CKSValidMove.indexOf(this.AllValidMoves[i]))
+                            //console.log(this.CKSValidMove.indexOf(this.AllValidMoves[i]))
                             this.CKSValidMove.splice(this.CKSValidMove.indexOf(this.AllValidMoves[i],1))
-                            console.log(this.CKSValidMove.indexOf(this.AllValidMoves[i]))
+                            //console.log(this.CKSValidMove.indexOf(this.AllValidMoves[i]))
                             
                         }
                     }
                 }
                 
-                console.log("aftyer loop "+this.AllValidMoves)
-                console.log(this.CKSValidMove)
+                //console.log("aftyer loop "+this.AllValidMoves)
+                //console.log(this.CKSValidMove)
                 this.AllValidMoves=[];
                 for(let i =0;i<BoardSquares.length;i++)
                 {
@@ -3778,14 +3778,14 @@ class GAME{
                 {
                     
                     //AvaileableTargetList
-                    //console.log(this.LastPieceMovedLineOfSightMoves)
+                    ////console.log(this.LastPieceMovedLineOfSightMoves)
                     this.checkmate=this.MoveMaker
-                    console.log(this.checkmate+" is in checkmate")
+                    //console.log(this.checkmate+" is in checkmate")
                 }
                 
                 
             }
-            console.log("Checking black king")
+            //console.log("Checking black king")
 
             break;
         }
@@ -3804,13 +3804,13 @@ class GAME{
         s+= this.BoardSquaresCopy[i]+" ";
         if (i%10===9 )
         {
-            console.log(s);
+            //console.log(s);
             s=""
         }
         }
         this.IBKSwap(SIndex,TIndex)
         
-        console.log("lelll")
+        //console.log("lelll")
         return this.ISBKCheckCheckMate(SIndex,TIndex)
         //}
         //else return false;
@@ -3835,7 +3835,7 @@ class GAME{
         s+= this.BoardSquaresCopy[i]+" ";
         if (i%10===9 )
         {
-            console.log(s);
+            //console.log(s);
             s=""
         }
         }
@@ -3849,7 +3849,7 @@ class GAME{
             
             
             this.AllValidMoves=[];
-            console.log(this.BoardSquaresCopy)
+            //console.log(this.BoardSquaresCopy)
             for(let i =0;i<this.BoardSquaresCopy.length;i++)
             {
                 if(this.BoardSquaresCopy[i]<0){
@@ -3872,12 +3872,12 @@ class GAME{
             this.CheckKingsSurroundings(this.BoardRF [this.BoardSquaresCopy.indexOf(PIECES.wK)],PIECES.wK)
             this.LastPieceMovedLineOfSightMoves.push(this.LastPieceMovedSource)
             this.PossibleAvailableCounterMoves=this.LastPieceMovedLineOfSightMoves
-            console.log(this.CKSValidMove)
+            //console.log(this.CKSValidMove)
             //this loops removes the moves that kings can't do
             for(let i=0; i<llength;i++)
             {
-                console.log(this.CKSValidMove.length+" "+i)
-                console.log(this.CKSValidMove)
+                //console.log(this.CKSValidMove.length+" "+i)
+                //console.log(this.CKSValidMove)
                 
                 if(this.CKSValidMove.indexOf(this.AllValidMoves[i])!==-1)
                 {
@@ -3887,9 +3887,9 @@ class GAME{
                     }
                     else
                     {
-                        console.log(this.CKSValidMove.indexOf(this.AllValidMoves[i]))
+                        //console.log(this.CKSValidMove.indexOf(this.AllValidMoves[i]))
                         this.CKSValidMove.splice(this.CKSValidMove.indexOf(this.AllValidMoves[i],1))
-                        console.log(this.CKSValidMove.indexOf(this.AllValidMoves[i]))
+                        //console.log(this.CKSValidMove.indexOf(this.AllValidMoves[i]))
                         
                     }
                     //i=-1
@@ -3899,9 +3899,9 @@ class GAME{
             
             
 
-            console.log("aftyer loop "+this.AllValidMoves[45])
-            console.log(this.AllValidMoves)
-            console.log(this.CKSValidMove)
+            //console.log("aftyer loop "+this.AllValidMoves[45])
+            //console.log(this.AllValidMoves)
+            //console.log(this.CKSValidMove)
 
             this.AllValidMoves=[];
             for(let i =0;i<this.BoardSquaresCopy.length;i++)
@@ -3927,9 +3927,9 @@ class GAME{
             {
                 this.check=this.MoveMaker
                 //AvaileableTargetList
-                console.log(this.LastPieceMovedLineOfSightMoves)
-                console.log("line of sight is "+this.LastPieceMovedLineOfSight)
-                console.log(this.LastPieceMovedSource)
+                //console.log(this.LastPieceMovedLineOfSightMoves)
+                //console.log("line of sight is "+this.LastPieceMovedLineOfSight)
+                //console.log(this.LastPieceMovedSource)
             }
             else
             {
@@ -3938,7 +3938,7 @@ class GAME{
                 
             
             
-            console.log("checking white king")
+            //console.log("checking white king")
             break;
         case COLORS.BLACK:
 
@@ -3965,10 +3965,10 @@ class GAME{
             this.CheckKingsSurroundings(this.BoardRF [this.BoardSquaresCopy.indexOf(PIECES.bK)],PIECES.bK)
             this.LastPieceMovedLineOfSightMoves.push(this.LastPieceMovedSource)
             this.PossibleAvailableCounterMoves=this.LastPieceMovedLineOfSightMoves
-            console.log(this.CKSValidMove)
+            //console.log(this.CKSValidMove)
             for(let i=0; i<length;i++)
             {
-                console.log(this.CKSValidMove.length)
+                //console.log(this.CKSValidMove.length)
                 
                 if(this.CKSValidMove.indexOf(this.AllValidMoves[i])!==-1)
                 {
@@ -3978,9 +3978,9 @@ class GAME{
                     }
                     else
                     {
-                        console.log(this.CKSValidMove.indexOf(this.AllValidMoves[i]))
+                        //console.log(this.CKSValidMove.indexOf(this.AllValidMoves[i]))
                         this.CKSValidMove.splice(this.CKSValidMove.indexOf(this.AllValidMoves[i],1))
-                        console.log(this.CKSValidMove.indexOf(this.AllValidMoves[i]))
+                        //console.log(this.CKSValidMove.indexOf(this.AllValidMoves[i]))
                         
                     }
                 }
@@ -3988,8 +3988,8 @@ class GAME{
             
             
 
-            console.log("aftyer loop "+this.AllValidMoves)
-            console.log(this.CKSValidMove)
+            //console.log("aftyer loop "+this.AllValidMoves)
+            //console.log(this.CKSValidMove)
             this.AllValidMoves=[];
             for(let i =0;i<this.BoardSquaresCopy.length;i++)
             {
@@ -4014,7 +4014,7 @@ class GAME{
             {
                 this.check=this.MoveMaker
                 //AvaileableTargetList
-                console.log(this.LastPieceMovedLineOfSightMoves)
+                //console.log(this.LastPieceMovedLineOfSightMoves)
             }
             else
             {
@@ -4022,7 +4022,7 @@ class GAME{
             }
                 
             
-            console.log("Checking black king")
+            //console.log("Checking black king")
 
             break;
         }
@@ -4058,7 +4058,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-9)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
                         
                     }
@@ -4076,7 +4076,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-11)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPLEFT  
                         
                     }
@@ -4090,8 +4090,8 @@ class GAME{
                     //this.AllValidMoves.push (BoardRF[this.VMGSourceIndex-20]);
                 }
             }
-            //console.log("White Pawn moves "+this.AllValidMoves)
-            //console.log("target move "+target)
+            ////console.log("White Pawn moves "+this.AllValidMoves)
+            ////console.log("target move "+target)
             
             break;
             case PIECES.bP:
@@ -4110,7 +4110,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+9)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMLEFT
                         
                     }
@@ -4125,7 +4125,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+11)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMRIGHT
                         
                     }
@@ -4133,14 +4133,14 @@ class GAME{
                 
                 for(let i=0;i<8;i++)
                 {
-                    //console.log("hola"+FILES[i]+RANKS[6])
+                    ////console.log("hola"+FILES[i]+RANKS[6])
                     if(source===FILES[i]+RANKS[6])
                     {
                         //this.AllValidMoves.push (BoardRF[this.VMGSourceIndex+20]);
                     }
                 }
                 
-                //console.log("target move "+target)
+                ////console.log("target move "+target)
                 
                 break;  
             case PIECES.wR:
@@ -4167,7 +4167,7 @@ class GAME{
                             
                             if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-(i*10))
                             {
-                                console.log("cotinuing becauae found king")
+                                //console.log("cotinuing becauae found king")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.UP
                                 continue;
                             }
@@ -4185,8 +4185,8 @@ class GAME{
                             // of attacking move 
                             
                             
-                            console.log(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex-(i*10)]))
-                            console.log(BoardRF[this.VMGSourceIndex-(i*10)])
+                            //console.log(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex-(i*10)]))
+                            //console.log(BoardRF[this.VMGSourceIndex-(i*10)])
                             if(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex-(i*10)]!==-1))
                             {
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*10)])
@@ -4294,7 +4294,7 @@ class GAME{
                             
                             if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-i)
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.LEFT
                                 continue;
                             }
@@ -4338,7 +4338,7 @@ class GAME{
                             
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*10))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.UP
                                 continue;
                             }
@@ -4378,7 +4378,7 @@ class GAME{
                             
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*10))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.DOWN
                                 continue;
                             }
@@ -4415,7 +4415,7 @@ class GAME{
                             
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+i)
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.RIGHT
                                 continue;
                             }
@@ -4451,7 +4451,7 @@ class GAME{
                             
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-i)
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.LEFT
                                 continue;
                             }
@@ -4502,11 +4502,11 @@ class GAME{
                         }
                         if(this.BoardSquaresCopy[this.VMGSourceIndex-(i*9)]>0)
                         {
-                            console.log(this.CKSValidMove)
+                            //console.log(this.CKSValidMove)
                             this.CheckKingsSurroundings(BoardRF [this.BoardSquaresCopy.indexOf(PIECES.bK)],PIECES.bK)
                             if(this.CKSValidMove.indexOf(BoardRF[this.VMGSourceIndex-(i*9)]!==-1))
                             {
-                                console.log("in white bishop right diagnoal")
+                                //console.log("in white bishop right diagnoal")
                                 this.AllValidMoves.push(BoardRF[this.VMGSourceIndex-(i*9)])
                                 break;
                             }
@@ -4654,7 +4654,7 @@ class GAME{
                             
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*9))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
                                 continue;
                             }
@@ -4690,7 +4690,7 @@ class GAME{
                             
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*11))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPLEFT
                                 continue;
                             }
@@ -4726,7 +4726,7 @@ class GAME{
                             
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*9))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMLEFT
                                 continue;
                             }
@@ -4749,25 +4749,25 @@ class GAME{
                 // downright diagnal loop
                 for(let i=1; BoardRF[this.VMGSourceIndex+(i*11)]!=='x';i++)
                 {
-                    console.log("In loop downright diagnal black bishop")
+                    //console.log("In loop downright diagnal black bishop")
                     if (BoardRF[this.VMGSourceIndex+(i*11)]!=='x')
                     {
                         
                         if(this.BoardSquaresCopy[this.VMGSourceIndex+(i*11)]>=0)
                         {
-                            console.log(this.BoardSquaresCopy[this.VMGSourceIndex+(i*11)])
+                            //console.log(this.BoardSquaresCopy[this.VMGSourceIndex+(i*11)])
                             this.AllValidMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
                             
                             if(this.LastPieceMovedSource === BoardRF[this.VMGSourceIndex] && this.LastPieceMovedLineOfSight===LINEOFSIGHT.BOTTOMRIGHT)
                             {
-                                console.log("PUSHING THE SHIT")
+                                //console.log("PUSHING THE SHIT")
                                 this.LastPieceMovedLineOfSightMoves.push(BoardRF[this.VMGSourceIndex+(i*11)])
-                                console.log(this.LastPieceMovedLineOfSightMoves)
+                                //console.log(this.LastPieceMovedLineOfSightMoves)
                             }
                             
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*11))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMRIGHT
                                 continue;
                             }
@@ -5094,7 +5094,7 @@ class GAME{
                             
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*10))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.UP
                                 continue;
                             }
@@ -5130,7 +5130,7 @@ class GAME{
                             
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*10))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.DOWN
                                 continue;
                             }
@@ -5166,7 +5166,7 @@ class GAME{
                             
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+i)
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.RIGHT
                                 continue;
                             }
@@ -5201,7 +5201,7 @@ class GAME{
                             
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-i)
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.LEFT
                                 continue;
                             }
@@ -5236,7 +5236,7 @@ class GAME{
                             
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*9))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
                                 continue;
                             }
@@ -5272,7 +5272,7 @@ class GAME{
                             
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-(i*11))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPLEFT
                                 continue;
                             }
@@ -5308,7 +5308,7 @@ class GAME{
                             
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*9))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMLEFT
                                 continue;
                             }
@@ -5344,7 +5344,7 @@ class GAME{
                             
                             if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+(i*11))
                             {
-                                console.log("continuing")
+                                //console.log("continuing")
                                 this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMRIGHT
                                 continue;
                             }
@@ -5379,7 +5379,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-19)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPLEFT
                         
                     }
@@ -5396,7 +5396,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-21)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.UP
                         
                     }
@@ -5412,7 +5412,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+19)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
                         
                     }
@@ -5428,7 +5428,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+21)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.RIGHT
                         
                     }
@@ -5444,7 +5444,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-8)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMRIGHT
                         
                     }
@@ -5460,7 +5460,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-12)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.DOWN
                         
                     }
@@ -5476,7 +5476,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+12)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMLEFT
                         
                     }
@@ -5492,7 +5492,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+8)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.LEFT
                         
                     }
@@ -5512,7 +5512,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-19)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPLEFT
                         
                     }
@@ -5528,7 +5528,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-21)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.UP
                         
                     }
@@ -5544,7 +5544,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+19)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
                         
                     }
@@ -5560,7 +5560,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+21)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.RIGHT
                         
                     }
@@ -5576,7 +5576,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-8)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMRIGHT
                         
                     }
@@ -5592,7 +5592,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex-12)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.DOWN
                         
                     }
@@ -5608,7 +5608,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+12)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMLEFT
                         
                     }
@@ -5624,7 +5624,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.wK)===this.VMGSourceIndex+8)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.LEFT
                         
                     }
@@ -5644,7 +5644,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-10)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.UP
                         
                     }
@@ -5660,7 +5660,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+10)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.DOWN
                         
                     }
@@ -5676,7 +5676,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+1)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.RIGHT
                         
                     }
@@ -5692,7 +5692,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-1)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.LEFT
                         
                     }
@@ -5708,7 +5708,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-9)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
                         
                     }
@@ -5724,7 +5724,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-11)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
                         
                     }
@@ -5740,7 +5740,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+9)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMLEFT
                         
                     }
@@ -5756,7 +5756,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+11)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMRIGHT
                         
                     }
@@ -5776,7 +5776,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-10)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.UP
                         
                     }
@@ -5792,7 +5792,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+10)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.DOWN
                         
                     }
@@ -5808,7 +5808,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+1)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.RIGHT
                         
                     }
@@ -5824,7 +5824,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-1)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.LEFT
                         
                     }
@@ -5840,7 +5840,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-9)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
                         
                     }
@@ -5856,7 +5856,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex-11)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.TOPRIGHT
                         
                     }
@@ -5872,7 +5872,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+9)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMLEFT
                         
                     }
@@ -5888,7 +5888,7 @@ class GAME{
                     
                     if(this.BoardSquaresCopy.indexOf(PIECES.bK)===this.VMGSourceIndex+11)
                     {
-                        console.log("continuing")
+                        //console.log("continuing")
                         this.LastPieceMovedLineOfSight=LINEOFSIGHT.BOTTOMRIGHT
                         
                     }
@@ -5964,9 +5964,9 @@ class GAME{
             }
         }
 
-        PrevScore+=(this.AllValidMoves.length)*5
-        console.log(this.AllValidMoves.length)
-        console.log("jlksadfhaskljdfhsad")
+        PrevScore+=(this.AllValidMoves.length)*1
+        //console.log(this.AllValidMoves.length)
+        //console.log("jlksadfhaskljdfhsad")
         this.AllValidMoves=[];
         for(let i =0;i<BoardSquares.length;i++)
         {
@@ -5974,8 +5974,8 @@ class GAME{
                 this.ValidMoveGeneration(BoardRF[i],BoardSquares[i])
             }
         }
-        console.log(this.AllValidMoves.length)
-        PrevScore+=(this.AllValidMoves.length)*-5
+        //console.log(this.AllValidMoves.length)
+        PrevScore+=(this.AllValidMoves.length)*-1
 
 
         return PrevScore;
@@ -5983,7 +5983,7 @@ class GAME{
 
     AIMakeAMove(){
         let score=this.EvaluateBoard(0);
-        return this.AIRandomMove()
+        return this.AIMiniMaxRoot(3)
 
 
     }
@@ -6022,7 +6022,7 @@ class GAME{
             }
         Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] == null) && delete ThisDepthsMoves[key])
         var SuccessfulMove=false;
-        console.log(ThisDepthsMoves)
+        //console.log(ThisDepthsMoves)
         var seed=Math.random()
         
         var keys = Object.keys(ThisDepthsMoves);
@@ -6034,9 +6034,9 @@ class GAME{
         BestMoveTarget=RandomTarget;
         BestMovePiece=Piece
         //BestMoveFENString=this.GetFEN()
-        console.log(randomkey)
-        console.log(RandomSource)
-        console.log( RandomTarget);
+        //console.log(randomkey)
+        //console.log(RandomSource)
+        //console.log( RandomTarget);
         
         var CheckMateTimeOut=0
         let FirstMove=true;
@@ -6044,7 +6044,7 @@ class GAME{
 
         
         do{
-            console.log(keys.length)
+            //console.log(keys.length)
             Object.keys(ThisDepthsMoves).forEach(key => {
                 if (ThisDepthsMoves[key].length===0) {
                   delete ThisDepthsMoves[key];
@@ -6052,15 +6052,15 @@ class GAME{
               });
             seed=Math.random()
             keys = Object.keys(ThisDepthsMoves);
-            console.log(keys)
+            //console.log(keys)
             randomkey=keys.length * seed << 0
             RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
             RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(seed * ThisDepthsMoves[keys[randomkey]].length)]
             Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
             //Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] === null) && delete ThisDepthsMoves[key])
             
-            console.log(ThisDepthsMoves)
-            console.log(this.MoveMaker)
+            //console.log(ThisDepthsMoves)
+            //console.log(this.MoveMaker)
             
             
             if (typeof(RandomTarget) === 'undefined'){
@@ -6069,12 +6069,12 @@ class GAME{
                 if (CheckMateTimeOut>=100){
                     break;
                     this.checkmate=this.MoveMaker
-                    console.log(this.checkmate)
+                    //console.log(this.checkmate)
                     let s=0
                     for(let i=0;i<this.BoardSquaresCopy.length;i++){
                         s+= this.BoardSquaresCopy[i]+" ";
                         if (i%10===9 ){
-                            console.log(s);
+                            //console.log(s);
                             s=""
                         }
                     }
@@ -6172,10 +6172,10 @@ class GAME{
 
     }
         
-        console.log("Randome source"+RandomSource)
-        console.log("random target "+ RandomTarget)
-        console.log(ThisDepthsMoves[keys[randomkey]])
-        console.log("seeed"+seed)
+        //console.log("Randome source"+RandomSource)
+        //console.log("random target "+ RandomTarget)
+        //console.log(ThisDepthsMoves[keys[randomkey]])
+        //console.log("seeed"+seed)
         
         
 
@@ -6183,7 +6183,7 @@ class GAME{
 
 
     }
-    AIMiniMax(StartingFEN,depth,sum, color){
+    AIMiniMaxRoot(depth){
         let StartingScore=this.EvaluateBoard(0)
         let PrevScore=StartingScore;
         let NewScore;
@@ -6192,7 +6192,8 @@ class GAME{
         let BestMovePiece;
         let BestMoveSource=null;
         let BestMoveTarget=null;
-        let BeginningFEN =StartingFEN
+        let BeginningFEN =this.GetFEN()
+
 
 
         switch(this.MoveMaker){
@@ -6219,7 +6220,7 @@ class GAME{
             }
         Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] == null) && delete ThisDepthsMoves[key])
         var SuccessfulMove=false;
-        console.log(ThisDepthsMoves)
+        //console.log(ThisDepthsMoves)
         var seed=Math.random()
         
         var keys = Object.keys(ThisDepthsMoves);
@@ -6231,9 +6232,9 @@ class GAME{
         BestMoveTarget=RandomTarget;
         BestMovePiece=Piece
         //BestMoveFENString=this.GetFEN()
-        console.log(randomkey)
-        console.log(RandomSource)
-        console.log( RandomTarget);
+        //console.log(randomkey)
+        //console.log(RandomSource)
+        //console.log( RandomTarget);
         
         var CheckMateTimeOut=0
         let FirstMove=true;
@@ -6241,7 +6242,7 @@ class GAME{
 
         
         do{
-            console.log(keys.length)
+            //console.log(keys.length)
             Object.keys(ThisDepthsMoves).forEach(key => {
                 if (ThisDepthsMoves[key].length===0) {
                   delete ThisDepthsMoves[key];
@@ -6249,15 +6250,15 @@ class GAME{
               });
             seed=Math.random()
             keys = Object.keys(ThisDepthsMoves);
-            console.log(keys)
+            //console.log(keys)
             randomkey=keys.length * seed << 0
             RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
             RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(seed * ThisDepthsMoves[keys[randomkey]].length)]
             Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
             //Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] === null) && delete ThisDepthsMoves[key])
             
-            console.log(ThisDepthsMoves)
-            console.log(this.MoveMaker)
+            //console.log(ThisDepthsMoves)
+            //console.log(this.MoveMaker)
             
             
             if (typeof(RandomTarget) === 'undefined'){
@@ -6266,12 +6267,12 @@ class GAME{
                 if (CheckMateTimeOut>=100){
                     break;
                     this.checkmate=this.MoveMaker
-                    console.log(this.checkmate)
+                    //console.log(this.checkmate)
                     let s=0
                     for(let i=0;i<this.BoardSquaresCopy.length;i++){
                         s+= this.BoardSquaresCopy[i]+" ";
                         if (i%10===9 ){
-                            console.log(s);
+                            //console.log(s);
                             s=""
                         }
                     }
@@ -6301,7 +6302,9 @@ class GAME{
                 
                 switch(this.MoveMaker){
                     case COLORS.WHITE:
-                        NewScore=this.EvaluateBoard(0)
+                        this.NextTurn()
+                        this.CheckCheckMate()
+                        NewScore=this.AIMiniMax(this.GetFEN(),depth-1,this.EvaluateBoard(StartingScore))
                         if(NewScore>=PrevScore ||FirstMove===true ){
                             SuccessfulMove=true;
                             BestMoveFENString=this.GetFEN()
@@ -6314,7 +6317,9 @@ class GAME{
                         }
                         break;
                     case COLORS.BLACK:
-                        NewScore=this.EvaluateBoard(0)
+                        this.NextTurn()
+                        this.CheckCheckMate()
+                        NewScore=this.AIMiniMax(this.GetFEN(),depth-1,this.EvaluateBoard(StartingScore))
                         if(NewScore<=PrevScore || FirstMove===true){
                             SuccessfulMove=true;
                            BestMoveFENString=this.GetFEN()
@@ -6369,10 +6374,216 @@ class GAME{
 
     }
         
-        console.log("Randome source"+RandomSource)
-        console.log("random target "+ RandomTarget)
-        console.log(ThisDepthsMoves[keys[randomkey]])
-        console.log("seeed"+seed)
+        //console.log("Randome source"+RandomSource)
+        //console.log("random target "+ RandomTarget)
+        //console.log(ThisDepthsMoves[keys[randomkey]])
+        //console.log("seeed"+seed)
+        
+        
+
+
+
+
+    }
+
+    AIMiniMax(StartingFEN,depth,sum, color){
+        let StartingScore=sum
+        let PrevScore=StartingScore;
+        let NewScore;
+        let ThisDepthsMoves={}
+        let BestMoveFENString;
+        let BestMovePiece;
+        let BestMoveSource=null;
+        let BestMoveTarget=null;
+        let BeginningFEN =StartingFEN
+
+        if(depth<0){
+            return sum
+        }
+
+
+        switch(this.MoveMaker){
+            case COLORS.WHITE:
+                this.AllValidMoves=[];
+                for(let i =0;i<BoardSquares.length;i++){
+                    if(BoardSquares[i]>0){
+                        ThisDepthsMoves= this.AIValidMoveGeneration(ThisDepthsMoves,BoardRF[i],BoardSquares[i])
+                    }
+                }
+                
+                break;
+            case COLORS.BLACK:
+                this.AllValidMoves=[];
+                for(let i =0;i<BoardSquares.length;i++){
+                    if(BoardSquares[i]<0){
+                        ThisDepthsMoves= this.AIValidMoveGeneration(ThisDepthsMoves,BoardRF[i],BoardSquares[i])
+                    }
+                }
+                
+
+                
+                break;
+            }
+        Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] == null) && delete ThisDepthsMoves[key])
+        var SuccessfulMove=false;
+        //console.log(ThisDepthsMoves)
+        var seed=Math.random()
+        
+        var keys = Object.keys(ThisDepthsMoves);
+        var randomkey=keys.length * seed << 0
+        var RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
+        var RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(seed * ThisDepthsMoves[keys[randomkey]].length)]
+        var Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
+        BestMoveSource=RandomSource;
+        BestMoveTarget=RandomTarget;
+        BestMovePiece=Piece
+        //BestMoveFENString=this.GetFEN()
+        //console.log(randomkey)
+        //console.log(RandomSource)
+        //console.log( RandomTarget);
+        
+        var CheckMateTimeOut=0
+        let FirstMove=true;
+        try{
+
+        
+        do{
+            //console.log("The depth is "+depth)
+            //console.log(keys.length)
+            Object.keys(ThisDepthsMoves).forEach(key => {
+                if (ThisDepthsMoves[key].length===0) {
+                  delete ThisDepthsMoves[key];
+                }
+              });
+            seed=Math.random()
+            keys = Object.keys(ThisDepthsMoves);
+            //console.log(keys)
+            randomkey=keys.length * seed << 0
+            RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
+            RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(seed * ThisDepthsMoves[keys[randomkey]].length)]
+            Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
+            //Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] === null) && delete ThisDepthsMoves[key])
+            
+            //console.log(ThisDepthsMoves)
+            //console.log(this.MoveMaker)
+            
+            
+            if (typeof(RandomTarget) === 'undefined'){
+                //var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
+                //ThisDepthsMoves[keys[randomkey]].splice(Index,1);
+                if (CheckMateTimeOut>=100){
+                    break;
+                    this.checkmate=this.MoveMaker
+                    //console.log(this.checkmate)
+                    let s=0
+                    for(let i=0;i<this.BoardSquaresCopy.length;i++){
+                        s+= this.BoardSquaresCopy[i]+" ";
+                        if (i%10===9 ){
+                            //console.log(s);
+                            s=""
+                        }
+                    }
+                    break;
+                }
+                CheckMateTimeOut+=1
+                continue
+            }
+            this.MoveHistory.push(this.GetFEN())
+            if(this.Move(RandomSource,RandomTarget,Piece)===true){
+                this. NextTurn()
+                if(this.Promote===true){
+                    this.PawnLocationIndex= this.FindFileRank(this.PawnLocation)
+                    if(this.PawnLocationIndex>=21 && this.PawnLocationIndex<=28){
+                        
+                        this.BoardSquares[this.PawnLocationIndex]=PIECES.wQ
+                        //this.SetLastPieceMoved(PIECES.bQ,this.PawnLocation)
+                        this. NextTurn()
+                    }
+                    if(this.PawnLocationIndex>=91 && this.PawnLocationIndex<=98){
+                        this.BoardSquares[this.PawnLocationIndex]=PIECES.bQ
+                        //this.SetLastPieceMoved(PIECES.wQ,this.PawnLocation)
+                        this. NextTurn()
+                    }
+                    this.Promote=false;
+                }
+                
+                switch(this.MoveMaker){
+                    case COLORS.WHITE:
+                        this.NextTurn()
+                        this.CheckCheckMate()
+                        NewScore=this.AIMiniMax(this.GetFEN(),depth-1,this.EvaluateBoard(StartingScore))
+                        if(NewScore>=PrevScore ||FirstMove===true ){
+                            SuccessfulMove=true;
+                            PrevScore=NewScore
+                            false;
+                            
+
+                        }
+                        else{
+                            this.UndoMove()
+                            return PrevScore
+                        }
+                        
+                        break;
+                    case COLORS.BLACK:
+                        this.NextTurn()
+                        this.CheckCheckMate()
+                        NewScore=this.AIMiniMax(this.GetFEN(),depth-1,this.EvaluateBoard(StartingScore))
+                        if(NewScore<=PrevScore || FirstMove===true){
+                            SuccessfulMove=true;
+                            PrevScore=NewScore
+                            FirstMove=false;
+                        }
+                        else{
+                            this.UndoMove()
+                            return PrevScore
+                        }
+                        
+                        
+                        break;
+                }
+                //var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
+                //ThisDepthsMoves[keys[randomkey]].splice(Index,1);
+                this.UndoMove()
+            }
+            else{
+                this.MoveHistory.pop()
+                
+                
+                
+            }
+            //Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] === null) && delete ThisDepthsMoves[key])
+            
+              var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
+                ThisDepthsMoves[keys[randomkey]].splice(Index,1);
+            CheckMateTimeOut+=1
+            //this.CheckCheckMate()
+            if (CheckMateTimeOut>=100)
+            {//this.checkmate=this.MoveMaker
+                break;
+            }
+        } while(CheckMateTimeOut<101 )
+    }
+    catch{
+        if (SuccessfulMove===true){
+            //this.SetLastPieceMoved(BestMovePiece,BestMoveTarget)
+            //this.FENToBoard(BestMoveFENString)
+            return PrevScore
+            /*this.Move(BestMoveSource,BestMoveTarget,Piece)
+            this.SetLastPieceMoved(Piece,this.be)
+            return [BestMoveSource, BestMoveTarget]*/
+        }
+        
+        else {
+            return this.EvaluateBoard(0);
+        } 
+
+    }
+        
+        //console.log("Randome source"+RandomSource)
+        //console.log("random target "+ RandomTarget)
+        //console.log(ThisDepthsMoves[keys[randomkey]])
+        //console.log("seeed"+seed)
         
         
 
@@ -6408,7 +6619,7 @@ class GAME{
         }
         Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] == null) && delete ThisDepthsMoves[key])
         var SuccessfulMove=false;
-        console.log(ThisDepthsMoves)
+        //console.log(ThisDepthsMoves)
         var seed=Math.random()
         
         var keys = Object.keys(ThisDepthsMoves);
@@ -6416,14 +6627,14 @@ class GAME{
         var RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
         var RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(seed * ThisDepthsMoves[keys[randomkey]].length)]
         var Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
-        console.log(randomkey)
-        console.log(RandomSource)
-        console.log( RandomTarget);
+        //console.log(randomkey)
+        //console.log(RandomSource)
+        //console.log( RandomTarget);
         
         var CheckMateTimeOut=0
         try{
         do{
-            //console.log(keys.length)
+            ////console.log(keys.length)
             Object.keys(ThisDepthsMoves).forEach(key => {
                 if (ThisDepthsMoves[key].length===0) {
                   delete ThisDepthsMoves[key];
@@ -6442,12 +6653,12 @@ class GAME{
                 
                 if (CheckMateTimeOut>=200){
                     this.checkmate=this.MoveMaker
-                    console.log(this.checkmate)
+                    //console.log(this.checkmate)
                     let s=0
                     for(let i=0;i<this.BoardSquaresCopy.length;i++){
                         s+= this.BoardSquaresCopy[i]+" ";
                         if (i%10===9 ){
-                            console.log(s);
+                            //console.log(s);
                             s=""
                         }
                     }
@@ -6469,7 +6680,7 @@ class GAME{
             //Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] == null) && delete ThisDepthsMoves[key])
             var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
             ThisDepthsMoves[keys[randomkey]].splice(Index,1);
-            console.log(ThisDepthsMoves)
+            //console.log(ThisDepthsMoves)
             CheckMateTimeOut+=1
             //this.CheckCheckMate()
             if (CheckMateTimeOut>=100)
@@ -6493,10 +6704,10 @@ class GAME{
         }
     }
         
-        console.log("Randome source"+RandomSource)
-        console.log("random target "+ RandomTarget)
-        console.log(ThisDepthsMoves[keys[randomkey]])
-        console.log("seeed"+seed)
+        //console.log("Randome source"+RandomSource)
+        //console.log("random target "+ RandomTarget)
+        //console.log(ThisDepthsMoves[keys[randomkey]])
+        //console.log("seeed"+seed)
         
         
         if (SuccessfulMove===true){
@@ -6519,7 +6730,7 @@ class GAME{
     AIValidMoveGeneration(ValidMoves,source,piece){
         this.FileRank=source;
         this.SourceIndex=this.FindFileRank(this.FileRank);
-        console.log("dfasdfasdf"+this.SourceIndex)
+        //console.log("dfasdfasdf"+this.SourceIndex)
         
         
         switch(piece){
@@ -6600,7 +6811,7 @@ class GAME{
                 for(let i=0;i<8;i++)
                 {
                     
-                    //console.log("hola"+FILES[i]+RANKS[6])
+                    ////console.log("hola"+FILES[i]+RANKS[6])
                     if(source===FILES[i]+RANKS[6] && BoardSquares[this.SourceIndex+20]===PIECES.EMPTY && BoardSquares[this.SourceIndex+10]===PIECES.EMPTY)
                     {
                         this.RemoveEnpassant()
@@ -7533,7 +7744,7 @@ class GAME{
     FENToBoard(FENstring){
         
         FENstring= FENstring.split("")
-        console.log(FENstring)
+        //console.log(FENstring)
         if(FENstring[FENstring.length-1]!=='-')
         {
             let file=FENstring.pop()
@@ -7544,7 +7755,7 @@ class GAME{
             temp=temp.join("")
             FENstring.push(temp)
             //FENstring.slice(FENstring.length-2,FENstring.length-1).join("")
-            console.log(FENstring)
+            //console.log(FENstring)
         }
         
         let element;
@@ -7676,7 +7887,7 @@ class GAME{
         let EmptySpaceCounter=0;
         for(let i=0;i<this.BoardSquares.length;i++){
             if(i%10===0 && i>=21 && i<=98){
-                console.log(i)
+                //console.log(i)
                 if(EmptySpaceCounter!==0){
                     FENstring.push(`${EmptySpaceCounter}`)
                     EmptySpaceCounter=0;
@@ -7815,9 +8026,9 @@ class GAME{
 
         
         let test=['h']
-        console.log(test.pop())
+        //console.log(test.pop())
         FENstringjoined=FENstring.join("")
-        console.log(FENstringjoined)
+        //console.log(FENstringjoined)
         return FENstringjoined
     }
     
@@ -7858,7 +8069,7 @@ let BoardSquares = new Array(120);
 
 //Below the board is initialized, a better way to do this is to create an FEN string inperter
 for (let i =0; i<120;i++)
-{   //console.log(i)
+{   ////console.log(i)
     if (i>=41 && i <=48)
     {
         BoardSquares[i]=0;
@@ -8206,20 +8417,20 @@ PSTW['BKE']=[
 
 PSTW['BKE']= MakeNegative(PSTW['BKE'])
 
-console.log(PSTW)
+//console.log(PSTW)
 
 PSTW[0]=[]
 PSTW[0][PIECES.wP]=[1,2,3,4,5]
-console.log(PSTW[0][PIECES.wP])
-console.log(Object.keys(PSTW).length)
-console.log(PSTW[PIECES.bR].length)
+//console.log(PSTW[0][PIECES.wP])
+//console.log(Object.keys(PSTW).length)
+//console.log(PSTW[PIECES.bR].length)
 
 let test={}
 test[95]=[]
 test[95].push(55);
-console.log(Object.keys(test))
+//console.log(Object.keys(test))
 let hi=Object.keys(test)[0]
-console.log(hi)
+//console.log(hi)
 
 function MakeNegative(PSTWArray){
     temp=PSTWArray
@@ -8250,7 +8461,7 @@ function ReversePSTW(PSTWArray){
 
 
 function whatpiece(piece){
-    console.log(piece);
+    //console.log(piece);
 }
 
 
