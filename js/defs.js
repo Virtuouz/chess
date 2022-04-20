@@ -6090,12 +6090,12 @@ class GAME{
                     this.PawnLocationIndex= this.FindFileRank(this.PawnLocation)
                     if(this.PawnLocationIndex>=21 && this.PawnLocationIndex<=28){
                         
-                        this.BoardSquares[this.PawnLocationIndex]=PIECES.bQ
+                        this.BoardSquares[this.PawnLocationIndex]=PIECES.wQ
                         //this.SetLastPieceMoved(PIECES.bQ,this.PawnLocation)
                         this. NextTurn()
                     }
                     if(this.PawnLocationIndex>=91 && this.PawnLocationIndex<=98){
-                        this.BoardSquares[this.PawnLocationIndex]=PIECES.wQ
+                        this.BoardSquares[this.PawnLocationIndex]=PIECES.bQ
                         //this.SetLastPieceMoved(PIECES.wQ,this.PawnLocation)
                         this. NextTurn()
                     }
@@ -6183,7 +6183,7 @@ class GAME{
 
 
     }
-    AIMiniMax(){
+    AIMiniMax(StartingFEN,depth,sum, color){
         let StartingScore=this.EvaluateBoard(0)
         let PrevScore=StartingScore;
         let NewScore;
@@ -6192,7 +6192,9 @@ class GAME{
         let BestMovePiece;
         let BestMoveSource=null;
         let BestMoveTarget=null;
-        let BeginningFEN =this.GetFEN()
+        let BeginningFEN =StartingFEN
+
+
         switch(this.MoveMaker){
             case COLORS.WHITE:
                 this.AllValidMoves=[];
@@ -6285,12 +6287,12 @@ class GAME{
                     this.PawnLocationIndex= this.FindFileRank(this.PawnLocation)
                     if(this.PawnLocationIndex>=21 && this.PawnLocationIndex<=28){
                         
-                        this.BoardSquares[this.PawnLocationIndex]=PIECES.bQ
+                        this.BoardSquares[this.PawnLocationIndex]=PIECES.wQ
                         //this.SetLastPieceMoved(PIECES.bQ,this.PawnLocation)
                         this. NextTurn()
                     }
                     if(this.PawnLocationIndex>=91 && this.PawnLocationIndex<=98){
-                        this.BoardSquares[this.PawnLocationIndex]=PIECES.wQ
+                        this.BoardSquares[this.PawnLocationIndex]=PIECES.bQ
                         //this.SetLastPieceMoved(PIECES.wQ,this.PawnLocation)
                         this. NextTurn()
                     }
