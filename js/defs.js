@@ -5964,7 +5964,7 @@ class GAME{
             }
         }
 
-        PrevScore+=(this.AllValidMoves.length)*10
+        PrevScore+=(this.AllValidMoves.length)*5
         console.log(this.AllValidMoves.length)
         console.log("jlksadfhaskljdfhsad")
         this.AllValidMoves=[];
@@ -5975,7 +5975,7 @@ class GAME{
             }
         }
         console.log(this.AllValidMoves.length)
-        PrevScore+=(this.AllValidMoves.length)*-10
+        PrevScore+=(this.AllValidMoves.length)*-5
 
 
         return PrevScore;
@@ -5997,6 +5997,7 @@ class GAME{
         let BestMovePiece;
         let BestMoveSource=null;
         let BestMoveTarget=null;
+        let BeginningFEN =this.GetFEN()
         switch(this.MoveMaker){
             case COLORS.WHITE:
                 this.AllValidMoves=[];
@@ -6028,29 +6029,43 @@ class GAME{
         var randomkey=keys.length * seed << 0
         var RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
         var RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(seed * ThisDepthsMoves[keys[randomkey]].length)]
+        var Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
         BestMoveSource=RandomSource;
         BestMoveTarget=RandomTarget;
-        var Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
+        BestMovePiece=Piece
+        //BestMoveFENString=this.GetFEN()
         console.log(randomkey)
         console.log(RandomSource)
         console.log( RandomTarget);
         
         var CheckMateTimeOut=0
+        let FirstMove=true;
+        try{
+
+        
         do{
             console.log(keys.length)
+            Object.keys(ThisDepthsMoves).forEach(key => {
+                if (ThisDepthsMoves[key].length===0) {
+                  delete ThisDepthsMoves[key];
+                }
+              });
             seed=Math.random()
             keys = Object.keys(ThisDepthsMoves);
+            console.log(keys)
             randomkey=keys.length * seed << 0
             RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
             RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(seed * ThisDepthsMoves[keys[randomkey]].length)]
             Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
-            Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] === null) && delete ThisDepthsMoves[key])
+            //Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] === null) && delete ThisDepthsMoves[key])
             
+            console.log(ThisDepthsMoves)
+            console.log(this.MoveMaker)
             
             
             if (typeof(RandomTarget) === 'undefined'){
-                var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
-                ThisDepthsMoves[keys[randomkey]].splice(Index,1);
+                //var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
+                //ThisDepthsMoves[keys[randomkey]].splice(Index,1);
                 if (CheckMateTimeOut>=100){
                     break;
                     this.checkmate=this.MoveMaker
@@ -6070,74 +6085,73 @@ class GAME{
             }
             this.MoveHistory.push(this.GetFEN())
             if(this.Move(RandomSource,RandomTarget,Piece)===true){
-                SuccessfulMove=true;
-                if(game.Promote===true){
+                this. NextTurn()
+                if(this.Promote===true){
                     this.PawnLocationIndex= this.FindFileRank(this.PawnLocation)
-                    if(this.MoveMaker=COLORS.BLACK){
+                    if(this.PawnLocationIndex>=21 && this.PawnLocationIndex<=28){
                         
                         this.BoardSquares[this.PawnLocationIndex]=PIECES.bQ
-                        this.SetLastPieceMoved(PIECES.bQ,this.PawnLocation)
+                        //this.SetLastPieceMoved(PIECES.bQ,this.PawnLocation)
                         this. NextTurn()
                     }
-                    if(this.MoveMaker=COLORS.WHITE){
+                    if(this.PawnLocationIndex>=91 && this.PawnLocationIndex<=98){
                         this.BoardSquares[this.PawnLocationIndex]=PIECES.wQ
-                        this.SetLastPieceMoved(PIECES.wQ,this.PawnLocation)
+                        //this.SetLastPieceMoved(PIECES.wQ,this.PawnLocation)
                         this. NextTurn()
                     }
                     this.Promote=false;
                 }
-                this. NextTurn()
+                
                 switch(this.MoveMaker){
                     case COLORS.WHITE:
                         NewScore=this.EvaluateBoard(0)
-                        if(NewScore>PrevScore){
+                        if(NewScore>=PrevScore ||FirstMove===true ){
+                            SuccessfulMove=true;
                             BestMoveFENString=this.GetFEN()
                             PrevScore=NewScore
                             BestMoveSource=RandomSource
                             BestMoveTarget=RandomTarget
                             BestMovePiece=Piece
+                            FirstMove=false;
 
                         }
                         break;
                     case COLORS.BLACK:
                         NewScore=this.EvaluateBoard(0)
-                        if(NewScore<PrevScore){
-
+                        if(NewScore<=PrevScore || FirstMove===true){
+                            SuccessfulMove=true;
                            BestMoveFENString=this.GetFEN()
                             PrevScore=NewScore
                             BestMoveSource=RandomSource
                             BestMoveTarget=RandomTarget
                             BestMovePiece=Piece
+                            FirstMove=false;
                         }
                         break;
                 }
-                var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
-                ThisDepthsMoves[keys[randomkey]].splice(Index,1);
+                //var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
+                //ThisDepthsMoves[keys[randomkey]].splice(Index,1);
                 this.UndoMove()
             }
             else{
                 this.MoveHistory.pop()
-                var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
-                ThisDepthsMoves[keys[randomkey]].splice(Index,1);
+                
                 
                 
             }
-            Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] === null) && delete ThisDepthsMoves[key])
-            console.log(ThisDepthsMoves)
+            //Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] === null) && delete ThisDepthsMoves[key])
+            
+              var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
+                ThisDepthsMoves[keys[randomkey]].splice(Index,1);
             CheckMateTimeOut+=1
             //this.CheckCheckMate()
             if (CheckMateTimeOut>=100)
             {//this.checkmate=this.MoveMaker
-                //break;
+                break;
             }
-        } while(( keys.length!==1 ) )
-
-        
-        console.log("Randome source"+RandomSource)
-        console.log("random target "+ RandomTarget)
-        console.log(ThisDepthsMoves[keys[randomkey]])
-        console.log("seeed"+seed)
-        
+        } while(CheckMateTimeOut<101 )
+    }
+    catch{
         if (SuccessfulMove===true){
             this.SetLastPieceMoved(BestMovePiece,BestMoveTarget)
             this.FENToBoard(BestMoveFENString)
@@ -6152,8 +6166,213 @@ class GAME{
             this.LastPieceMovedSource=null
             this.LastPieceMovedLineOfSight=LINEOFSIGHT.NONE
             this.LastPieceMovedLineOfSightMoves=[];
-            return [null,null]
+            this.FENToBoard(BeginningFEN)
+            return this.AIRandomMove();
         } 
+
+    }
+        
+        console.log("Randome source"+RandomSource)
+        console.log("random target "+ RandomTarget)
+        console.log(ThisDepthsMoves[keys[randomkey]])
+        console.log("seeed"+seed)
+        
+        
+
+
+
+
+    }
+    AIMiniMax(){
+        let StartingScore=this.EvaluateBoard(0)
+        let PrevScore=StartingScore;
+        let NewScore;
+        let ThisDepthsMoves={}
+        let BestMoveFENString;
+        let BestMovePiece;
+        let BestMoveSource=null;
+        let BestMoveTarget=null;
+        let BeginningFEN =this.GetFEN()
+        switch(this.MoveMaker){
+            case COLORS.WHITE:
+                this.AllValidMoves=[];
+                for(let i =0;i<BoardSquares.length;i++){
+                    if(BoardSquares[i]>0){
+                        ThisDepthsMoves= this.AIValidMoveGeneration(ThisDepthsMoves,BoardRF[i],BoardSquares[i])
+                    }
+                }
+                
+                break;
+            case COLORS.BLACK:
+                this.AllValidMoves=[];
+                for(let i =0;i<BoardSquares.length;i++){
+                    if(BoardSquares[i]<0){
+                        ThisDepthsMoves= this.AIValidMoveGeneration(ThisDepthsMoves,BoardRF[i],BoardSquares[i])
+                    }
+                }
+                
+
+                
+                break;
+            }
+        Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] == null) && delete ThisDepthsMoves[key])
+        var SuccessfulMove=false;
+        console.log(ThisDepthsMoves)
+        var seed=Math.random()
+        
+        var keys = Object.keys(ThisDepthsMoves);
+        var randomkey=keys.length * seed << 0
+        var RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
+        var RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(seed * ThisDepthsMoves[keys[randomkey]].length)]
+        var Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
+        BestMoveSource=RandomSource;
+        BestMoveTarget=RandomTarget;
+        BestMovePiece=Piece
+        //BestMoveFENString=this.GetFEN()
+        console.log(randomkey)
+        console.log(RandomSource)
+        console.log( RandomTarget);
+        
+        var CheckMateTimeOut=0
+        let FirstMove=true;
+        try{
+
+        
+        do{
+            console.log(keys.length)
+            Object.keys(ThisDepthsMoves).forEach(key => {
+                if (ThisDepthsMoves[key].length===0) {
+                  delete ThisDepthsMoves[key];
+                }
+              });
+            seed=Math.random()
+            keys = Object.keys(ThisDepthsMoves);
+            console.log(keys)
+            randomkey=keys.length * seed << 0
+            RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
+            RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(seed * ThisDepthsMoves[keys[randomkey]].length)]
+            Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
+            //Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] === null) && delete ThisDepthsMoves[key])
+            
+            console.log(ThisDepthsMoves)
+            console.log(this.MoveMaker)
+            
+            
+            if (typeof(RandomTarget) === 'undefined'){
+                //var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
+                //ThisDepthsMoves[keys[randomkey]].splice(Index,1);
+                if (CheckMateTimeOut>=100){
+                    break;
+                    this.checkmate=this.MoveMaker
+                    console.log(this.checkmate)
+                    let s=0
+                    for(let i=0;i<this.BoardSquaresCopy.length;i++){
+                        s+= this.BoardSquaresCopy[i]+" ";
+                        if (i%10===9 ){
+                            console.log(s);
+                            s=""
+                        }
+                    }
+                    break;
+                }
+                CheckMateTimeOut+=1
+                continue
+            }
+            this.MoveHistory.push(this.GetFEN())
+            if(this.Move(RandomSource,RandomTarget,Piece)===true){
+                this. NextTurn()
+                if(this.Promote===true){
+                    this.PawnLocationIndex= this.FindFileRank(this.PawnLocation)
+                    if(this.PawnLocationIndex>=21 && this.PawnLocationIndex<=28){
+                        
+                        this.BoardSquares[this.PawnLocationIndex]=PIECES.bQ
+                        //this.SetLastPieceMoved(PIECES.bQ,this.PawnLocation)
+                        this. NextTurn()
+                    }
+                    if(this.PawnLocationIndex>=91 && this.PawnLocationIndex<=98){
+                        this.BoardSquares[this.PawnLocationIndex]=PIECES.wQ
+                        //this.SetLastPieceMoved(PIECES.wQ,this.PawnLocation)
+                        this. NextTurn()
+                    }
+                    this.Promote=false;
+                }
+                
+                switch(this.MoveMaker){
+                    case COLORS.WHITE:
+                        NewScore=this.EvaluateBoard(0)
+                        if(NewScore>=PrevScore ||FirstMove===true ){
+                            SuccessfulMove=true;
+                            BestMoveFENString=this.GetFEN()
+                            PrevScore=NewScore
+                            BestMoveSource=RandomSource
+                            BestMoveTarget=RandomTarget
+                            BestMovePiece=Piece
+                            FirstMove=false;
+
+                        }
+                        break;
+                    case COLORS.BLACK:
+                        NewScore=this.EvaluateBoard(0)
+                        if(NewScore<=PrevScore || FirstMove===true){
+                            SuccessfulMove=true;
+                           BestMoveFENString=this.GetFEN()
+                            PrevScore=NewScore
+                            BestMoveSource=RandomSource
+                            BestMoveTarget=RandomTarget
+                            BestMovePiece=Piece
+                            FirstMove=false;
+                        }
+                        break;
+                }
+                //var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
+                //ThisDepthsMoves[keys[randomkey]].splice(Index,1);
+                this.UndoMove()
+            }
+            else{
+                this.MoveHistory.pop()
+                
+                
+                
+            }
+            //Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] === null) && delete ThisDepthsMoves[key])
+            
+              var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
+                ThisDepthsMoves[keys[randomkey]].splice(Index,1);
+            CheckMateTimeOut+=1
+            //this.CheckCheckMate()
+            if (CheckMateTimeOut>=100)
+            {//this.checkmate=this.MoveMaker
+                break;
+            }
+        } while(CheckMateTimeOut<101 )
+    }
+    catch{
+        if (SuccessfulMove===true){
+            this.SetLastPieceMoved(BestMovePiece,BestMoveTarget)
+            this.FENToBoard(BestMoveFENString)
+            return BestMoveFENString
+            /*this.Move(BestMoveSource,BestMoveTarget,Piece)
+            this.SetLastPieceMoved(Piece,this.be)
+            return [BestMoveSource, BestMoveTarget]*/
+        }
+        
+        else {
+            this.LastPieceMoved=null
+            this.LastPieceMovedSource=null
+            this.LastPieceMovedLineOfSight=LINEOFSIGHT.NONE
+            this.LastPieceMovedLineOfSightMoves=[];
+            this.FENToBoard(BeginningFEN)
+            return this.AIRandomMove();
+        } 
+
+    }
+        
+        console.log("Randome source"+RandomSource)
+        console.log("random target "+ RandomTarget)
+        console.log(ThisDepthsMoves[keys[randomkey]])
+        console.log("seeed"+seed)
+        
+        
 
 
 
@@ -6200,8 +6419,14 @@ class GAME{
         console.log( RandomTarget);
         
         var CheckMateTimeOut=0
+        try{
         do{
-            
+            //console.log(keys.length)
+            Object.keys(ThisDepthsMoves).forEach(key => {
+                if (ThisDepthsMoves[key].length===0) {
+                  delete ThisDepthsMoves[key];
+                }
+              });
             seed=Math.random()
             keys = Object.keys(ThisDepthsMoves);
             randomkey=keys.length * seed << 0
@@ -6212,8 +6437,7 @@ class GAME{
             
             
             if (typeof(RandomTarget) === 'undefined'){
-                var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
-                ThisDepthsMoves[keys[randomkey]].splice(Index,1);
+                
                 if (CheckMateTimeOut>=200){
                     this.checkmate=this.MoveMaker
                     console.log(this.checkmate)
@@ -6240,7 +6464,9 @@ class GAME{
                 
                 
             }
-            Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] == null) && delete ThisDepthsMoves[key])
+            //Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] == null) && delete ThisDepthsMoves[key])
+            var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
+            ThisDepthsMoves[keys[randomkey]].splice(Index,1);
             console.log(ThisDepthsMoves)
             CheckMateTimeOut+=1
             //this.CheckCheckMate()
@@ -6249,7 +6475,21 @@ class GAME{
                 break;
             }
         } while((typeof(RandomTarget) === 'undefined' || SuccessfulMove===false ) )
-
+    }
+    catch{
+        if (SuccessfulMove===true){
+            this.SetLastPieceMoved(Piece,RandomTarget)
+            return this.GetFEN()
+        }
+        
+        else {
+            this.LastPieceMoved=null
+            this.LastPieceMovedSource=null
+            this.LastPieceMovedLineOfSight=LINEOFSIGHT.NONE
+            this.LastPieceMovedLineOfSightMoves=[];
+            return [null,null]
+        }
+    }
         
         console.log("Randome source"+RandomSource)
         console.log("random target "+ RandomTarget)
@@ -7292,7 +7532,7 @@ class GAME{
         
         FENstring= FENstring.split("")
         console.log(FENstring)
-        if(FENstring[FENstring.length-1]!='-')
+        if(FENstring[FENstring.length-1]!=='-')
         {
             let file=FENstring.pop()
             let rank=FENstring.pop()
@@ -7304,9 +7544,7 @@ class GAME{
             //FENstring.slice(FENstring.length-2,FENstring.length-1).join("")
             console.log(FENstring)
         }
-        else{
-        FENstring=FENstringjoined.split("")
-        }
+        
         let element;
         while(FENstring.length!==0){
             element=FENstring.pop()
@@ -7530,6 +7768,10 @@ class GAME{
                     break;
                 case PIECES.EMPTY:
                     EmptySpaceCounter++;
+                    if(i===98){
+                        FENstring.push(`${EmptySpaceCounter}`)
+                        EmptySpaceCounter=0;
+                    }
                     break;
                 
             }
@@ -7740,7 +7982,7 @@ var PSTW={}
 PSTW[PIECES.wP]=[
     'x','x','x','x','x','x','x','x','x','x',
     'x','x','x','x','x','x','x','x','x','x',
-    'x',100, 100, 100, 100, 105, 100, 100,  100,'x',
+    'x',150, 150, 150, 150, 155, 150, 150,  150,'x',
     'x',78,  83,  86,  73, 102,  82,  85,  90,'x',
     'x',7,  29,  21,  44,  40,  31,  44,   7,'x',
     'x',-17,  16,  -2,  15,  14,   0,  15, -13,'x',
@@ -7762,7 +8004,7 @@ PSTW[PIECES.bP]=[
     'x',-17,  16,  -2,  15,  14,   0,  15, -13,'x',
     'x',7,  29,  21,  44,  40,  31,  44,   7,'x',
     'x',78,  83,  86,  73, 102,  82,  85,  90,'x',
-    'x',100, 100, 100, 100, 105, 100, 100,  100,'x',
+    'x',150, 150, 150, 150, 155, 150, 150,  150,'x',
     'x','x','x','x','x','x','x','x','x','x',
     'x','x','x','x','x','x','x','x','x','x'
 ]
