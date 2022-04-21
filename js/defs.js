@@ -67,6 +67,7 @@ class GAME{
         this.enpassantMoveCounter=2;
         this.BestMoveSource=null;
         this.BestMoveTarget=null;
+        this.MovesChecked=0;
         /*
         var FILES ={FILE_A:0, FILE_B:1, FILE_C:2, FILE_D:3, FILE_E:4, FILE_F:5,FILE_G:6,FILE_H:7,FILE_NONE:8};
 
@@ -5956,6 +5957,12 @@ class GAME{
                 }
             }
         }
+        if(this.check===COLORS.WHITE){
+            PrevScore+=-1000
+        }
+        if(this.check===COLORS.BLACK){
+            PrevScore+=1000
+        }
         this.AllValidMoves=[];
         for(let i =0;i<BoardSquares.length;i++)
         {
@@ -5964,7 +5971,7 @@ class GAME{
             }
         }
 
-        PrevScore+=(this.AllValidMoves.length)*1
+        PrevScore+=(this.AllValidMoves.length)*5
         //console.log(this.AllValidMoves.length)
         //console.log("jlksadfhaskljdfhsad")
         this.AllValidMoves=[];
@@ -5975,7 +5982,7 @@ class GAME{
             }
         }
         //console.log(this.AllValidMoves.length)
-        PrevScore+=(this.AllValidMoves.length)*-1
+        PrevScore+=(this.AllValidMoves.length)*-5
 
 
         return PrevScore;
@@ -5983,10 +5990,192 @@ class GAME{
 
     AIMakeAMove(){
         let score=this.EvaluateBoard(0);
-        return this.AIMiniMaxRoot(3)
+        return this.AIMiniMaxRoot(2)
 
 
     }
+
+    AISortByBestMoves(ThisDepthsMoves){
+        let StartingScore=this.EvaluateBoard(0)
+        let PrevScore=StartingScore;
+        let NewScore;
+        let ThisDepthsMoves={}
+        let BestMoveFENString;
+        let BestMovePiece;
+        let BestMoveSource=null;
+        let BestMoveTarget=null;
+        let BeginningFEN =this.GetFEN()
+
+        Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] == null) && delete ThisDepthsMoves[key])
+        var SuccessfulMove=false;
+        //console.log(ThisDepthsMoves)
+        var seed=Math.random()
+        
+        var keys = Object.keys(ThisDepthsMoves);
+        var randomkey=keys.length * seed << 0
+        var RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
+        var RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(seed * ThisDepthsMoves[keys[randomkey]].length)]
+        var Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
+        BestMoveSource=RandomSource;
+        BestMoveTarget=RandomTarget;
+        BestMovePiece=Piece
+        let SourceStack=[];
+        let TargetStack=[];
+        let PieceStack=[];
+        let ScoreStack=[];
+
+        //BestMoveFENString=this.GetFEN()
+        //console.log(randomkey)
+        //console.log(RandomSource)
+        //console.log( RandomTarget);
+        
+        var CheckMateTimeOut=0
+        let FirstMove=true;
+        try{
+
+        
+        do{
+            //console.log(keys.length)
+            Object.keys(ThisDepthsMoves).forEach(key => {
+                if (ThisDepthsMoves[key].length===0) {
+                    delete ThisDepthsMoves[key];
+                }
+                });
+            seed=Math.random()
+            keys = Object.keys(ThisDepthsMoves);
+            //console.log(keys)
+            randomkey=keys.length * seed << 0
+            RandomSource=this.BoardRF[Object.keys(ThisDepthsMoves)[randomkey]]
+            RandomTarget=ThisDepthsMoves[keys[randomkey]][Math.floor(seed * ThisDepthsMoves[keys[randomkey]].length)]
+            Piece=this.BoardSquares[Object.keys(ThisDepthsMoves)[randomkey]]
+            //Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] === null) && delete ThisDepthsMoves[key])
+            
+            //console.log(ThisDepthsMoves)
+            //console.log(this.MoveMaker)
+            
+            
+            if (typeof(RandomTarget) === 'undefined'){
+                //var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
+                //ThisDepthsMoves[keys[randomkey]].splice(Index,1);
+                if (CheckMateTimeOut>=100){
+                    break;
+                    this.checkmate=this.MoveMaker
+                    //console.log(this.checkmate)
+                    let s=0
+                    for(let i=0;i<this.BoardSquaresCopy.length;i++){
+                        s+= this.BoardSquaresCopy[i]+" ";
+                        if (i%10===9 ){
+                            //console.log(s);
+                            s=""
+                        }
+                    }
+                    break;
+                }
+                CheckMateTimeOut+=1
+                continue
+            }
+            this.MoveHistory.push(this.GetFEN())
+            if(this.Move(RandomSource,RandomTarget,Piece)===true){
+                this. NextTurn()
+                if(this.Promote===true){
+                    this.PawnLocationIndex= this.FindFileRank(this.PawnLocation)
+                    if(this.PawnLocationIndex>=21 && this.PawnLocationIndex<=28){
+                        
+                        this.BoardSquares[this.PawnLocationIndex]=PIECES.wQ
+                        //this.SetLastPieceMoved(PIECES.bQ,this.PawnLocation)
+                        this. NextTurn()
+                    }
+                    if(this.PawnLocationIndex>=91 && this.PawnLocationIndex<=98){
+                        this.BoardSquares[this.PawnLocationIndex]=PIECES.bQ
+                        //this.SetLastPieceMoved(PIECES.wQ,this.PawnLocation)
+                        this. NextTurn()
+                    }
+                    this.Promote=false;
+                }
+                
+                switch(this.MoveMaker){
+                    case COLORS.WHITE:
+                        NewScore=this.EvaluateBoard(0)
+                        SourceStack.push(RandomSource)
+                        TargetStack.push(RandomTarget)
+                        PieceStack.push(piece)
+                        ScoreStack.push(NewScore)
+
+                        break;
+                    case COLORS.BLACK:
+                        NewScore=this.EvaluateBoard(0)
+                        if(NewScore<=PrevScore || FirstMove===true){
+                            SuccessfulMove=true;
+                            BestMoveFENString=this.GetFEN()
+                            PrevScore=NewScore
+                            BestMoveSource=RandomSource
+                            BestMoveTarget=RandomTarget
+                            BestMovePiece=Piece
+                            FirstMove=false;
+                        }
+                        SourceStack.push(RandomSource)
+                        TargetStack.push(RandomTarget)
+                        PieceStack.push(piece)
+                        ScoreStack.push(NewScore)
+                        break;
+                }
+                //var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
+                //ThisDepthsMoves[keys[randomkey]].splice(Index,1);
+                this.UndoMove()
+            }
+            else{
+                this.MoveHistory.pop()
+                
+                
+                
+            }
+            //Object.keys(ThisDepthsMoves).forEach((key) => (ThisDepthsMoves[key] === null) && delete ThisDepthsMoves[key])
+            
+                var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
+                ThisDepthsMoves[keys[randomkey]].splice(Index,1);
+            CheckMateTimeOut+=1
+            //this.CheckCheckMate()
+            if (CheckMateTimeOut>=100)
+            {//this.checkmate=this.MoveMaker
+                break;
+            }
+        } while(CheckMateTimeOut<101 )
+    }
+    catch{
+        if (SuccessfulMove===true){
+            this.SetLastPieceMoved(BestMovePiece,BestMoveTarget)
+            this.FENToBoard(BestMoveFENString)
+            return BestMoveFENString
+            /*this.Move(BestMoveSource,BestMoveTarget,Piece)
+            this.SetLastPieceMoved(Piece,this.be)
+            return [BestMoveSource, BestMoveTarget]*/
+        }
+        
+        else {
+            this.LastPieceMoved=null
+            this.LastPieceMovedSource=null
+            this.LastPieceMovedLineOfSight=LINEOFSIGHT.NONE
+            this.LastPieceMovedLineOfSightMoves=[];
+            this.FENToBoard(BeginningFEN)
+            return this.AIRandomMove();
+        } 
+
+    }
+        
+        //console.log("Randome source"+RandomSource)
+        //console.log("random target "+ RandomTarget)
+        //console.log(ThisDepthsMoves[keys[randomkey]])
+        //console.log("seeed"+seed)
+        
+        
+
+
+
+
+    }
+
+
+    
 
     AIBestSingleMove(){
         let StartingScore=this.EvaluateBoard(0)
@@ -6193,7 +6382,8 @@ class GAME{
         let BestMoveSource=null;
         let BestMoveTarget=null;
         let BeginningFEN =this.GetFEN()
-
+        this.MovesChecked=0;
+        let StartingCheck=this.check
 
 
         switch(this.MoveMaker){
@@ -6283,6 +6473,7 @@ class GAME{
             }
             this.MoveHistory.push(this.GetFEN())
             if(this.Move(RandomSource,RandomTarget,Piece)===true){
+                this.MovesChecked++;
                 this. NextTurn()
                 if(this.Promote===true){
                     this.PawnLocationIndex= this.FindFileRank(this.PawnLocation)
@@ -6355,8 +6546,10 @@ class GAME{
     }
     catch{
         if (SuccessfulMove===true){
+            this.check=StartingCheck
             this.SetLastPieceMoved(BestMovePiece,BestMoveTarget)
             this.FENToBoard(BestMoveFENString)
+            console.log("The amount of moves checked is "+this.MovesChecked)
             return BestMoveFENString
             /*this.Move(BestMoveSource,BestMoveTarget,Piece)
             this.SetLastPieceMoved(Piece,this.be)
@@ -6397,7 +6590,7 @@ class GAME{
         let BestMoveTarget=null;
         let BeginningFEN =StartingFEN
 
-        if(depth<0){
+        if(depth<=0){
             return sum
         }
 
@@ -6490,6 +6683,7 @@ class GAME{
             }
             this.MoveHistory.push(this.GetFEN())
             if(this.Move(RandomSource,RandomTarget,Piece)===true){
+                this.MovesChecked++;
                 this. NextTurn()
                 if(this.Promote===true){
                     this.PawnLocationIndex= this.FindFileRank(this.PawnLocation)
@@ -6516,13 +6710,9 @@ class GAME{
                             SuccessfulMove=true;
                             PrevScore=NewScore
                             false;
-                            
-
                         }
-                        else{
-                            this.UndoMove()
-                            return PrevScore
-                        }
+                        
+                        
                         
                         break;
                     case COLORS.BLACK:
@@ -6534,10 +6724,7 @@ class GAME{
                             PrevScore=NewScore
                             FirstMove=false;
                         }
-                        else{
-                            this.UndoMove()
-                            return PrevScore
-                        }
+                        
                         
                         
                         break;
@@ -6568,6 +6755,7 @@ class GAME{
         if (SuccessfulMove===true){
             //this.SetLastPieceMoved(BestMovePiece,BestMoveTarget)
             //this.FENToBoard(BestMoveFENString)
+            
             return PrevScore
             /*this.Move(BestMoveSource,BestMoveTarget,Piece)
             this.SetLastPieceMoved(Piece,this.be)
