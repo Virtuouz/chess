@@ -6438,6 +6438,8 @@ class GAME{
 
     }
     AIMiniMaxRoot(depth){
+        let alpha=-99999
+        let beta=99999
         let StartingScore=this.EvaluateBoard(0)
         let PrevScore=StartingScore;
         let NewScore;
@@ -6530,7 +6532,7 @@ class GAME{
                     case COLORS.WHITE:
                         this.NextTurn()
                         this.CheckCheckMate()
-                        NewScore=this.AIMiniMax(this.GetFEN(),depth-1,this.EvaluateBoard(StartingScore),0,0)
+                        NewScore=this.AIMiniMax(this.GetFEN(),depth-1,this.EvaluateBoard(StartingScore),alpha,beta)
                         if(NewScore>=PrevScore ||FirstMove===true ){
                             SuccessfulMove=true;
                             BestMoveFENString=this.GetFEN()
@@ -6541,11 +6543,19 @@ class GAME{
                             FirstMove=false;
 
                         }
+                        alpha = this.max(alpha, PrevScore)
+                        if (beta <= alpha) {
+                            this.check = StartingCheck
+                            this.SetLastPieceMoved(BestMovePiece, BestMoveTarget)
+                            this.FENToBoard(BestMoveFENString)
+                            console.log("The amount of moves checked is " + this.MovesChecked)
+                            return BestMoveFENString
+                        }
                         break;
                     case COLORS.BLACK:
                         this.NextTurn()
                         this.CheckCheckMate()
-                        NewScore=this.AIMiniMax(this.GetFEN(),depth-1,this.EvaluateBoard(StartingScore),0,0)
+                        NewScore=this.AIMiniMax(this.GetFEN(),depth-1,this.EvaluateBoard(StartingScore),alpha,beta)
                         if(NewScore<=PrevScore || FirstMove===true){
                             SuccessfulMove=true;
                            BestMoveFENString=this.GetFEN()
@@ -6554,6 +6564,14 @@ class GAME{
                             BestMoveTarget=RandomTarget
                             BestMovePiece=Piece
                             FirstMove=false;
+                        }
+                        beta = this.min(beta, PrevScore)
+                        if (beta <= alpha) {
+                            this.check = StartingCheck
+                            this.SetLastPieceMoved(BestMovePiece, BestMoveTarget)
+                            this.FENToBoard(BestMoveFENString)
+                            console.log("The amount of moves checked is " + this.MovesChecked)
+                            return BestMoveFENString
                         }
                         break;
                 }
