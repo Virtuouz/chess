@@ -5990,7 +5990,7 @@ class GAME{
 
     AIMakeAMove(){
         let score=this.EvaluateBoard(0);
-        return this.AIMiniMaxRoot(14)
+        return this.AIMiniMaxRoot(4)
 
 
     }
@@ -6544,14 +6544,15 @@ class GAME{
 
                         }
                         alpha = this.max(alpha, PrevScore)
-                        if (beta <= alpha) {
-                            this.check = StartingCheck
-                            this.SetLastPieceMoved(BestMovePiece, BestMoveTarget)
+                        if(beta<=alpha){
+                            this.UndoMove()
+                            this.check=StartingCheck
+                            this.SetLastPieceMoved(BestMovePiece,BestMoveTarget)
                             this.FENToBoard(BestMoveFENString)
-                            console.log("The amount of moves checked is " + this.MovesChecked)
+                            console.log("The amount of moves checked is "+this.MovesChecked)
                             return BestMoveFENString
                         }
-                        break;
+                        
                     case COLORS.BLACK:
                         this.NextTurn()
                         this.CheckCheckMate()
@@ -6566,13 +6567,15 @@ class GAME{
                             FirstMove=false;
                         }
                         beta = this.min(beta, PrevScore)
-                        if (beta <= alpha) {
-                            this.check = StartingCheck
-                            this.SetLastPieceMoved(BestMovePiece, BestMoveTarget)
+                        if(beta<=alpha){
+                            this.UndoMove()
+                            this.check=StartingCheck
+                            this.SetLastPieceMoved(BestMovePiece,BestMoveTarget)
                             this.FENToBoard(BestMoveFENString)
-                            console.log("The amount of moves checked is " + this.MovesChecked)
+                            console.log("The amount of moves checked is "+this.MovesChecked)
                             return BestMoveFENString
                         }
+                        
                         break;
                 }
                 //var Index= ThisDepthsMoves[keys[randomkey]].indexOf(RandomTarget)
@@ -6635,6 +6638,8 @@ class GAME{
 }
 
     AIMiniMax(StartingFEN,depth,sum, alpha,beta){
+        //alpha=-99999
+        //beta=99999
         let StartingScore=sum
         let PrevScore=StartingScore;
         let NewScore;
@@ -6645,7 +6650,7 @@ class GAME{
         let BestMoveTarget=null;
         let BeginningFEN =StartingFEN
 
-        if(depth<=0){
+        if(depth<=0 || this.MovesChecked>=100000){
             return sum
         }
 
@@ -6721,7 +6726,7 @@ class GAME{
                 
                 switch(this.MoveMaker){
                     case COLORS.WHITE:
-                        PrevScore =-99999
+                        //PrevScore =-99999
                         this.NextTurn()
                         this.CheckCheckMate()
                         if(NewScore>=PrevScore ||FirstMove===true ){
@@ -6740,7 +6745,7 @@ class GAME{
                         
                         break;
                     case COLORS.BLACK:
-                        PrevScore = 99999
+                        //PrevScore = 99999
                         this.NextTurn()
                         this.CheckCheckMate()
                         if(NewScore<=PrevScore || FirstMove===true){
