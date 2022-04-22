@@ -5990,7 +5990,7 @@ class GAME{
 
     AIMakeAMove(){
         let score=this.EvaluateBoard(0);
-        return this.AIMiniMaxRoot(4)
+        return this.AIMiniMaxRoot(14)
 
 
     }
