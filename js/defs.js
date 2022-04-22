@@ -5971,7 +5971,7 @@ class GAME{
             }
         }
 
-        PrevScore+=(this.AllValidMoves.length)*5
+        PrevScore+=(this.AllValidMoves.length)*3
         ////console.log(this.AllValidMoves.length)
         ////console.log("jlksadfhaskljdfhsad")
         this.AllValidMoves=[];
@@ -5982,7 +5982,7 @@ class GAME{
             }
         }
         ////console.log(this.AllValidMoves.length)
-        PrevScore+=(this.AllValidMoves.length)*-5
+        PrevScore+=(this.AllValidMoves.length)*-3
 
 
         return PrevScore;
@@ -6220,6 +6220,24 @@ class GAME{
     // Putting the pivot value in the middle
     [ScoreStack[pivotIndex], ScoreStack[end]] = [ScoreStack[end], ScoreStack[pivotIndex]] 
     return pivotIndex;
+    }
+
+    max(val1,val2){
+        if(val1>val2){
+            return val1
+        }
+        else{
+            return val2
+        }
+    }
+
+    min(val1, val2) {
+        if (val1 < val2) {
+            return val1
+        }
+        else {
+            return val2
+        }
     }
 
     
@@ -6512,7 +6530,7 @@ class GAME{
                     case COLORS.WHITE:
                         this.NextTurn()
                         this.CheckCheckMate()
-                        NewScore=this.AIMiniMax(this.GetFEN(),depth-1,this.EvaluateBoard(StartingScore))
+                        NewScore=this.AIMiniMax(this.GetFEN(),depth-1,this.EvaluateBoard(StartingScore),0,0)
                         if(NewScore>=PrevScore ||FirstMove===true ){
                             SuccessfulMove=true;
                             BestMoveFENString=this.GetFEN()
@@ -6527,7 +6545,7 @@ class GAME{
                     case COLORS.BLACK:
                         this.NextTurn()
                         this.CheckCheckMate()
-                        NewScore=this.AIMiniMax(this.GetFEN(),depth-1,this.EvaluateBoard(StartingScore))
+                        NewScore=this.AIMiniMax(this.GetFEN(),depth-1,this.EvaluateBoard(StartingScore),0,0)
                         if(NewScore<=PrevScore || FirstMove===true){
                             SuccessfulMove=true;
                            BestMoveFENString=this.GetFEN()
@@ -6598,7 +6616,7 @@ class GAME{
     }
 }
 
-    AIMiniMax(StartingFEN,depth,sum, color){
+    AIMiniMax(StartingFEN,depth,sum, alpha,beta){
         let StartingScore=sum
         let PrevScore=StartingScore;
         let NewScore;
@@ -6685,28 +6703,41 @@ class GAME{
                 
                 switch(this.MoveMaker){
                     case COLORS.WHITE:
+                        PrevScore =-99999
                         this.NextTurn()
                         this.CheckCheckMate()
-                        NewScore=this.AIMiniMax(this.GetFEN(),depth-1,this.EvaluateBoard(StartingScore))
                         if(NewScore>=PrevScore ||FirstMove===true ){
                             SuccessfulMove=true;
-                            PrevScore=NewScore
-                            false;
+                            FirstMove = false;
+                            
                         }
-                        
+                        NewScore=this.AIMiniMax(this.GetFEN(),depth-1,this.EvaluateBoard(StartingScore),alpha,beta)
+                        PrevScore = this.min(PrevScore, NewScore)
+                        beta = this.min(beta, PrevScore)
+                        if (beta <= alpha) {
+                            this.UndoMove()
+                            return PrevScore
+                        }
                         
                         
                         break;
                     case COLORS.BLACK:
+                        PrevScore = 99999
                         this.NextTurn()
                         this.CheckCheckMate()
-                        NewScore=this.AIMiniMax(this.GetFEN(),depth-1,this.EvaluateBoard(StartingScore))
                         if(NewScore<=PrevScore || FirstMove===true){
                             SuccessfulMove=true;
                             PrevScore=NewScore
                             FirstMove=false;
                         }
+                        NewScore=this.AIMiniMax(this.GetFEN(),depth-1,this.EvaluateBoard(StartingScore),alpha,beta)
+                        PrevScore=this.min(PrevScore,NewScore)
+                        beta =this.min(beta,PrevScore)
                         
+                        if(beta<=alpha){
+                            this.UndoMove()
+                            return PrevScore
+                        }
                         
                         
                         break;
