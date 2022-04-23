@@ -5990,7 +5990,7 @@ class GAME{
 
     AIMakeAMove(){
         let score=this.EvaluateBoard(0);
-        return this.AIMiniMaxRoot(4)
+        return this.AIMiniMaxRoot(5)
 
 
     }
@@ -6544,6 +6544,19 @@ class GAME{
 
                         }
                         alpha = this.max(alpha, PrevScore)
+                        if(beta<=alpha){
+                            if (SuccessfulMove===true){
+                                this.UndoMove()
+                                this.check=StartingCheck
+                                this.SetLastPieceMoved(BestMovePiece,BestMoveTarget)
+                                this.FENToBoard(BestMoveFENString)
+                                //console.log("The amount of moves checked is "+this.MovesChecked)
+                                return BestMoveFENString
+                                /*this.Move(BestMoveSource,BestMoveTarget,Piece)
+                                this.SetLastPieceMoved(Piece,this.be)
+                                return [BestMoveSource, BestMoveTarget]*/
+                            }
+                        }
                         
                         
                     case COLORS.BLACK:
@@ -6560,6 +6573,19 @@ class GAME{
                             FirstMove=false;
                         }
                         beta = this.min(beta, PrevScore)
+                        if(beta<=alpha){
+                            if (SuccessfulMove===true){
+                                this.UndoMove()
+                                this.check=StartingCheck
+                                this.SetLastPieceMoved(BestMovePiece,BestMoveTarget)
+                                this.FENToBoard(BestMoveFENString)
+                                //console.log("The amount of moves checked is "+this.MovesChecked)
+                                return BestMoveFENString
+                                /*this.Move(BestMoveSource,BestMoveTarget,Piece)
+                                this.SetLastPieceMoved(Piece,this.be)
+                                return [BestMoveSource, BestMoveTarget]*/
+                            }
+                        }
                         
                         
                         break;
@@ -6627,8 +6653,8 @@ class GAME{
         // alpha=-99999
         // beta=99999
         //this.NextTurn()
-        console.log(this.MoveMaker)
-        console.log("Current alpha beta: "+alpha+" " +beta)
+        //console.log(this.MoveMaker)
+        //console.log("Current alpha beta: "+alpha+" " +beta)
         let StartingScore=sum
         let PrevScore=StartingScore;
         let NewScore;
