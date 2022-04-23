@@ -5971,7 +5971,7 @@ class GAME{
             }
         }
 
-        PrevScore+=(this.AllValidMoves.length)*3
+        PrevScore+=(this.AllValidMoves.length)*0
         ////console.log(this.AllValidMoves.length)
         ////console.log("jlksadfhaskljdfhsad")
         this.AllValidMoves=[];
@@ -5982,7 +5982,7 @@ class GAME{
             }
         }
         ////console.log(this.AllValidMoves.length)
-        PrevScore+=(this.AllValidMoves.length)*-3
+        PrevScore+=(this.AllValidMoves.length)*-0
 
 
         return PrevScore;
@@ -6544,14 +6544,7 @@ class GAME{
 
                         }
                         alpha = this.max(alpha, PrevScore)
-                        if(beta<=alpha){
-                            this.UndoMove()
-                            this.check=StartingCheck
-                            this.SetLastPieceMoved(BestMovePiece,BestMoveTarget)
-                            this.FENToBoard(BestMoveFENString)
-                            console.log("The amount of moves checked is "+this.MovesChecked)
-                            return BestMoveFENString
-                        }
+                        
                         
                     case COLORS.BLACK:
                         this.NextTurn()
@@ -6567,14 +6560,7 @@ class GAME{
                             FirstMove=false;
                         }
                         beta = this.min(beta, PrevScore)
-                        if(beta<=alpha){
-                            this.UndoMove()
-                            this.check=StartingCheck
-                            this.SetLastPieceMoved(BestMovePiece,BestMoveTarget)
-                            this.FENToBoard(BestMoveFENString)
-                            console.log("The amount of moves checked is "+this.MovesChecked)
-                            return BestMoveFENString
-                        }
+                        
                         
                         break;
                 }
@@ -6638,8 +6624,11 @@ class GAME{
 }
 
     AIMiniMax(StartingFEN,depth,sum, alpha,beta){
-        //alpha=-99999
-        //beta=99999
+        // alpha=-99999
+        // beta=99999
+        //this.NextTurn()
+        console.log(this.MoveMaker)
+        console.log("Current alpha beta: "+alpha+" " +beta)
         let StartingScore=sum
         let PrevScore=StartingScore;
         let NewScore;
@@ -6650,7 +6639,7 @@ class GAME{
         let BestMoveTarget=null;
         let BeginningFEN =StartingFEN
 
-        if(depth<=0 || this.MovesChecked>=100000){
+        if(depth<=0 ){
             return sum
         }
 
@@ -6735,8 +6724,8 @@ class GAME{
                             
                         }
                         NewScore=this.AIMiniMax(this.GetFEN(),depth-1,this.EvaluateBoard(StartingScore),alpha,beta)
-                        PrevScore = this.min(PrevScore, NewScore)
-                        beta = this.min(beta, PrevScore)
+                        PrevScore = this.max(PrevScore, NewScore)
+                        alpha = this.max(alpha, PrevScore)
                         if (beta <= alpha) {
                             this.UndoMove()
                             return PrevScore
